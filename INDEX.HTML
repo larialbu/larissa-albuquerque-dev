@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Larissa Albuquerque | Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2D5A27;
+            --secondary: #4A7C44;
+            --accent: #A3B18A;
+            --bg: #F8F9FA;
+            --text-heading: #1A1A1A;
+            --text-body: #4A4A4A;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --sidebar-width: 280px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            display: flex;
+            background: var(--bg);
+            color: var(--text-body);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .sidebar h2,
+        .accordion {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-heading);
+            font-weight: 700;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: var(--primary);
+            color: white;
+            position: fixed;
+            padding: 40px 0 0;
+            /* Changed padding to handle flex inner */
+            display: flex;
+            flex-direction: column;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05);
+            z-index: 2005;
+            transition: var(--transition);
+        }
+
+        .sidebar-header {
+            padding: 0 24px;
+            margin-bottom: 32px;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 16px 20px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+        }
+
+        .sidebar-nav::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .sidebar-nav::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 40px;
+            font-size: 1.5rem;
+            color: white;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            padding: 12px 16px;
+            margin: 4px 0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .sidebar a:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(4px);
+        }
+
+        .sidebar a.active {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .lang-selector-container {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 8px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        #lang-select {
+            border: none;
+            background: transparent;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 4px 8px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+
+        .sidebar-footer {
+            padding: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+            text-align: center;
+        }
+
+        .sidebar-footer p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+        }
+
+        /* Main */
+        .main {
+            margin-left: var(--sidebar-width);
+            padding: 60px 80px 40px;
+            /* Restored bottom padding */
+            max-width: 1200px;
+            width: calc(100% - var(--sidebar-width));
+            flex: 1;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section h1 {
+            font-size: 2.25rem;
+            margin-bottom: 32px;
+            letter-spacing: -0.03em;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 32px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Hero Style for 'Sobre' */
+        .hero-text {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: var(--text-body);
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            margin-bottom: 32px;
+            padding-top: 0;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cv-container {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .cv-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 1.5px solid var(--primary);
+        }
+
+        .cv-btn-pt {
+            background: var(--primary);
+            color: white;
+        }
+
+        .cv-btn-pt:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .cv-btn-en {
+            background: transparent;
+            color: var(--primary);
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+
+        /* Timeline */
+        .timeline {
+            border-left: 2px solid var(--accent);
+            padding-left: 32px;
+            margin-left: 8px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -42px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border: 3px solid var(--secondary);
+            border-radius: 50%;
+        }
+
+        .timeline-item strong {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-heading);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .date {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        /* Skills Chips */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: block;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .skill-tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-body);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Accordion */
+        .accordion-item {
+            cursor: pointer;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            color: var(--secondary);
+        }
+
+        .accordion-item.open .accordion-header i {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+            margin-top: 0;
+            opacity: 0;
+        }
+
+        .accordion-item.open .accordion-content {
+            max-height: 2000px;
+            transition: max-height 0.4s cubic-bezier(1, 0, 1, 0);
+            margin-top: 24px;
+            opacity: 1;
+        }
+
+        .project-media-placeholder {
+            width: 100%;
+            height: 200px;
+            background: rgba(0, 0, 0, 0.03);
+            border: 2px dashed rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-top: 16px;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Responsive */
+
+        /* Mobile Header */
+        .mobile-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 2000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .menu-toggle {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .menu-toggle:active {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 1024px) {
+            .mobile-header {
+                display: flex;
+            }
+
+            .sidebar {
+                left: -100% !important;
+                visibility: hidden;
+            }
+
+            body.menu-open .sidebar {
+                left: 0 !important;
+                visibility: visible;
+            }
+
+            body.menu-open .sidebar-overlay {
+                display: block;
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .sidebar-overlay {
+                display: none;
+                pointer-events: none;
+            }
+
+            .main {
+                margin-left: 0 !important;
+                width: 100% !important;
+                padding: 60px 20px 40px !important;
+                /* Restored mobile bottom padding */
+                margin-top: 30px;
+                display: block;
+                position: relative;
+                top: 0;
+            }
+
+            .section {
+                display: block !important;
+                margin-bottom: 40px;
+                opacity: 1 !important;
+                visibility: visible !important;
+                width: 100%;
+                padding-top: 0;
+                /* Flush with main container padding */
+            }
+
+            .lang-selector-container {
+                top: 70px;
+                right: 20px;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                margin-bottom: 24px;
+                padding-top: 0 !important;
+                margin-top: 0 !important;
+            }
+
+            .profile-header div {
+                margin-top: 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Contact & Footer Styles */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .social-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: white;
+            background: var(--primary);
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.2);
+        }
+
+        .social-button:hover {
+            transform: translateY(-2px);
+            background: var(--secondary);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            color: white;
+        }
+
+        .social-button svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .fixed-footer {
+            display: none !important;
+            /* Removed global fixed footer */
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="mobile-header">
+        <span class="mobile-logo">Larissa Albuquerque</span>
+        <button class="menu-toggle" aria-label="Abrir Menu" onclick="toggleMenu()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </header>
+
+    <div class="sidebar-overlay" onclick="toggleMenu()"></div>
+
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2 style="margin-bottom: 8px;">Larissa Albuquerque</h2>
+            <p id="sidebar-subtitle"
+                style="color: rgba(255,255,255,0.7); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0;"
+                data-i18n="sidebar_subtitle">
+                Desenvolvedora, Professora e Analista</p>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a class="menu active" onclick="showSection('sobre')" data-i18n="menu_about">Sobre</a>
+            <a class="menu" onclick="showSection('experiencia')" data-i18n="menu_experience">Experiência</a>
+            <a class="menu" onclick="showSection('academico')" data-i18n="menu_academic">Acadêmico</a>
+            <a class="menu" onclick="showSection('academic_projects')" data-i18n="menu_academic_projects">Projetos
+                Acadêmicos</a>
+            <a class="menu" onclick="showSection('projetos')" data-i18n="menu_projects">Participações & Projetos</a>
+            <a class="menu" onclick="showSection('parcerias')" data-i18n="menu_partnerships">Parcerias</a>
+            <a class="menu" onclick="showSection('skills')" data-i18n="menu_skills">Hard Skills</a>
+            <a class="menu" onclick="showSection('contato')" data-i18n="menu_contact">Contato</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>
+                &copy; <span id="current-year"></span> Larissa Albuquerque.<br>
+                <span data-i18n="footer_rights">Todos os direitos reservados.</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="main">
+        <!-- Floating Language Selector -->
+        <div class="lang-selector-container">
+            <select id="lang-select" onchange="setLanguage(this.value)">
+                <option value="pt">PT-BR</option>
+                <option value="en">EN-US</option>
+            </select>
+        </div>
+
+        <!-- SOBRE -->
+        <div id="sobre" class="section active">
+            <div class="profile-header">
+                <img src="images/larissa.jpeg" alt="Larissa Albuquerque" class="profile-img">
+                <div>
+                    <h1>Larissa Albuquerque</h1>
+                    <p style="font-size: 1.1rem; color: var(--secondary); font-weight: 600;" data-i18n="hero_title">
+                        Desenvolvedora, Professora e Analista de Tecnologia</p>
+                    <div class="cv-container">
+                        <a href="https://www.canva.com/design/DAGtzKKKOHA/DyqCD413aeZ1-S3ExEe-7w/view?utm_content=DAGtzKKKOHA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hfc2496ac09"
+                            target="_blank" class="cv-btn cv-btn-pt">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            <span data-i18n="cv_button_pt">Baixar CV (PT)</span>
+                        </a>
+                        <a href="#" class="cv-btn cv-btn-en" onclick="return false;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            <span data-i18n="cv_button_en">Download CV (EN)</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card hero-text">
+                <span class="skill-category" style="margin-bottom: 16px; display: block;"
+                    data-i18n="summary_label">Resumo Profissional</span>
+                <span data-i18n="summary_content">
+                    Sou pernambucana, tenho 21 anos e atuo como <span class="highlight">Desenvolvedora Full
+                        Stack</span>, com mais de <span class="highlight">4 anos de experiência</span> na construção de
+                    soluções escaláveis, performáticas e orientadas a resultados. Possuo experiência em arquitetura de
+                    <span class="highlight">Micro Frontends</span>, desenvolvimento de plataformas de Marketplace e
+                    implementação de sistemas críticos de back-end com NestJS e Django, sempre priorizando qualidade de
+                    código, boas práticas e alta performance.
+                    <br><br>
+                    Aos 19 anos, iniciei o mestrado em <span class="highlight">Ciências da Computação</span>,
+                    aprofundando meus estudos em tecnologia, arquitetura e inovação. Desde cedo, sempre tive paixão por
+                    ensinar, e acredito que a educação é uma das principais ferramentas de transformação na área de
+                    tecnologia.
+                    <br><br>
+                    Hoje, uno base acadêmica sólida, experiência prática em desenvolvimento e vocação para o ensino para
+                    transformar desafios complexos em soluções tecnológicas eficientes, escaláveis e com impacto real.
+                </span>
+            </div>
+        </div>
+
+        <!-- EXPERIÊNCIA -->
+        <div id="experiencia" class="section">
+            <h1 data-i18n="exp_h1">Experiência Profissional</h1>
+
+            <div class="timeline">
+
+                <div class="timeline-item card">
+                    <span class="date">janeiro 2026 - <span data-i18n="date_present"></span>o momento</span></span>
+                    <strong>Banco do Brasil (Via NTT DATA)</strong>
+                    <em data-i18n="exp_bb_role">Desenvolvedora FULL STACK - Pleno</em>
+                    <p style="margin-top: 12px;" data-i18n="exp_bb_desc">
+                        Desenvolvo soluções front-end com Angular e arquitetura de micro frontends, aumentando a
+                        modularidade e escalabilidade das aplicações bancárias.
+                        Também atuo no desenvolvimento backend com NestJS, contribuindo para a construção de serviços
+                        robustos e integrados. Trabalho com esteiras de CI/CD, utilizando Jenkins, Argo e gestão de
+                        binários, promovendo automação, padronização e maior eficiência nos processos de entrega.
+                        Contribuí para a agilidade dos times e integração dos sistemas, acelerando a disponibilização de
+                        funcionalidades.
+                        Além disso, atuo com iniciativas de DevRel, compartilhando conhecimento, apoiando boas práticas,
+                        fortalecendo a comunicação entre equipes e incentivando a cultura de colaboração e aprendizado
+                        contínuo.
+                    </p>
+                </div>
+
+                <div class="timeline-item card">
+                    <span class="date">janeiro 2026 - <span data-i18n="date_present">o momento</span></span>
+                    <strong>SENAC PERNAMBUCO</strong>
+                    <em data-i18n="exp_senac_role">Professora de Desenvolvimento de Sistemas</em>
+                    <p style="margin-top: 12px;" data-i18n="exp_senac_desc">
+                        Ensino desenvolvimento de sistemas, abordando front-end, back-end, bancos de dados, testes,
+                        versionamento e boas práticas de desenvolvimento.
+                        Planejo e conduzo projetos práticos, promovendo pensamento crítico, resolução de problemas,
+                        trabalho em equipe e preparação dos alunos para o mercado de tecnologia.
+                    </p>
+                </div>
+
+                <div class="timeline-item card">
+                    <span class="date">julho 2025 - dezembro 2025</span>
+                    <strong>Banco do Brasil (Via Qintess)</strong>
+                    <em>Desenvolvedora FULL STACK - Pleno</em>
+                    <p style="margin-top: 12px;" data-i18n="exp_bb_qintess_desc">
+                        Atuei no desenvolvimento de soluções completas para o Banco do Brasil, focando em robustez e
+                        escalabilidade.
+                    </p>
+                </div>
+
+                <div class="timeline-item card">
+                    <span class="date">dezembro 2024 - julho 2025</span>
+                    <strong>FCx Labs (Ferreira Costa)</strong>
+                    <em>Desenvolvedora FULL STACK - Pleno</em>
+                    <p style="margin-top: 12px;" data-i18n="exp_fcx_desc">
+                        Desenvolvi soluções em React, Next.js, micro frontends e NestJS, integrando testes e
+                        atualizações de ambiente para garantir entregas contínuas e de qualidade.
+                        Fui uma das responsáveis pela criação do Marketplace da FC e do Seller Center, ampliando o
+                        portfólio de produtos e a experiência dos usuários no ecossistema da empresa.
+                    </p>
+                </div>
+
+                <div class="timeline-item card">
+                    <span class="date">agosto 2023 - dezembro 2024</span>
+                    <strong>BSA Tech (Opa Games)</strong>
+                    <em>Desenvolvedora FULL STACK - Junior</em>
+                    <p style="margin-top: 12px;" data-i18n="exp_bsa_desc">
+                        Desenvolvimento de integração de jogos e dashboards utilizando Next.js no front-end e Django no
+                        back-end, garantindo APIs seguras e interfaces modernas e performáticas.
+                        Implementação de soluções para gestão de dados, autenticação de usuários e integração de novos
+                        provedores, com foco em manutenção fácil e escalabilidade do sistema.
+                    </p>
+                </div>
+
+                <div class="timeline-item card">
+                    <span class="date">janeiro 2023 - julho 2023</span>
+                    <strong>CMTech</strong>
+                    <em data-i18n="exp_cmtech_role">Desenvolvedora Full Stack - Estágio</em>
+                    <p style="margin-top: 12px;" data-i18n="exp_cmtech_desc">
+                        Desenvolvimento de sistema de atendimento via chat em tempo real com ReactJS + MUI, integrando
+                        SignalR para mensageria e APIs REST em .NET Core para persistência em PostgreSQL.
+                        Implementação de uma solução completa para comunicação instantânea, garantindo alta performance,
+                        confiabilidade e escalabilidade no serviço de atendimento.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ACADÊMICO -->
+        <div id="academico" class="section">
+            <h1 data-i18n="acad_h1">Histórico Acadêmico</h1>
+
+            <div class="card">
+                <span class="date">2024.2 - 2026.1</span>
+                <strong data-i18n="acad_mestrado_title">Mestrado em Ciências da Computação</strong>
+                <span>Centro de Informática (CIn) da Universidade Federal de Pernambuco (UFPE)</span>
+                <div style="margin-top: 16px;">
+                    <span class="skill-category" style="display: inline-block; margin-bottom: 8px;"
+                        data-i18n="acad_mestrado_status">Status: Dissertação em andamento</span>
+                    <br>
+                    <button style="padding: 8px 16px; font-size: 0.9rem; opacity: 0.7; cursor: default;"
+                        data-i18n="acad_mestrado_btn">Acessar Dissertação (Em breve)</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="date">2022.1 - 2024.1 (<span data-i18n="date_completed">CONCLUÍDO</span>)</span>
+                <strong data-i18n="acad_tecnologo_title">Sistemas para Internet (Tecnólogo)</strong>
+                <span>Universidade Católica de Pernambuco (UNICAP)</span>
+                <div style="margin-top: 16px;">
+                    <a href="https://github.com/orgs/SIN-disciplina-PI5/teams/2024-1-unicapevents" target="_blank"
+                        style="text-decoration: none;">
+                        <button style="padding: 8px 16px; font-size: 0.9rem;" data-i18n="acad_tcc_btn">Ver Projeto de
+                            TCC</button>
+                    </a>
+                </div>
+            </div>
+
+            <div style="margin-top: 32px; text-align: center;">
+                <a href="http://lattes.cnpq.br/7448823611009423" target="_blank" style="text-decoration: none;">
+                    <button data-i18n="acad_lattes_btn">Ver Currículo Lattes</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- PROJETOS ACADÊMICOS -->
+        <div id="academic_projects" class="section">
+            <h1 data-i18n="acad_proj_h1">Projetos Acadêmicos</h1>
+
+            <div class="card">
+                <span class="date">agosto 2024 - fevereiro 2026</span>
+                <span class="skill-category" data-i18n="acad_proj_label_dev">Desenvolvedora Bolsista</span>
+                <strong>Projeto Petribu – Sistema de Gestão Operacional (FIEPE)</strong>
+                <p style="margin-top: 12px; font-size: 0.95rem;" data-i18n="acad_proj_petribu_desc">
+                    Atuo no desenvolvimento de um sistema de gestão operacional modular e escalável para ambientes
+                    industriais, com frontend em ReactJS, VueJS, interface reativa e offline-first, e backend em Python,
+                    suportando APIs REST e integração com Apache Kafka. O sistema utiliza banco de dados relacional
+                    (PostgreSQL, Oracle) com cache em Redis, e conta com Docker, Kubernetes e CI/CD para automação e
+                    deploy.
+                </p>
+            </div>
+
+            <div class="card">
+                <span class="date">janeiro 2025 - dezembro 2025</span>
+                <span class="skill-category" data-i18n="acad_proj_label_manager">Gerente de Projetos e Eventos</span>
+                <strong>Grupo de pesquisa CIn UFPE - GP2 NOW</strong>
+                <p style="margin-top: 12px; font-size: 0.95rem;" data-i18n="acad_proj_gp2_desc">
+                    Responsável pela coordenação das atividades do grupo, definição de prioridades de pesquisa e
+                    supervisão da execução eficiente das iniciativas acadêmicas.
+                </p>
+            </div>
+
+            <div class="card">
+                <span class="date">fevereiro 2022 - junho 2024</span>
+                <strong>Residência Tecnológica com Porto Digital</strong>
+                <p style="margin-top: 12px; font-size: 0.95rem;">
+                    Participação na Residência Onboard do Porto Digital, desenvolvendo projetos em parceria com empresas
+                    como Accenture, NTT Data e CMTech. Atuação em projetos práticos orientados por especialistas,
+                    aplicando conhecimentos adquiridos no programa Embarque Digital.
+                </p>
+            </div>
+
+            <div class="card">
+                <span class="date">novembro 2022 - fevereiro 2023</span>
+                <span class="skill-category">Bolsista Desenvolvedora Front-end</span>
+                <strong>SiDI (PET-Projeto de extensão tecnológica)</strong>
+                <p style="margin-top: 12px; font-size: 0.95rem;">
+                    Criação de um chatbot inteligente para o departamento de RH, utilizando Rasa como motor
+                    conversacional, Docker para containerização e AWS para hospedagem. Integração com Python (Lambdas e
+                    APIs) e Power BI para análise de candidatos.
+                </p>
+            </div>
+        </div>
+
+        <!-- PROJETOS -->
+        <div id="projetos" class="section">
+            <h1 data-i18n="proj_h1">Participações & Projetos</h1>
+
+            <div class="card accordion-item" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <div>
+                        <span class="skill-category" data-i18n="label_community">Comunidade</span>
+                        <strong data-i18n="proj_alura_title">Embaixadora Alura</strong>
+                    </div>
+                    <i class="arrow">▼</i>
+                </div>
+                <div class="accordion-content">
+                    <p style="font-size: 0.95rem;" data-i18n="proj_alura_desc">
+                        Represento a maior plataforma de tecnologia do Brasil, promovendo educação e inovação.
+                    </p>
+                    <div style="margin-top: 16px; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 16px;">
+                        <strong style="font-size: 0.9rem; color: var(--primary);" data-i18n="proj_alura_impact">Impacto
+                            na Comunidade</strong>
+                        <p style="font-size: 0.9rem; color: var(--text-body); margin-top: 8px;">
+                            • <span data-i18n="proj_alura_impact_1">Mentoria de novos alunos</span><br>
+                            • <span data-i18n="proj_alura_impact_2">Criação de conteúdo técnico</span><br>
+                            • Participação ativa em fóruns e eventos.
+                        </p>
+                        <div class="project-media-placeholder">
+                            <span>[Espaço para Fotos/Media]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card accordion-item" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <div>
+                        <span class="skill-category" data-i18n="label_leadership">Liderança</span>
+                        <strong data-i18n="proj_rfec_title">Fundadora e Líder | RFEC – Recife Frontend
+                            Community</strong>
+                    </div>
+                    <i class="arrow">▼</i>
+                </div>
+                <div class="accordion-content">
+                    <p style="font-size: 0.95rem;" data-i18n="proj_rfec_desc">
+                        Responsável pela coordenação da comunidade, organização de eventos e fortalecimento da rede de
+                        profissionais de frontend na região.
+                    </p>
+                    <div style="margin-top: 16px; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 16px;">
+                        <strong style="font-size: 0.9rem; color: var(--primary);" data-i18n="proj_rfec_impact">Impacto
+                            na Comunidade</strong>
+                        <p style="font-size: 0.9rem; color: var(--text-body); margin-top: 8px;">
+                            • <span data-i18n="proj_rfec_impact_1">Organização de Meetups mensais</span><br>
+                            • <span data-i18n="proj_rfec_impact_2">Mais de 2000 membros ativos na rede</span><br>
+                            • Parcerias com empresas locais.
+                        </p>
+                        <div class="project-media-placeholder">
+                            <span>[Espaço para Fotos RFEC]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card accordion-item" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <div>
+                        <span class="skill-category" data-i18n="label_mentorship">Mentoria</span>
+                        <strong data-i18n="proj_mentoria_title">Mentora e Palestrante</strong>
+                    </div>
+                    <i class="arrow">▼</i>
+                </div>
+                <div class="accordion-content">
+                    <p style="font-size: 0.95rem;" data-i18n="proj_mentoria_desc">
+                        Mentora do Tech Woman, orientando novos talentos, especialmente mulheres na área de TI.
+                        Palestrante em eventos como RecNPlay, Magalu Cloud e Porto Digital.
+                    </p>
+                    <div style="margin-top: 16px; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 16px;">
+                        <strong style="font-size: 0.9rem; color: var(--primary);"
+                            data-i18n="proj_mentoria_impact">Destaques de Mentoria</strong>
+                        <p style="font-size: 0.9rem; color: var(--text-body); margin-top: 8px;">
+                            • <span data-i18n="proj_mentoria_impact_1">Mentoria individual para transição de
+                                carreira</span><br>
+                            • <span data-i18n="proj_mentoria_impact_2">Palestras para grandes públicos</span><br>
+                            • Apoio em projetos de inclusão digital.
+                        </p>
+                        <div class="project-media-placeholder">
+                            <span>[Espaço para Fotos Mentorias]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARCERIAS -->
+        <div id="parcerias" class="section">
+            <h1 data-i18n="proj_partners_h1">Parcerias</h1>
+
+            <div class="skills-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <div class="card" style="padding: 24px;">
+                    <span class="skill-category">Alura</span>
+                    <strong data-i18n="proj_partners_alura_desc">Desconto na assinatura da Alura</strong>
+                    <div style="margin-top: 16px;">
+                        <a href="https://www.alura.com.br/indica-dev/larissaamca" target="_blank"
+                            style="text-decoration: none;">
+                            <button style="padding: 8px 16px; font-size: 0.9rem;"
+                                data-i18n="proj_partners_alura_btn">Obter desconto</button>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card" style="padding: 24px;">
+                    <span class="skill-category">Use_T.I</span>
+                    <strong data-i18n="proj_partners_usetii_title">Embaixadora Senior</strong>
+                    <p style="margin-top: 8px; font-size: 0.85rem; line-height: 1.5;"
+                        data-i18n="proj_partners_usetii_desc">
+                        Moda para quem vive de código! Use o meu cupom e garanta o estilo da laridev.
+                    </p>
+                    <div
+                        style="margin-top: 12px; background: rgba(0,0,0,0.03); padding: 8px; border-radius: 6px; display: inline-block; margin-bottom: 12px;">
+                        <strong style="font-size: 0.85rem; color: var(--primary);">CUPOM: laridev</strong>
+                    </div>
+                    <div style="margin-top: 4px;">
+                        <a href="https://www.useti.shop/useti" target="_blank" style="text-decoration: none;">
+                            <button style="padding: 8px 16px; font-size: 0.9rem;"
+                                data-i18n="proj_partners_usetii_btn">Visitar Loja</button>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card" style="padding: 24px;">
+                    <span class="skill-category">FIAP</span>
+                    <strong data-i18n="proj_partners_fiap_title">Bolsa de estudos</strong>
+                    <p style="margin-top: 8px; font-size: 0.85rem; line-height: 1.5;"
+                        data-i18n="proj_partners_fiap_desc">
+                        Bolsa de descontos em graduações e pós graduações na melhor faculdade de tecnologia.
+                    </p>
+                    <div style="margin-top: 16px;">
+                        <a href="https://www.instagram.com/lari.devcode" target="_blank" class="highlight"
+                            style="text-decoration: none; font-size: 0.9rem;" data-i18n="proj_partners_fiap_btn">Saiba
+                            mais no Instagram</a>
+                    </div>
+                </div>
+
+                <div class="card" style="padding: 24px;">
+                    <span class="skill-category">Casa do Código</span>
+                    <strong data-i18n="proj_partners_cdc_title">Livros para Devs!</strong>
+                    <p style="margin-top: 8px; font-size: 0.85rem; line-height: 1.5;"
+                        data-i18n="proj_partners_cdc_desc">
+                        Editora de livros de TI com o selo de didática do grupo Alura. Use o cupom para garantir o seu
+                        título.
+                    </p>
+                    <div
+                        style="margin-top: 12px; background: rgba(0,0,0,0.03); padding: 8px; border-radius: 6px; display: inline-block; margin-bottom: 12px;">
+                        <strong style="font-size: 0.85rem; color: var(--primary);">CUPOM: AF-b5d2572e</strong>
+                    </div>
+                    <div style="margin-top: 4px;">
+                        <a href="https://www.casadocodigo.com.br/?cupom=AF-b5d2572e" target="_blank"
+                            style="text-decoration: none;">
+                            <button style="padding: 8px 16px; font-size: 0.9rem;" data-i18n="proj_partners_cdc_btn">Ver
+                                Livros</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SKILLS -->
+        <div id="skills" class="section">
+            <h1 data-i18n="menu_skills">Hard Skills</h1>
+
+            <div class="skills-grid">
+                <div class="card">
+                    <span class="skill-category" data-i18n="skills_frontend">Front-end</span>
+                    <div class="skill-tag-container">
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">Angular</span>
+                        <span class="skill-tag">Vue.js</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="skill-category" data-i18n="skills_backend">Back-end</span>
+                    <div class="skill-tag-container">
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">NestJS</span>
+                        <span class="skill-tag">Node.js</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="skill-category" data-i18n="skills_databases">Bancos de Dados</span>
+                    <div class="skill-tag-container">
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">SQL Server</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">SQLite</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="skill-category" data-i18n="skills_aws">AWS</span>
+                    <div class="skill-tag-container">
+                        <span class="skill-tag">VPC</span>
+                        <span class="skill-tag">EC2</span>
+                        <span class="skill-tag">S3</span>
+                        <span class="skill-tag">Lambda</span>
+                        <span class="skill-tag">CloudFront</span>
+                        <span class="skill-tag">SDK</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="skill-category" data-i18n="skills_arch">Arquitetura & Padrões</span>
+                    <div class="skill-tag-container">
+                        <span class="skill-tag">Clean Architecture</span>
+                        <span class="skill-tag">DDD</span>
+                        <span class="skill-tag">Microserviços</span>
+                        <span class="skill-tag">Micro Frontends</span>
+                        <span class="skill-tag">MVC</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="skill-category" data-i18n="skills_devops">DevOps & Infra</span>
+                    <div class="skill-tag-container">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">Rancher</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">Argo CD</span>
+                        <span class="skill-tag">Grafana</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="skill-category" data-i18n="skills_ia">IA & Chatbots</span>
+                    <div class="skill-tag-container">
+                        <span class="skill-tag">Rasa</span>
+                        <span class="skill-tag">Gemini</span>
+                        <span class="skill-tag">ChatGPT</span>
+                        <span class="skill-tag">Claude</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="skill-category" data-i18n="skills_others">Outros</span>
+                    <div class="skill-tag-container">
+                        <span class="skill-tag">Git/GitHub</span>
+                        <span class="skill-tag">Swagger</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">Scrum/Kanban</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Jira/Trello</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTATO -->
+        <div id="contato" class="section">
+            <h1 data-i18n="contact_h1">Vamos Conversar?</h1>
+
+            <div class="card">
+                <div class="contact-list">
+                    <div class="contact-item">
+                        <span class="skill-category" data-i18n="contact_addr">Endereço</span>
+                        <p>Recife, Pernambuco, Brasil</p>
+                    </div>
+                    <div class="contact-item">
+                        <span class="skill-category" data-i18n="contact_email">E-mail</span>
+                        <p><a href="mailto:larissaamca1@gmail.com"
+                                style="color: inherit; text-decoration: none;">larissaamca1@gmail.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <span class="skill-category" data-i18n="contact_phone">Telefone</span>
+                        <p>+55 81 9 9969-9386</p>
+                    </div>
+                    <div class="contact-item">
+                        <span class="skill-category" data-i18n="contact_social">Social</span>
+                        <div class="social-links">
+                            <a href="https://github.com/larialbu" target="_blank" class="social-button">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
+                                </svg>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://www.instagram.com/lari.devcode" target="_blank" class="social-button">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/larissa-azevedo-albuquerque/" target="_blank"
+                                class="social-button">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                    </path>
+                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg>
+                                <span>LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script>
+        let currentLanguage = 'pt';
+
+        const translations = {
+            pt: {
+                sidebar_subtitle: "Desenvolvedora, Professora e Analista",
+                menu_about: "Sobre",
+                menu_experience: "Experiência",
+                menu_academic: "Acadêmico",
+                menu_academic_projects: "Projetos Acadêmicos",
+                menu_projects: "Participações & Projetos",
+                menu_partnerships: "Parcerias",
+                menu_skills: "Hard Skills",
+                menu_contact: "Contato",
+                hero_title: "Desenvolvedora, Professora e Analista de Tecnologia",
+                summary_label: "Resumo Profissional",
+                summary_content: `Sou pernambucana, tenho 21 anos e atuo como <span class="highlight">Desenvolvedora Full Stack</span>, com mais de <span class="highlight">4 anos de experiência</span> na construção de soluções escaláveis, performáticas e orientadas a resultados. Possuo experiência em arquitetura de <span class="highlight">Micro Frontends</span>, desenvolvimento de plataformas de Marketplace e implementação de sistemas críticos de back-end com NestJS e Django, sempre priorizando qualidade de código, boas práticas e alta performance.
+                    <br><br>
+                    Aos 19 anos, iniciei o mestrado em <span class="highlight">Ciências da Computação</span>, aprofundando meus estudos em tecnologia, arquitetura e inovação. Desde cedo, sempre tive paixão por ensinar, e acredito que a educação é uma das principais ferramentas de transformação na área de tecnologia.
+                    <br><br>
+                    Hoje, uno base acadêmica sólida, experiência prática em desenvolvimento e vocação para o ensino para transformar desafios complexos em soluções tecnológicas eficientes, escaláveis e com impacto real.`,
+                exp_h1: "Experiência Profissional",
+                exp_bb_role: "Desenvolvedora FULL STACK - Pleno",
+                exp_bb_desc: `Desenvolvo soluções front-end com Angular e arquitetura de micro frontends, aumentando a
+                        modularidade e escalabilidade das aplicações bancárias.
+                        Também atuo no desenvolvimento backend com NestJS, contribuindo para a construção de serviços
+                        robustos e integrados. Trabalho com esteiras de CI/CD, utilizando Jenkins, Argo e gestão de
+                        binários, promovendo automação, padronização e maior eficiência nos processos de entrega.
+                        Contribuí para a agilidade dos times e integração dos sistemas, acelerando a disponibilização de
+                        funcionalidades.
+                        Além disso, atuo com iniciativas de DevRel, compartilhando conhecimento, apoiando boas práticas,
+                        fortalecendo a comunicação entre equipes e incentivando a cultura de colaboração e aprendizado
+                        contínuo.`,
+                exp_senac_role: "Professora de Desenvolvimento de Sistemas",
+                exp_senac_desc: `Ensino desenvolvimento de sistemas, abordando front-end, back-end, bancos de dados, testes,
+                        versionamento e boas práticas de desenvolvimento.
+                        Planejo e conduzo projetos práticos, promovendo pensamento crítico, resolução de problemas,
+                        trabalho em equipe e preparação dos alunos para o mercado de tecnologia.`,
+                exp_bb_qintess_desc: "Atuei no desenvolvimento de soluções completas para o Banco do Brasil, focando em robustez e escalabilidade.",
+                exp_fcx_desc: `Desenvolvi soluções em React, Next.js, micro frontends e NestJS, integrando testes e
+                        atualizações de ambiente para garantir entregas contínuas e de qualidade.
+                        Fui uma das responsáveis pela criação do Marketplace da FC e do Seller Center, ampliando o
+                        portfólio de produtos e a experiência dos usuários no ecossistema da empresa.`,
+                exp_bsa_desc: `Desenvolvimento de integração de jogos e dashboards utilizando Next.js no front-end e Django no
+                        back-end, garantindo APIs seguras e interfaces modernas e performáticas.
+                        Implementação de soluções para gestão de dados, autenticação de usuários e integração de novos
+                        provedores, com foco em manutenção fácil e escalabilidade do sistema.`,
+                exp_cmtech_role: "Desenvolvedora Full Stack - Estágio",
+                exp_cmtech_desc: `Desenvolvimento de sistema de atendimento via chat em tempo real com ReactJS + MUI, integrando
+                        SignalR para mensageria e APIs REST em .NET Core para persistência em PostgreSQL.
+                        Implementação de uma solução completa para comunicação instantânea, garantindo alta performance,
+                        confiabilidade e escalabilidade no serviço de atendimento.`,
+                acad_h1: "Histórico Acadêmico",
+                acad_mestrado_title: "Mestrado em Ciências da Computação",
+                acad_mestrado_status: "Status: Dissertação em andamento",
+                acad_mestrado_btn: "Acessar Dissertação (Em breve)",
+                acad_tecnologo_title: "Sistemas para Internet (Tecnólogo)",
+                acad_tcc_btn: "Ver Projeto de TCC",
+                acad_lattes_btn: "Ver Currículo Lattes",
+                acad_proj_h1: "Projetos Acadêmicos",
+                acad_proj_petribu_title: "Projeto Petribu – Sistema de Gestão Operacional (FIEPE)",
+                acad_proj_petribu_desc: `Atuo no desenvolvimento de um sistema de gestão operacional modular e escalável para ambientes
+                    industriais, com frontend em ReactJS, VueJS, interface reativa e offline-first, e backend em Python,
+                    suportando APIs REST e integração com Apache Kafka.`,
+                acad_proj_gp2_title: "Grupo de pesquisa CIn UFPE - GP2 NOW",
+                acad_proj_gp2_desc: "Responsável pela coordenação das atividades do grupo, definição de prioridades de pesquisa e supervisão da execução eficiente das iniciativas acadêmicas.",
+                proj_h1: "Participações & Projetos",
+                proj_alura_title: "Embaixadora Alura",
+                proj_alura_desc: "Represento a maior plataforma de tecnologia do Brasil, promovendo educação e inovação.",
+                proj_alura_more: "Mais informações",
+                proj_alura_impact: "Impacto na Comunidade",
+                proj_alura_impact_1: "Mentoria de novos alunos",
+                proj_alura_impact_2: "Criação de conteúdo técnico",
+                proj_rfec_title: "Fundadora e Líder | RFEC – Recife Frontend Community",
+                proj_rfec_desc: "Responsável pela coordenação da comunidade, organização de eventos e fortalecimento da rede de profissionais de frontend na região.",
+                proj_rfec_impact: "Impacto na Comunidade",
+                proj_rfec_impact_1: "Organização de Meetups mensais",
+                proj_rfec_impact_2: "Mais de 2000 membros ativos na rede",
+                proj_mentoria_title: "Mentora e Palestrante",
+                proj_mentoria_desc: "Mentora do Tech Woman, orientando novos talentos, especialmente mulheres na área de TI. Palestrante em eventos como RecNPlay, Magalu Cloud e Porto Digital.",
+                proj_mentoria_impact: "Destaques de Mentoria",
+                proj_mentoria_impact_1: "Mentoria individual para transição de carreira",
+                proj_mentoria_impact_2: "Palestras para grandes públicos",
+                proj_partners_h1: "Parcerias",
+                proj_partners_alura_desc: "Ganhe desconto na sua assinatura usando meu link de indicação.",
+                proj_partners_alura_btn: "Obter desconto",
+                proj_partners_usetii_title: "Embaixadora Senior",
+                proj_partners_usetii_desc: "Moda para quem vive de código! Use o meu cupom e garanta o estilo da laridev.",
+                proj_partners_usetii_btn: "Visitar Loja",
+                proj_partners_fiap_title: "Bolsa de estudos",
+                proj_partners_fiap_desc: "Bolsa de descontos em graduações e pós graduações na melhor faculdade de tecnologia.",
+                proj_partners_fiap_btn: "Saiba mais no Instagram",
+                proj_partners_cdc_title: "Livros para Devs!",
+                proj_partners_cdc_desc: "Editora de livros de TI com o selo de didática do grupo Alura.",
+                proj_partners_cdc_btn: "Ver Livros",
+                contact_h1: "Vamos Conversar?",
+                contact_addr: "Endereço",
+                contact_email: "E-mail",
+                contact_phone: "Telefone",
+                contact_social: "Social",
+                footer_rights: "Todos os direitos reservados.",
+                skills_databases: "Bancos de Dados",
+                skills_frontend: "Front-end",
+                skills_backend: "Back-end",
+                skills_aws: "AWS",
+                skills_arch: "Arquitetura & Padrões",
+                skills_devops: "DevOps & Infra",
+                skills_ia: "IA & Chatbots",
+                skills_others: "Outros",
+                label_community: "Comunidade",
+                label_leadership: "Liderança",
+                label_mentorship: "Mentoria",
+                acad_proj_label_dev: "Desenvolvedora Bolsista",
+                acad_proj_label_manager: "Gerente de Projetos e Eventos",
+                date_present: "Atualmente",
+                date_completed: "CONCLUÍDO",
+                cv_button_pt: "Baixar CV (PT)",
+                cv_button_en: "Download CV (EN - Em breve)"
+            },
+            en: {
+                sidebar_subtitle: "Developer, Teacher and Analyst",
+                menu_about: "About",
+                menu_experience: "Experience",
+                menu_academic: "Academic",
+                menu_academic_projects: "Academic Projects",
+                menu_projects: "Community & Projects",
+                menu_partnerships: "Partnerships",
+                menu_skills: "Hard Skills",
+                menu_contact: "Contact",
+                hero_title: "Developer, Teacher and Tech Analyst",
+                summary_label: "Professional Summary",
+                summary_content: `I am from Pernambuco, I am 21 years old, and I work as a <span class="highlight">Full Stack Developer</span>, with over <span class="highlight">4 years of experience</span> building scalable, high-performance, and results-oriented solutions. I have experience in <span class="highlight">Micro Frontend</span> architecture, development of Marketplace platforms, and implementation of critical back-end systems with NestJS and Django, always prioritizing code quality, best practices, and high performance.
+                    <br><br>
+                    At the age of 19, I started my Master's in <span class="highlight">Computer Science</span>, deepening my studies in technology, architecture, and innovation. From an early age, I have always had a passion for teaching, and I believe that education is one of the main tools for transformation in the technology field.
+                    <br><br>
+                    Today, I unite a solid academic foundation, practical development experience, and a vocation for teaching to transform complex challenges into efficient, scalable technological solutions with real impact.`,
+                exp_h1: "Professional Experience",
+                exp_bb_role: "FULL STACK Developer - Mid-level",
+                exp_bb_desc: `I develop front-end solutions with Angular and micro frontend architecture, increasing the modularity and scalability of banking applications.
+                        I also work on backend development with NestJS, contributing to the construction of robust and integrated services. I work with CI/CD pipelines, using Jenkins, Argo, and binary management, promoting automation, standardization, and greater efficiency in delivery processes.
+                        I contributed to team agility and system integration, accelerating the availability of features.
+                        Additionally, I work with DevRel initiatives, sharing knowledge, supporting best practices, strengthening communication between teams, and encouraging a culture of collaboration and continuous learning.`,
+                exp_senac_role: "Systems Development Teacher",
+                exp_senac_desc: `I teach systems development, covering front-end, back-end, databases, testing, versioning, and best development practices.
+                        I plan and lead practical projects, promoting critical thinking, problem-solving, teamwork, and preparing students for the technology market.`,
+                exp_bb_qintess_desc: "I worked on developing complete solutions for Banco do Brasil, focusing on robustness and scalability.",
+                exp_fcx_desc: `I developed solutions in React, Next.js, micro frontends, and NestJS, integrating tests and environment updates to ensure continuous and quality deliveries.
+                        I was one of those responsible for creating FC's Marketplace and the Seller Center, expanding the product portfolio and user experience in the company's ecosystem.`,
+                exp_bsa_desc: `Development of game integration and dashboards using Next.js on the front-end and Django on the back-end, ensuring secure APIs and modern, high-performance interfaces.
+                        Implementation of solutions for data management, user authentication, and integration of new providers, focusing on easy maintenance and system scalability.`,
+                exp_cmtech_role: "Full Stack Developer - Internship",
+                exp_cmtech_desc: `Development of a real-time chat system with ReactJS + MUI, integrating SignalR for messaging and REST APIs in .NET Core for persistence in PostgreSQL.
+                        Implementation of a complete solution for instant communication, ensuring high performance, reliability, and scalability in the service.`,
+                acad_h1: "Academic History",
+                acad_mestrado_title: "Master's in Computer Science",
+                acad_mestrado_status: "Status: Dissertation in progress",
+                acad_mestrado_btn: "Access Dissertation (Soon)",
+                acad_tecnologo_title: "Internet Systems (Technologist)",
+                acad_tcc_btn: "View TCC Project",
+                acad_lattes_btn: "View Lattes Curriculum",
+                acad_proj_h1: "Academic Projects",
+                acad_proj_petribu_title: "Petribu Project – Operational Management System (FIEPE)",
+                acad_proj_petribu_desc: `I work on the development of a modular and scalable operational management system for industrial environments, with a frontend in ReactJS, VueJS, reactive and offline-first interface, and backend in Python, supporting REST APIs and integration with Apache Kafka.`,
+                acad_proj_gp2_title: "GP2 NOW - Research Group CIn UFPE",
+                acad_proj_gp2_desc: "Responsible for coordinating the group's activities, defining research priorities, and supervising the efficient execution of academic initiatives.",
+                proj_h1: "Community & Projects",
+                proj_alura_title: "Alura Ambassador",
+                proj_alura_desc: "I represent the largest technology platform in Brazil, promoting education and innovation.",
+                proj_alura_more: "More information",
+                proj_alura_impact: "Community Impact",
+                proj_alura_impact_1: "New student mentoring",
+                proj_alura_impact_2: "Technical content creation",
+                proj_rfec_title: "Founder and Leader | RFEC – Recife Frontend Community",
+                proj_rfec_desc: "Responsible for community coordination, event organization, and strengthening the frontend professional network in the region.",
+                proj_rfec_impact: "Community Impact",
+                proj_rfec_impact_1: "Monthly Meetups organization",
+                proj_rfec_impact_2: "Over 2000 active members in the network",
+                proj_mentoria_title: "Mentor and Speaker",
+                proj_mentoria_desc: "Tech Woman mentor, guiding new talents, especially women in IT. Speaker at events like RecNPlay, Magalu Cloud, and Porto Digital.",
+                proj_mentoria_impact: "Mentorship Highlights",
+                proj_mentoria_impact_1: "Individual mentoring for career transition",
+                proj_mentoria_impact_2: "Speeches for large audiences",
+                proj_partners_h1: "Partnerships",
+                proj_partners_alura_desc: "Get a discount on your subscription using my referral link.",
+                proj_partners_alura_btn: "Get discount",
+                proj_partners_usetii_title: "Senior Ambassador",
+                proj_partners_usetii_desc: "Fashion for those who live by code! Use my coupon and guarantee the laridev style.",
+                proj_partners_usetii_btn: "Visit Store",
+                proj_partners_fiap_title: "Scholarship",
+                proj_partners_fiap_desc: "Scholarship discounts for undergraduate and graduate programs at the best tech college.",
+                proj_partners_fiap_btn: "Learn more on Instagram",
+                proj_partners_cdc_title: "Books for Devs!",
+                proj_partners_cdc_desc: "IT book publisher with the Alura group's pedagogical seal.",
+                proj_partners_cdc_btn: "View Books",
+                contact_h1: "Let's Talk?",
+                contact_addr: "Address",
+                contact_email: "E-mail",
+                contact_phone: "Phone",
+                contact_social: "Social",
+                footer_rights: "All rights reserved.",
+                skills_databases: "Databases",
+                skills_frontend: "Front-end",
+                skills_backend: "Back-end",
+                skills_aws: "AWS",
+                skills_arch: "Architecture & Patterns",
+                skills_devops: "DevOps & Infra",
+                skills_ia: "AI & Chatbots",
+                skills_others: "Others",
+                label_community: "Community",
+                label_leadership: "Leadership",
+                label_mentorship: "Mentorship",
+                acad_proj_label_dev: "Scholarship Developer",
+                acad_proj_label_manager: "Project and Events Manager",
+                date_present: "Present",
+                date_completed: "COMPLETED",
+                cv_button_pt: "Download CV (PT)",
+                cv_button_en: "Download CV (EN - Soon)"
+            }
+        };
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+
+            // Sync select element
+            const select = document.getElementById('lang-select');
+            if (select) select.value = lang;
+
+            // Update elements with data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Initialize Dynamic Year
+        function initYear() {
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+        }
+
+        // Initialize on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            initYear();
+        });
+
+        function showSection(id) {
+            const isMobile = window.innerWidth <= 1024;
+            const targetSection = document.getElementById(id);
+
+            if (isMobile) {
+                // Smooth scroll to section
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                // Desktop toggle logic
+                document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
+                if (targetSection) {
+                    targetSection.classList.add("active");
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Highlighting sidebar links
+            document.querySelectorAll(".menu").forEach(m => m.classList.remove("active"));
+            const links = document.querySelectorAll(".menu");
+            links.forEach(link => {
+                const onclick = link.getAttribute('onclick');
+                if (onclick && onclick.includes(id)) {
+                    link.classList.add("active");
+                }
+            });
+
+            // Close menu on mobile after selection
+            if (isMobile && document.body.classList.contains('menu-open')) {
+                toggleMenu();
+            }
+        }
+
+        // Toggle Accordion Function
+        function toggleAccordion(element) {
+            // Close other open accordions
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('open');
+                }
+            });
+
+            // Toggle current
+            element.classList.toggle('open');
+        }
+
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            document.body.classList.toggle('menu-open');
+        }
+
+        // Add event listener to handle sidebar link highlights correctly when clicked
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('menu')) {
+                document.querySelectorAll(".menu").forEach(m => m.classList.remove("active"));
+                e.target.classList.add("active");
+            }
+        });
+    </script>
+
+</body>
+
+</html>
