@@ -7,6 +7,7 @@ export interface TranslationSet {
     menu_projects: string;
     menu_partnerships: string;
     menu_skills: string;
+    menu_certificates: string;
     menu_contact: string;
     hero_title: string;
     summary_label: string;
@@ -108,6 +109,7 @@ export interface TranslationSet {
     skills_messaging: string;
     skills_testing: string;
     skills_apis: string;
+    certificados_h1: string;
     label_community: string;
     label_leadership: string;
     label_mentorship: string;
@@ -134,6 +136,7 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         menu_projects: "Participações & Projetos",
         menu_partnerships: "Parcerias",
         menu_skills: "Hard Skills",
+        menu_certificates: "Certificados",
         menu_contact: "Contato",
         hero_title: "Desenvolvedora, Professora e Analista de Tecnologia",
         summary_label: "Resumo Profissional",
@@ -241,6 +244,7 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         skills_messaging: "Mensageria",
         skills_testing: "Testes",
         skills_apis: "APIs & Protocolos",
+        certificados_h1: "Certificações",
         label_community: "Comunidade",
         label_leadership: "Liderança",
         label_mentorship: "Mentoria",
@@ -265,6 +269,7 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         menu_projects: "Community & Projects",
         menu_partnerships: "Partnerships",
         menu_skills: "Hard Skills",
+        menu_certificates: "Certificates",
         menu_contact: "Contact",
         hero_title: "Developer, Teacher and Tech Analyst",
         summary_label: "Professional Summary",
@@ -372,6 +377,7 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         skills_messaging: "Messaging",
         skills_testing: "Testing",
         skills_apis: "APIs & Protocols",
+        certificados_h1: "Certifications",
         label_community: "Community",
         label_leadership: "Leadership",
         label_mentorship: "Mentorship",

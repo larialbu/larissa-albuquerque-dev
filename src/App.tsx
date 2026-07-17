@@ -11,6 +11,7 @@ import { AcademicProjects } from './components/sections/AcademicProjects';
 import { Projetos } from './components/sections/Projetos';
 import { Parcerias } from './components/sections/Parcerias';
 import { HardSkills } from './components/sections/HardSkills';
+import { Certificados } from './components/sections/Certificados';
 import { Contato } from './components/sections/Contato';
 
 import './index.css';
@@ -109,6 +110,8 @@ function App() {
         <Parcerias t={t} activeSection={activeSection} />
 
         <HardSkills t={t} activeSection={activeSection} />
+
+        <Certificados t={t} activeSection={activeSection} />
 
         <Contato 
           t={t} 

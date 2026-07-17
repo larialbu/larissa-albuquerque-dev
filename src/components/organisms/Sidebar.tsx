@@ -34,6 +34,7 @@ export function Sidebar({ activeSection, currentLanguage, onMenuClick }: Sidebar
         <a className={`menu ${activeSection === 'projetos' ? 'active' : ''}`} onClick={() => onMenuClick('projetos')}>{t.menu_projects}</a>
         <a className={`menu ${activeSection === 'parcerias' ? 'active' : ''}`} onClick={() => onMenuClick('parcerias')}>{t.menu_partnerships}</a>
         <a className={`menu ${activeSection === 'skills' ? 'active' : ''}`} onClick={() => onMenuClick('skills')}>{t.menu_skills}</a>
+        <a className={`menu ${activeSection === 'certificados' ? 'active' : ''}`} onClick={() => onMenuClick('certificados')}>{t.menu_certificates}</a>
         <a className={`menu ${activeSection === 'contato' ? 'active' : ''}`} onClick={() => onMenuClick('contato')}>{t.menu_contact}</a>
       </nav>
 
