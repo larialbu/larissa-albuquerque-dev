@@ -29,6 +29,18 @@ export function Certificados({ t, activeSection }: CertificadosProps) {
           data-share-badge-id="a4c82c09-567a-48fb-883e-91bc6d496a2e" 
           data-share-badge-host="https://www.credly.com"
         ></div>
+        <div 
+          data-iframe-width="150" 
+          data-iframe-height="270" 
+          data-share-badge-id="51d15900-a868-4397-ad3a-78de026e0f1f" 
+          data-share-badge-host="https://www.credly.com"
+        ></div>
+        <div 
+          data-iframe-width="150" 
+          data-iframe-height="270" 
+          data-share-badge-id="6ed212c3-515a-4bf8-9bd9-509b6b177e51" 
+          data-share-badge-host="https://www.credly.com"
+        ></div>
       </div>
     </div>
   );
