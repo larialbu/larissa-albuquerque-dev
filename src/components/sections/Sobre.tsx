@@ -1,6 +1,5 @@
 import type { TranslationSet } from '../../translations';
 import profileImg from '../../assets/larissa.jpeg';
-import { Button } from '../atoms/Button';
 
 interface SobreProps {
   t: TranslationSet;
@@ -104,23 +103,6 @@ export function Sobre({ t, activeSection }: SobreProps) {
                 <span>{t.link_linkedin}</span>
               </a>
             </div>
-          </div>
-        </div>
-
-        {/* Lado Direito - Banner de Chamada para Mentoria apenas */}
-        <div className="mentorship-banner" style={{ marginTop: 0 }}>
-          <h3>{t.mentorship_banner_title}</h3>
-          <p>{t.mentorship_banner_desc}</p>
-          <div className="mentorship-btn-container">
-            <a href="https://forms.gle/b5zm5CA7DGBfHjWu5" target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
-              <Button style={{ padding: '10px 22px', fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                <span>{t.mentorship_banner_btn}</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </Button>
-            </a>
           </div>
         </div>
       </div>

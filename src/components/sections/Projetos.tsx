@@ -43,20 +43,6 @@ export function Projetos({ t, activeSection, openAccordion, onToggleAccordion }:
         mediaPlaceholderText="[Espaço para Fotos RFEC]"
       />
 
-      <AccordionItem 
-        category={t.label_mentorship}
-        title={t.proj_mentoria_title}
-        isOpen={openAccordion === 'mentoria'}
-        onToggle={() => onToggleAccordion('mentoria')}
-        description={t.proj_mentoria_desc}
-        impactTitle={t.proj_mentoria_impact}
-        impactList={[
-          t.proj_mentoria_impact_1,
-          t.proj_mentoria_impact_2,
-          'Apoio em projetos de inclusão digital.'
-        ]}
-        mediaPlaceholderText="[Espaço para Fotos Mentorias]"
-      />
 
       <AccordionItem 
         category={t.label_hackathons}
