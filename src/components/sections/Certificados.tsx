@@ -53,6 +53,12 @@ export function Certificados({ t, activeSection }: CertificadosProps) {
           data-share-badge-id="aa479d0c-7463-46b0-885e-92cc11ec20f6" 
           data-share-badge-host="https://www.credly.com"
         ></div>
+        <div 
+          data-iframe-width="150" 
+          data-iframe-height="270" 
+          data-share-badge-id="6c881d4d-5a67-4f9c-987c-68578532381b" 
+          data-share-badge-host="https://www.credly.com"
+        ></div>
       </div>
     </div>
   );
