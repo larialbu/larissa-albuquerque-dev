@@ -27,8 +27,10 @@ export interface TranslationSet {
     acad_h1: string;
     acad_mestrado_title: string;
     acad_mestrado_status: string;
+    acad_mestrado_research: string;
     acad_mestrado_btn: string;
     acad_tecnologo_title: string;
+    acad_tecnologo_embarque: string;
     acad_tcc_btn: string;
     acad_lattes_btn: string;
     acad_proj_h1: string;
@@ -37,6 +39,18 @@ export interface TranslationSet {
     acad_proj_gp2_title: string;
     acad_proj_gp2_desc: string;
     proj_h1: string;
+    proj_google_title: string;
+    proj_google_desc: string;
+    proj_google_impact: string;
+    proj_google_impact_1: string;
+    proj_google_impact_2: string;
+    proj_google_impact_3: string;
+    proj_hostgator_title: string;
+    proj_hostgator_desc: string;
+    proj_hostgator_impact: string;
+    proj_hostgator_impact_1: string;
+    proj_hostgator_impact_2: string;
+    proj_hostgator_impact_3: string;
     proj_alura_title: string;
     proj_alura_desc: string;
     proj_alura_more: string;
@@ -58,7 +72,11 @@ export interface TranslationSet {
     proj_hackathons_impact: string;
     proj_hackathons_impact_1: string;
     proj_hackathons_impact_2: string;
+    proj_hackathons_impact_3: string;
     proj_partners_h1: string;
+    proj_partners_hostgator_title: string;
+    proj_partners_hostgator_desc: string;
+    proj_partners_hostgator_btn: string;
     proj_partners_alura_desc: string;
     proj_partners_alura_btn: string;
     proj_partners_usetii_title: string;
@@ -138,22 +156,16 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         menu_skills: "Hard Skills",
         menu_certificates: "Certificados",
         menu_contact: "Contato",
-        hero_title: "Desenvolvedora, Professora e Analista de Tecnologia",
+        hero_title: "Desenvolvedora de Software Sênior @BBTS | Mestranda CIn/UFPE | Embaixadora Google Gemini",
         summary_label: "Resumo Profissional",
-        summary_content: `Sou pernambucana, tenho {age} anos e atuo como <span class="highlight">Desenvolvedora Full Stack</span>, com mais de <span class="highlight">4 anos de experiência</span> na construção de soluções escaláveis, performáticas e orientadas a resultados. Possuo experiência em arquitetura de <span class="highlight">Micro Frontends</span>, desenvolvimento de plataformas de Marketplace e implementação de sistemas críticos de back-end com NestJS e Django, sempre priorizando qualidade de código, boas práticas e alta performance.
-            <br><br>
-            Atualmente, trabalho com <span class="highlight">agentes inteligentes</span>, aplicando <span class="highlight">skills</span>, <span class="highlight">MCPs</span> e automação para criar fluxos de trabalho mais ágeis, assistentes de suporte e integrações entre sistemas. Essa abordagem combina inteligência artificial com engenharia de software para gerar experiências mais colaborativas e eficientes.
-            <br><br>
-            Aos 19 anos, iniciei o mestrado em <span class="highlight">Ciências da Computação</span>, aprofundando meus estudos em tecnologia, arquitetura e inovação. Desde cedo, sempre tive paixão por ensinar, e acredito que a educação é uma das principais ferramentas de transformação na área de tecnologia.
-            <br><br>
-            Hoje, uno base acadêmica sólida, experiência prática em desenvolvimento e vocação para o ensino para transformar desafios complexos em soluções tecnológicas eficientes, escaláveis e com impacto real.`,
+        summary_content: `Sou pernambucana, tenho {age} anos e atuo como <span class="highlight">Desenvolvedora de Software Sênior na BBTS</span>. Com mais de <span class="highlight">4 anos de experiência</span> na construção de soluções escaláveis, minha atuação atual une <span class="highlight">Engenharia Full Stack e Inteligência Artificial</span>. Tenho forte vivência no desenvolvimento de aplicações com <span class="highlight">IA Generativa</span>, <span class="highlight">AI Agents</span>, <span class="highlight">Retrieval-Augmented Generation (RAG)</span> e <span class="highlight">Model Context Protocol (MCP)</span>, além de arquiteturas com React, NestJS e Next.js. Em paralelo à indústria, sou <span class="highlight">mestranda em Ciência da Computação no CIn/UFPE</span>, <span class="highlight">Embaixadora Estudantil do Google Gemini</span> e fundadora da <span class="highlight">Recife Front-End Community (RFEC)</span>, sempre priorizando qualidade de código e impacto na comunidade de tecnologia.`,
         exp_h1: "Experiência Profissional",
         exp_bb_role: "Desenvolvedora FULL STACK - Pleno",
         exp_bb_desc: `Desenvolvo soluções front-end com Angular e arquitetura de micro frontends, aumentando a modularidade e escalabilidade das aplicações bancárias. Também atuo no desenvolvimento backend com NestJS, contribuindo para a construção de serviços robustos e integrados. Trabalho com esteiras de CI/CD, utilizando Jenkins, Argo e gestão de binários, promovendo automação, padronização e maior eficiência nos processos de entrega. Contribuí para a agilidade dos times e integração dos sistemas, acelerando a disponibilização de funcionalidades. Além disso, atuo com iniciativas de DevRel, compartilhando conhecimento, apoiando boas práticas, fortalecendo a comunicação entre equipes e incentivando a cultura de colaboração e aprendizado contínuo.`,
         exp_bbts_role: "Desenvolvedora FULL STACK - Sênior",
         exp_bbts_desc: `Trabalho na criação de projetos utilizando agentes de IA, RAG, MCPs (Model Context Protocols), Skills e integrações inteligentes, aplicando essas tecnologias para automatizar processos, otimizar fluxos de trabalho e aumentar a eficiência operacional. Além disso, participo do desenvolvimento de aplicações, definição de soluções técnicas, integração de sistemas e implementação de recursos que apoiam as necessidades estratégicas da organização, sempre buscando gerar valor por meio da inovação e da tecnologia.`,
         exp_senac_role: "Professora de Desenvolvimento de Sistemas",
-        exp_senac_desc: `Ensino desenvolvimento de sistemas, abordando front-end, back-end, bancos de dados, testes, versionamento e boas práticas de desenvolvimento. Planejo e conduzo projetos práticos, promovendo pensamento crítico, resolução de problemas, trabalho em equipe e preparação dos alunos para o mercado de tecnologia.`,
+        exp_senac_desc: `Atuação como Professora de Desenvolvimento de Sistemas no MédioTec Senac Pernambuco (até junho de 2026). Ensino de front-end, back-end, bancos de dados, testes, versionamento e boas práticas para formação de novos talentos tech.`,
         exp_bb_qintess_desc: "Atuei no desenvolvimento de soluções completas para o Banco do Brasil, focando em robustez e escalabilidade.",
         exp_fcx_desc: `Desenvolvi soluções em React, Next.js, micro frontends e NestJS, integrando testes e atualizações de ambiente para garantir entregas contínuas e de qualidade. Fui uma das responsáveis pela criação do Marketplace da FC e do Seller Center, ampliando o portfólio de produtos e a experiência dos usuários no ecossistema da empresa.`,
         exp_bsa_desc: `Desenvolvimento de integração de jogos e dashboards utilizando Next.js no front-end e Django no back-end, garantindo APIs seguras e interfaces modernas e performáticas. Implementação de soluções para gestão de dados, autenticação de usuários e integração de novos provedores, com foco em manutenção fácil e escalabilidade do sistema.`,
@@ -162,8 +174,10 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         acad_h1: "Histórico Acadêmico",
         acad_mestrado_title: "Mestrado em Ciências da Computação",
         acad_mestrado_status: "Status: Dissertação em andamento (2024.2 - 2026.2)",
+        acad_mestrado_research: "Área de Concentração: Engenharia de Software e Linguagens de Programação. Pesquisa focada em avaliação da maturidade de projetos de software com auxílio de Inteligência Artificial. Orientador: Prof. Dr. Hermano Perrelli de Moura.",
         acad_mestrado_btn: "Acessar Dissertação (Em breve)",
         acad_tecnologo_title: "Sistemas para Internet (Tecnólogo)",
+        acad_tecnologo_embarque: "Formada pelo programa Embarque Digital (parceria entre Porto Digital e Prefeitura do Recife).",
         acad_tcc_btn: "Ver Projeto de TCC",
         acad_lattes_btn: "Ver Currículo Lattes",
         acad_proj_h1: "Projetos Acadêmicos",
@@ -172,6 +186,18 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         acad_proj_gp2_title: "Grupo de pesquisa CIn UFPE - GP2 NOW",
         acad_proj_gp2_desc: "Responsável pela coordenação das atividades do grupo, definição de prioridades de pesquisa e supervisão da execução eficiente das iniciativas acadêmicas.",
         proj_h1: "Participações & Projetos",
+        proj_google_title: "Embaixadora Estudantil do Google (2026)",
+        proj_google_desc: "Selecionada como Embaixadora Estudantil do Google 2026 representando o Centro de Informática da UFPE (CIn-UFPE). Atuo como ponte conectando a comunidade acadêmica às tecnologias, ferramentas de Inteligência Artificial, programas e oportunidades do ecossistema Google, fomentando eventos, capacitação técnica e inovação entre estudantes e desenvolvedores.",
+        proj_google_impact: "Impacto Acadêmico & Tecnológico",
+        proj_google_impact_1: "Disseminação de ferramentas Google e Inteligência Artificial no CIn-UFPE",
+        proj_google_impact_2: "Organização de workshops práticos, palestras e eventos técnicos",
+        proj_google_impact_3: "Conexão direta entre estudantes e oportunidades do ecossistema Google",
+        proj_hostgator_title: "Embaixadora HostGator",
+        proj_hostgator_desc: "Embaixadora oficial da HostGator, atuando na disseminação de conhecimento sobre desenvolvimento web, infraestrutura em nuvem, hospedagem e ferramentas inovadoras de inteligência artificial como o HostGator AllPass (central unificada de múltiplos modelos de IA). Promovo conteúdos didáticos e benefícios exclusivos para impulsionar projetos de tecnologia.",
+        proj_hostgator_impact: "Impacto na Comunidade Tech",
+        proj_hostgator_impact_1: "Produção de conteúdo prático sobre desenvolvimento, nuvem e IA",
+        proj_hostgator_impact_2: "Apresentação e testes de soluções de ponta como o HostGator AllPass",
+        proj_hostgator_impact_3: "Cupons promocionais e benefícios exclusivos para desenvolvedores",
         proj_alura_title: "Embaixadora Alura (Alura Stars)",
         proj_alura_desc: "Selecionada para o programa Alura Stars, uma comunidade de desenvolvedores que produzem conteúdos de tecnologia de alta qualidade. Atuo como facilitadora do aprendizado em tecnologia, contribuindo com a criação de conteúdos, participação em workshops e palestras, além de promover a divulgação de projetos e iniciativas da Alura, fortalecendo a comunidade e inspirando outros desenvolvedores.",
         proj_alura_more: "Mais informações",
@@ -193,7 +219,11 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         proj_hackathons_impact: "Destaques de Prêmios",
         proj_hackathons_impact_1: "1º lugar no Hackathon da Prefeitura do Recife",
         proj_hackathons_impact_2: "1º lugar no Hackathon do Banco do Brasil",
+        proj_hackathons_impact_3: "Destaque acadêmico: Conquista de 2 hackathons na mesma semana pelo CIn-UFPE",
         proj_partners_h1: "Parcerias",
+        proj_partners_hostgator_title: "HostGator AllPass & Hospedagem",
+        proj_partners_hostgator_desc: "Plataforma all-in-one da HostGator que reúne ChatGPT, Claude, Gemini e Grok em uma única assinatura com desconto especial.",
+        proj_partners_hostgator_btn: "Acessar HostGator",
         proj_partners_alura_desc: "Ganhe desconto na sua assinatura usando meu link de indicação.",
         proj_partners_alura_btn: "Obter desconto",
         proj_partners_usetii_title: "Embaixadora Senior",
@@ -205,7 +235,7 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         proj_partners_cdc_title: "Livros para Devs!",
         proj_partners_cdc_desc: "Editora de livros de TI com o selo de didática do grupo Alura.",
         proj_partners_cdc_btn: "Ver Livros",
-        contact_h1: "Vamos Conversar?",
+        contact_h1: "Me contate",
         contact_addr: "Endereço",
         contact_email: "E-mail",
         contact_phone: "Telefone",
@@ -271,22 +301,16 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         menu_skills: "Hard Skills",
         menu_certificates: "Certificates",
         menu_contact: "Contact",
-        hero_title: "Developer, Teacher and Tech Analyst",
+        hero_title: "Senior Software Developer @BBTS | MSc Student CIn/UFPE | Google Gemini Ambassador",
         summary_label: "Professional Summary",
-        summary_content: `I am from Pernambuco, I am {age} years old, and I work as a <span class="highlight">Full Stack Developer</span>, with over <span class="highlight">4 years of experience</span> building scalable, high-performance, and results-oriented solutions. I have experience in <span class="highlight">Micro Frontend</span> architecture, development of Marketplace platforms, and implementation of critical back-end systems with NestJS and Django, always prioritizing code quality, best practices, and high performance.
-            <br><br>
-            I currently work with <span class="highlight">intelligent agents</span>, applying <span class="highlight">skills</span>, <span class="highlight">MCPs</span>, and automation to build faster workflows, support assistants, and seamless system integrations. This approach blends AI with software engineering to deliver more collaborative and efficient digital experiences.
-            <br><br>
-            At the age of 19, I started my Master's in <span class="highlight">Computer Science</span>, deepening my studies in technology, architecture, and innovation. From an early age, I have always had a passion for teaching, and I believe that education is one of the main tools for transformation in the technology field.
-            <br><br>
-            Today, I unite a solid academic foundation, practical development experience, and a vocation for teaching to transform complex challenges into efficient, scalable technological solutions with real impact.`,
+        summary_content: `I am from Pernambuco, I am {age} years old, and I work as a <span class="highlight">Senior Software Developer at BBTS</span>. With over <span class="highlight">4 years of experience</span> building scalable solutions, my current work combines <span class="highlight">Full Stack Engineering and Artificial Intelligence</span>. I have solid expertise developing applications with <span class="highlight">Generative AI</span>, <span class="highlight">AI Agents</span>, <span class="highlight">Retrieval-Augmented Generation (RAG)</span>, and <span class="highlight">Model Context Protocol (MCP)</span>, alongside architectures with React, NestJS, and Next.js. Alongside industry, I am a <span class="highlight">Master's student in Computer Science at CIn/UFPE</span>, <span class="highlight">Google Gemini Student Ambassador</span>, and founder of the <span class="highlight">Recife Front-End Community (RFEC)</span>, always prioritizing code quality and community impact.`,
         exp_h1: "Professional Experience",
         exp_bb_role: "FULL STACK Developer - Mid-level",
         exp_bb_desc: `I develop front-end solutions with Angular and micro frontend architecture, increasing the modularity and scalability of banking applications. I also work on backend development with NestJS, contributing to the construction of robust and integrated services. I work with CI/CD pipelines, using Jenkins, Argo, and binary management, promoting automation, standardization, and greater efficiency in delivery processes. I contributed to team agility and system integration, accelerating the availability of features. Additionally, I work with DevRel initiatives, sharing knowledge, supporting best practices, strengthening communication between teams, and encouraging a culture of collaboration and continuous learning.`,
         exp_bbts_role: "FULL STACK Developer - Senior",
         exp_bbts_desc: `I work on creating projects using AI agents, RAG, MCPs (Model Context Protocols), Skills, and intelligent integrations, applying these technologies to automate processes, optimize workflows, and increase operational efficiency. Additionally, I participate in application development, definition of technical solutions, systems integration, and implementation of features that support the organization's strategic needs, always seeking to generate value through innovation and technology.`,
         exp_senac_role: "Systems Development Teacher",
-        exp_senac_desc: `I teach systems development, covering front-end, back-end, databases, testing, versioning, and best development practices. I plan and lead practical projects, promoting critical thinking, problem-solving, teamwork, and preparing students for the technology market.`,
+        exp_senac_desc: `Former Systems Development Teacher at MédioTec Senac Pernambuco (until June 2026). Teaching front-end, back-end, databases, testing, versioning, and best practices. Planning and leading hands-on projects preparing students for the technology market.`,
         exp_bb_qintess_desc: "I worked on developing complete solutions for Banco do Brasil, focusing on robustness and scalability.",
         exp_fcx_desc: `I developed solutions in React, Next.js, micro frontends, and NestJS, integrating tests and environment updates to ensure continuous and quality deliveries. I was one of those responsible for creating FC's Marketplace and the Seller Center, expanding the product portfolio and user experience in the company's ecosystem.`,
         exp_bsa_desc: `Development of game integration and dashboards using Next.js on the front-end and Django on the back-end, ensuring secure APIs and modern, high-performance interfaces. Implementation of solutions for data management, user authentication, and integration of new providers, focusing on easy maintenance and system scalability.`,
@@ -295,8 +319,10 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         acad_h1: "Academic History",
         acad_mestrado_title: "Master's in Computer Science",
         acad_mestrado_status: "Status: Dissertation in progress (2024.2 - 2026.2)",
+        acad_mestrado_research: "Concentration Area: Software Engineering and Programming Languages. Research focused on project maturity assessment with Artificial Intelligence assistance. Advisor: Prof. Dr. Hermano Perrelli de Moura.",
         acad_mestrado_btn: "Access Dissertation (Soon)",
         acad_tecnologo_title: "Internet Systems (Technologist)",
+        acad_tecnologo_embarque: "Graduated through the Embarque Digital scholarship program (Porto Digital & Recife City Hall).",
         acad_tcc_btn: "View TCC Project",
         acad_lattes_btn: "View Lattes Curriculum",
         acad_proj_h1: "Academic Projects",
@@ -305,6 +331,18 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         acad_proj_gp2_title: "GP2 NOW - Research Group CIn UFPE",
         acad_proj_gp2_desc: "Responsible for coordinating the group's activities, defining research priorities, and supervising the efficient execution of academic initiatives.",
         proj_h1: "Community & Projects",
+        proj_google_title: "Google Student Ambassador (2026)",
+        proj_google_desc: "Selected as Google Student Ambassador 2026 representing the Center of Informatics at UFPE (CIn-UFPE). Acting as a bridge connecting the academic community to Google technologies, AI tools, programs, and opportunities, fostering hands-on workshops and innovation among students and developers.",
+        proj_google_impact: "Academic & Tech Impact",
+        proj_google_impact_1: "Dissemination of Google technologies and Artificial Intelligence at CIn-UFPE",
+        proj_google_impact_2: "Organization of hands-on workshops, tech talks, and hackathons",
+        proj_google_impact_3: "Direct connection between students and opportunities across the Google ecosystem",
+        proj_hostgator_title: "HostGator Ambassador",
+        proj_hostgator_desc: "Official HostGator Ambassador, sharing knowledge about web development, cloud infrastructure, hosting, and cutting-edge AI tools such as HostGator AllPass (unified multi-AI model hub). Producing educational content and exclusive community benefits to accelerate tech careers.",
+        proj_hostgator_impact: "Tech Community Impact",
+        proj_hostgator_impact_1: "Hands-on content production on web dev, cloud, and AI",
+        proj_hostgator_impact_2: "Showcasing state-of-the-art developer tools like HostGator AllPass",
+        proj_hostgator_impact_3: "Exclusive discounts and community promotional codes",
         proj_alura_title: "Alura Ambassador (Alura Stars)",
         proj_alura_desc: "Selected for the Alura Stars program, a community of developers who produce high-quality tech content. I act as a facilitator of learning in technology, contributing to content creation, workshops, and lectures, in addition to promoting Alura's projects and initiatives, strengthening the community and inspiring other developers.",
         proj_alura_more: "More information",
@@ -326,7 +364,11 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         proj_hackathons_impact: "Highlights and Awards",
         proj_hackathons_impact_1: "1st place in the Recife City Hall Hackathon",
         proj_hackathons_impact_2: "1st place in the Banco do Brasil Hackathon",
+        proj_hackathons_impact_3: "Academic spotlight: Won 2 hackathons in the same week representing CIn-UFPE",
         proj_partners_h1: "Partnerships",
+        proj_partners_hostgator_title: "HostGator AllPass & Hosting",
+        proj_partners_hostgator_desc: "HostGator all-in-one platform bringing together ChatGPT, Claude, Gemini, and Grok into a single subscription with special partner discount.",
+        proj_partners_hostgator_btn: "Visit HostGator",
         proj_partners_alura_desc: "Get a discount on your subscription using my referral link.",
         proj_partners_alura_btn: "Get discount",
         proj_partners_usetii_title: "Senior Ambassador",
@@ -338,7 +380,7 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         proj_partners_cdc_title: "Books for Devs!",
         proj_partners_cdc_desc: "IT book publisher with the Alura group's pedagogical seal.",
         proj_partners_cdc_btn: "View Books",
-        contact_h1: "Let's Talk?",
+        contact_h1: "Contact Me",
         contact_addr: "Address",
         contact_email: "E-mail",
         contact_phone: "Phone",

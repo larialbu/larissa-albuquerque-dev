@@ -1,121 +1,106 @@
+import { useState } from 'react';
 import type { TranslationSet } from '../../translations';
+import type { UI } from '../../ui';
 import profileImg from '../../assets/larissa.jpeg';
+import { Icon } from '../atoms/Icons';
+import { Modal } from '../organisms/Modal';
 
 interface SobreProps {
   t: TranslationSet;
-  activeSection: string;
+  u: UI;
 }
 
-export function Sobre({ t, activeSection }: SobreProps) {
-  // Calcular idade dinâmica (nascida em 11/01/2005)
-  const calculateAge = () => {
-    const birthDate = new Date(2005, 0, 11); // 11 de Janeiro de 2005
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    const dayDiff = today.getDate() - birthDate.getDate();
+const CV_PT =
+  'https://www.canva.com/design/DAGtzKKKOHA/DyqCD413aeZ1-S3ExEe-7w/view?utm_content=DAGtzKKKOHA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hfc2496ac09';
 
-    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-      age--;
-    }
-    return age;
-  };
+export const socials = [
+  { id: 'linkedin', href: 'https://www.linkedin.com/in/larissa-azevedo-albuquerque/', label: 'LinkedIn', icon: Icon.linkedin },
+  { id: 'github', href: 'https://github.com/larialbu', label: 'GitHub', icon: Icon.github },
+  { id: 'instagram', href: 'https://www.instagram.com/lari.devcode', label: 'Instagram', icon: Icon.instagram },
+  { id: 'lattes', href: 'http://lattes.cnpq.br/7448823611009423', label: 'Lattes', icon: Icon.lattes },
+];
 
-  const currentAge = calculateAge();
-  const dynamicSummary = t.summary_content.replace('{age}', currentAge.toString());
+// Idade dinâmica (nascida em 11/01/2005)
+function calculateAge() {
+  const birth = new Date(2005, 0, 11);
+  const today = new Date();
+  let age = today.getFullYear() - birth.getFullYear();
+  const m = today.getMonth() - birth.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+  return age;
+}
+
+export function Sobre({ t, u }: SobreProps) {
+  const [open, setOpen] = useState(false);
+  const summary = t.summary_content.replace('{age}', calculateAge().toString());
+  const firstParagraph = summary.split('<br><br>')[0];
 
   return (
-    <div id="sobre" className={`section ${activeSection === 'sobre' ? 'active' : ''}`}>
-      <div className="profile-header-grid">
-        {/* Lado Esquerdo - Foto de perfil e textos ao lado */}
-        <div className="profile-header">
-          <div className="profile-img-container">
-            <div className="profile-img-glow"></div>
-            <img src={profileImg} alt="Larissa Albuquerque" className="profile-img" />
-          </div>
-          <div>
-            <h1 style={{ margin: '0 0 4px 0', fontSize: '2.1rem', letterSpacing: '-0.03em' }}>Larissa Albuquerque</h1>
-            <p style={{ fontSize: '1.05rem', color: 'var(--secondary)', fontWeight: 600, margin: 0 }}>
-              {t.hero_title}
-            </p>
-            
-            {/* Currículos */}
-            <div className="cv-container">
-              <a href="https://www.canva.com/design/DAGtzKKKOHA/DyqCD413aeZ1-S3ExEe-7w/view?utm_content=DAGtzKKKOHA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hfc2496ac09"
-                target="_blank" className="cv-btn cv-btn-pt" rel="noreferrer">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                <span>{t.cv_button_pt}</span>
-              </a>
-              <a href="#" className="cv-btn cv-btn-en" onClick={(e) => e.preventDefault()}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                <span>{t.cv_button_en}</span>
-              </a>
-            </div>
+    <header id="sobre" className="hero">
+      <div className="container hero-grid">
+        <div className="reveal">
+          <span className="hero-hello">
+            <span className="pulse" />
+            {u.hello}
+          </span>
+          <h1 className="hero-name">
+            Larissa
+            <br />
+            <span className="grad-text">Albuquerque</span>
+          </h1>
+          <p className="hero-role">{t.hero_title}</p>
+          <p className="hero-intro" dangerouslySetInnerHTML={{ __html: firstParagraph }} />
 
-            {/* Links Acadêmicos & Redes */}
-            <div style={{ marginTop: '16px', display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-              <a href="http://lattes.cnpq.br/7448823611009423" target="_blank" className="cv-btn"
-                style={{ background: '#fff', color: 'var(--primary)', borderColor: 'var(--primary)', padding: '8px 12px', fontSize: '0.85rem' }} rel="noreferrer">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '4px' }}>
-                  <path d="M4 4h16v16H4z"></path>
-                  <path d="M8 4v16"></path>
-                  <path d="M8 8h8"></path>
-                </svg>
-                <span>{t.link_lattes}</span>
+          <div className="hero-actions">
+            <button className="btn btn-primary" onClick={() => setOpen(true)} id="btn-open-summary">
+              {u.read_more} {Icon.arrow}
+            </button>
+            <a className="btn btn-ghost" href={CV_PT} target="_blank" rel="noreferrer" id="btn-cv-pt">
+              {Icon.download} {t.cv_button_pt}
+            </a>
+            <span className="btn btn-ghost is-disabled" id="btn-cv-en">
+              {Icon.download} {t.cv_button_en}
+            </span>
+          </div>
+
+          <div className="socials">
+            {socials.map((s) => (
+              <a key={s.id} id={`social-${s.id}`} className="social" href={s.href} target="_blank" rel="noreferrer" aria-label={s.label} title={s.label}>
+                {s.icon}
               </a>
-              <a href="https://github.com/larialbu" target="_blank" className="cv-btn"
-                style={{ background: '#fff', color: 'var(--primary)', borderColor: 'var(--primary)', padding: '8px 12px', fontSize: '0.85rem' }} rel="noreferrer">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '4px' }}>
-                  <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49c0.5 0.09 0.66-0.22 0.66-0.48c0-0.24-0.01-0.87-0.01-1.7c-2.78 0.6-3.37-1.34-3.37-1.34c-0.45-1.14-1.1-1.45-1.1-1.45c-0.9-0.62 0.07-0.61 0.07-0.61c0.99 0.07 1.52 1.02 1.52 1.02c0.89 1.53 2.34 1.09 2.91 0.83c0.09-0.65 0.35-1.09 0.63-1.34c-2.22-0.25-4.56-1.11-4.56-4.93c0-1.09 0.39-1.98 1.02-2.68c-0.1-0.25-0.45-1.27 0.1-2.65c0 0 0.84-0.27 2.75 1.02c0.8-0.22 1.65-0.33 2.5-0.33c0.85 0 1.7 0.11 2.5 0.33c1.91-1.29 2.75-1.02 2.75-1.02c0.55 1.38 0.2 2.4 0.1 2.65c0.63 0.7 1.02 1.59 1.02 2.68c0 3.82-2.34 4.68-4.57 4.93c0.36 0.31 0.68 0.92 0.68 1.85c0 1.34-0.01 2.42-0.01 2.75c0 0.26 0.16 0.58 0.67 0.48C19.13 20.17 22 16.42 22 12c0-5.52-4.48-10-10-10z"></path>
-                </svg>
-                <span>{t.link_github}</span>
-              </a>
-              <a href="https://www.instagram.com/lari.devcode" target="_blank" className="cv-btn"
-                style={{ background: '#fff', color: 'var(--primary)', borderColor: 'var(--primary)', padding: '8px 12px', fontSize: '0.85rem' }} rel="noreferrer">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '4px' }}>
-                  <rect x="2" y="2" width="20" height="20" rx="5"></rect>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-                <span>{t.link_instagram}</span>
-              </a>
-              <a href="https://www.linkedin.com/in/larissa-azevedo-albuquerque/" target="_blank" className="cv-btn"
-                style={{ background: '#fff', color: 'var(--primary)', borderColor: 'var(--primary)', padding: '8px 12px', fontSize: '0.85rem' }} rel="noreferrer">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '4px' }}>
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                  <rect x="2" y="9" width="4" height="12"></rect>
-                  <circle cx="4" cy="4" r="2"></circle>
-                </svg>
-                <span>{t.link_linkedin}</span>
-              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="hero-visual reveal">
+          <div className="photo-frame">
+            <img src={profileImg} alt="Larissa Albuquerque" />
+          </div>
+          <div className="hero-stats">
+            <div className="stat-chip float-chip chip-exp">
+              <strong className="grad-text">{t.stat_exp_val}</strong>
+              <span>{t.stat_exp_title}</span>
+            </div>
+            <div className="stat-chip float-chip chip-comm">
+              <strong>{t.stat_comm_val}</strong>
+              <span>{t.stat_comm_title}</span>
+            </div>
+            <div className="stat-chip float-chip chip-acad">
+              <strong>{t.stat_acad_title}</strong>
+              <span>{t.stat_acad_val}</span>
             </div>
           </div>
         </div>
       </div>
+      <span className="scroll-hint" aria-label={u.scroll} />
 
-
-
-      {/* Card do Resumo Profissional (LOGO ABAIXO DE TUDO) */}
-      <div className="card hero-text" style={{ marginTop: '32px', padding: '32px' }}>
-        <span className="skill-category" style={{ marginBottom: '16px', display: 'block' }}>
-          {t.summary_label}
-        </span>
-        <span dangerouslySetInnerHTML={{ __html: dynamicSummary }} />
-      </div>
-    </div>
+      <Modal open={open} onClose={() => setOpen(false)} label={t.summary_label}>
+        <div className="modal-inner">
+          <span className="chip">{t.summary_label}</span>
+          <h2>Larissa Albuquerque</h2>
+          <p dangerouslySetInnerHTML={{ __html: summary }} />
+        </div>
+      </Modal>
+    </header>
   );
 }

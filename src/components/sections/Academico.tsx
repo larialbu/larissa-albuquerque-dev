@@ -1,99 +1,120 @@
+import { useState } from 'react';
 import type { TranslationSet } from '../../translations';
-import { Button } from '../atoms/Button';
+import type { UI } from '../../ui';
+import { Icon } from '../atoms/Icons';
+import { Modal } from '../organisms/Modal';
 
 interface AcademicoProps {
   t: TranslationSet;
-  activeSection: string;
+  u: UI;
+  lang: 'pt' | 'en';
 }
 
-export function Academico({ t, activeSection }: AcademicoProps) {
+export function Academico({ t, u, lang }: AcademicoProps) {
+  const [openId, setOpenId] = useState<string | null>(null);
+  const isPt = lang === 'pt';
+
+  const projects = [
+    { id: 'petribu', date: 'ago 2024 – fev 2026', role: t.acad_proj_label_dev, title: t.acad_proj_petribu_title, desc: t.acad_proj_petribu_desc },
+    { id: 'gp2', date: 'jan – dez 2025', role: t.acad_proj_label_manager, title: t.acad_proj_gp2_title, desc: t.acad_proj_gp2_desc },
+    {
+      id: 'porto',
+      date: 'fev 2022 – jun 2024',
+      role: 'Embarque Digital',
+      title: 'Residência Tecnológica com Porto Digital',
+      desc: 'Participação na Residência Onboard do Porto Digital, desenvolvendo projetos em parceria com empresas como Accenture, NTT Data e CMTech. Atuação em projetos práticos orientados por especialistas, aplicando conhecimentos adquiridos no programa Embarque Digital.',
+    },
+    {
+      id: 'sidi',
+      date: 'nov 2022 – fev 2023',
+      role: 'Bolsista Desenvolvedora Front-end',
+      title: 'SiDI (PET-Projeto de extensão tecnológica)',
+      desc: 'Criação de um chatbot inteligente para o departamento de RH, utilizando Rasa como motor conversacional, Docker para containerização e AWS para hospedagem. Integração com Python (Lambdas e APIs) e Power BI para análise de candidatos.',
+    },
+  ];
+
+  const selected = projects.find((p) => p.id === openId);
+
   return (
-    <div id="academico" className={`section ${activeSection === 'academico' ? 'active' : ''}`}>
-      <h1>{t.acad_h1}</h1>
-
-      <div className="acad-grid">
-        {/* Mestrado */}
-        <div className="acad-card card">
-          <div className="acad-card-top">
-            <div className="acad-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
-              </svg>
-            </div>
-            <span className="acad-status acad-status--active">
-              {t.acad_mestrado_status.includes('andamento') || t.acad_mestrado_status.includes('progress')
-                ? (t.acad_h1 === 'Histórico Acadêmico' ? 'Em andamento' : 'In progress')
-                : ''}
-            </span>
+    <section id="formacao" className="section">
+      <div className="container">
+        <div className="section-head reveal">
+          <div>
+            <span className="eyebrow">{u.education_eyebrow}</span>
+            <h2 className="section-title">{t.acad_h1}</h2>
           </div>
-
-          <h3 className="acad-title">{t.acad_mestrado_title}</h3>
-          <span className="acad-institution">Centro de Informática (CIn) — UFPE</span>
-          <span className="acad-period">2024.2 – 2026.2</span>
-
-          <div className="acad-tags">
-            <span className="timeline-tag">Ciências da Computação</span>
-            <span className="timeline-tag">Dissertação</span>
-            <span className="timeline-tag">Pesquisa</span>
-          </div>
-
-          <div className="acad-action">
-            <Button style={{ padding: '8px 16px', fontSize: '0.85rem', opacity: 0.5, cursor: 'default' }}>
-              {t.acad_mestrado_btn}
-            </Button>
-          </div>
+          <a className="btn btn-ghost btn-sm" href="http://lattes.cnpq.br/7448823611009423" target="_blank" rel="noreferrer" id="btn-lattes">
+            {Icon.external} {t.acad_lattes_btn}
+          </a>
         </div>
 
-        {/* Tecnólogo */}
-        <div className="acad-card card">
-          <div className="acad-card-top">
-            <div className="acad-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
-              </svg>
+        <div className="grid grid-2">
+          <article className="glass spot card reveal">
+            <div className="card-meta">
+              <span className="icon-badge">{Icon.cap}</span>
+              <span className="chip mint">● {isPt ? 'Em andamento' : 'In progress'}</span>
             </div>
-            <span className="acad-status acad-status--done">
-              {t.acad_h1 === 'Histórico Acadêmico' ? 'Concluído' : 'Completed'}
-            </span>
-          </div>
+            <h3>{t.acad_mestrado_title}</h3>
+            <span className="mono" style={{ color: 'var(--faint)' }}>Centro de Informática (CIn) — UFPE · 2024.2 – 2026.2</span>
+            <p style={{ fontSize: '.92rem' }}>{t.acad_mestrado_research}</p>
+            <div className="tags">
+              {['Engenharia de Software', 'Inteligência Artificial', 'Maturidade de Projetos', 'CIn-UFPE'].map((tag) => (
+                <span key={tag} className="tag">{tag}</span>
+              ))}
+            </div>
+            <div className="card-foot">
+              <span className="btn btn-ghost btn-sm is-disabled">{t.acad_mestrado_btn}</span>
+            </div>
+          </article>
 
-          <h3 className="acad-title">{t.acad_tecnologo_title}</h3>
-          <span className="acad-institution">Universidade Católica de Pernambuco — UNICAP</span>
-          <span className="acad-period">2022.1 – 2024.1</span>
+          <article className="glass spot card reveal">
+            <div className="card-meta">
+              <span className="icon-badge">{Icon.monitor}</span>
+              <span className="chip">{isPt ? 'Concluído' : 'Completed'}</span>
+            </div>
+            <h3>{t.acad_tecnologo_title}</h3>
+            <span className="mono" style={{ color: 'var(--faint)' }}>Universidade Católica de Pernambuco — UNICAP · 2022.1 – 2024.1</span>
+            <p style={{ fontSize: '.92rem' }}>{t.acad_tecnologo_embarque}</p>
+            <div className="tags">
+              {['Embarque Digital', 'Porto Digital', 'Sistemas para Internet', 'Full Stack'].map((tag) => (
+                <span key={tag} className="tag">{tag}</span>
+              ))}
+            </div>
+            <div className="card-foot">
+              <a className="btn btn-ghost btn-sm" href="https://github.com/orgs/SIN-disciplina-PI5/teams/2024-1-unicapevents" target="_blank" rel="noreferrer" id="btn-tcc">
+                {Icon.external} {t.acad_tcc_btn}
+              </a>
+            </div>
+          </article>
+        </div>
 
-          <div className="acad-tags">
-            <span className="timeline-tag">Sistemas para Internet</span>
-            <span className="timeline-tag">TCC</span>
-            <span className="timeline-tag">Full Stack</span>
-          </div>
-
-          <div className="acad-action">
-            <a href="https://github.com/orgs/SIN-disciplina-PI5/teams/2024-1-unicapevents" target="_blank"
-              style={{ textDecoration: 'none' }} rel="noreferrer">
-              <Button style={{ padding: '8px 16px', fontSize: '0.85rem' }}>
-                {t.acad_tcc_btn}
-              </Button>
-            </a>
-          </div>
+        <h3 className="sub-title reveal">{t.acad_proj_h1}</h3>
+        <div className="grid grid-2">
+          {projects.map((p) => (
+            <button key={p.id} id={`acad-${p.id}`} className="glass spot clickable card reveal" onClick={() => setOpenId(p.id)}>
+              <div className="card-meta">
+                <span className="chip peach">{p.role}</span>
+                <span className="mono" style={{ color: 'var(--faint)' }}>{p.date}</span>
+              </div>
+              <h3>{p.title}</h3>
+              <p className="clamp">{p.desc}</p>
+              <span className="more">{u.details} {Icon.arrow}</span>
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* Link Lattes */}
-      <div className="acad-lattes">
-        <a href="http://lattes.cnpq.br/7448823611009423" target="_blank" style={{ textDecoration: 'none' }} rel="noreferrer">
-          <Button style={{ padding: '10px 20px', fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-            {t.acad_lattes_btn}
-          </Button>
-        </a>
-      </div>
-    </div>
+      <Modal open={!!selected} onClose={() => setOpenId(null)} label={selected?.title}>
+        {selected && (
+          <div className="modal-inner">
+            <span className="chip peach">{selected.role}</span>
+            <h2>{selected.title}</h2>
+            <span className="mono" style={{ color: 'var(--faint)' }}>{selected.date}</span>
+            <div className="divider" />
+            <p>{selected.desc}</p>
+          </div>
+        )}
+      </Modal>
+    </section>
   );
 }
