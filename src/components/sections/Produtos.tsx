@@ -35,7 +35,7 @@ export function Produtos({ u, lang }: ProdutosProps) {
           </div>
         </div>
 
-        <div className="grid grid-3">
+        <div className="grid grid-products">
           {products.map((p) => (
             <button key={p.id} id={`product-${p.id}`} className="glass spot clickable card product reveal" onClick={() => setOpenId(p.id)}>
               <div className="product-cover">

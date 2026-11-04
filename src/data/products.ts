@@ -55,6 +55,39 @@ export const products: Product[] = [
     link: 'https://app.labsemail.com.br/',
   },
   {
+    id: 'cartoes-bs',
+    cover: '/products/cartoes-bs.png',
+    gradient: ['#00167a', '#2563eb'],
+    category: { pt: 'Fintech & Segurança', en: 'Fintech & Security' },
+    title: { pt: 'BS Seguros | Cadastro de Cartão Seguro', en: 'BS Seguros | Secure Card Registration' },
+    short: {
+      pt: 'Sistema seguro e tokenizado de cadastro e validação de cartões de crédito com criptografia e exclusão automática.',
+      en: 'Secure tokenized credit card registration and validation system with encryption and automated deletion.',
+    },
+    description: {
+      pt: 'Aplicação web desenvolvida para a BS Seguros (parceria Porto Seguro) com foco em segurança de dados e conformidade estrita com a LGPD. O sistema realiza o cadastro seguro e tokenizado de dados de cartão de crédito com validação dinâmica em tempo real (bandeiras, algoritmo de Luhn), visualização interativa do cartão 3D e rotina programada de exclusão automática dos dados em até 48 horas.',
+      en: 'Web application developed for BS Seguros (Porto Seguro partner) focusing on data security and strict LGPD compliance. The system performs secure, tokenized registration of credit card details with real-time dynamic validation (card brand, Luhn algorithm), interactive 3D card preview, and scheduled automated data deletion within 48 hours.',
+    },
+    features: {
+      pt: [
+        'Ambiente seguro com criptografia de dados ponta a ponta',
+        'Validação em tempo real de número, validade e algoritmo de Luhn',
+        'Visualização interativa e dinâmica do cartão em 3D',
+        'Conformidade LGPD com exclusão automática dos dados em 48h',
+        'Interface responsiva, moderna e otimizada com Next.js e TypeScript',
+      ],
+      en: [
+        'Secure environment with end-to-end data encryption',
+        'Real-time card number, expiry date, and Luhn algorithm validation',
+        'Interactive and dynamic 3D credit card preview',
+        'LGPD compliance workflow with automated 48-hour data deletion',
+        'Modern, responsive interface built with Next.js and TypeScript',
+      ],
+    },
+    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Criptografia', 'LGPD'],
+    link: 'https://cartoes.segurosbs.com.br/',
+  },
+  {
     id: 'paloma-mendes-saldanha',
     cover: '/products/paloma-mendes.png',
     gradient: ['#059669', '#34d399'],
