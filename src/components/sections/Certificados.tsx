@@ -69,7 +69,7 @@ export function Certificados({ u, lang }: CertificadosProps) {
       >
         <div className="cert-header">
           <div className="cert-meta-left">
-            <span className="chip mint">Google — Coursera · 27/07/2026</span>
+            <span className="chip mint">Google · Coursera · 27/07/2026</span>
           </div>
           <span className="more">
             {u.details} {Icon.arrow}
@@ -99,7 +99,7 @@ export function Certificados({ u, lang }: CertificadosProps) {
       <Modal open={open} onClose={() => setOpen(false)} label="Certificado Google AI" wide>
         <div className="modal-inner">
           <div className="cert-header">
-            <span className="chip mint">Google — Coursera · 27/07/2026</span>
+            <span className="chip mint">Google · Coursera · 27/07/2026</span>
             <a
               className="btn btn-primary btn-sm"
               href="https://coursera.org/verify/professional-cert/FLXB2QI17CGK"

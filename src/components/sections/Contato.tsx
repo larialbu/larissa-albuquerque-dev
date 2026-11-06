@@ -22,7 +22,7 @@ const PROJECT_TYPES = [
   },
   {
     id: 'ecommerce',
-    label: 'E-commerce & Gateway',
+    label: 'E commerce & Gateway',
     desc: 'Loja virtual com catálogo, checkout transparente e múltiplos meios de pagamento.',
   },
   {
@@ -33,12 +33,12 @@ const PROJECT_TYPES = [
   {
     id: 'mediakit',
     label: 'Publi & Parcerias de Marca',
-    desc: 'Reels, stories, embaixada e ações para marcas de diversos segmentos — educação, serviços, tecnologia, mobilidade e público feminino.',
+    desc: 'Reels, stories, embaixada e ações para marcas de diversos segmentos: educação, serviços, tecnologia, mobilidade e público feminino.',
   },
   {
     id: 'duvidas',
-    label: 'Dúvidas, Bate-papo & Networking',
-    desc: 'Tirar dúvidas sobre programação/carreira, conselhos, mentorias ou bater um papo descontraído sobre tecnologia.',
+    label: 'Dúvidas, Conversa & Networking',
+    desc: 'Tirar dúvidas sobre programação e carreira, conselhos, mentorias ou bater um papo descontraído sobre tecnologia.',
   },
 ];
 

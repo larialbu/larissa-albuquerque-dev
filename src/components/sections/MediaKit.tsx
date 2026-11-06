@@ -56,8 +56,8 @@ export function MediaKit({ u, lang }: MediaKitProps) {
               <span>
                 <strong>{isPt ? 'Público Engajado & Representatividade:' : 'Engaged Audience & Reach:'}</strong>{' '}
                 {isPt
-                  ? 'Forte conexão e diálogo constante com o público feminino e jovem profissional — com versatilidade para marcas de educação, serviços, tecnologia, mobilidade e cotidiano.'
-                  : 'Authentic engagement with women and young professionals — highly versatile for education, services, tech, mobility, and lifestyle brands.'}
+                  ? 'Forte conexão e diálogo constante com o público feminino e jovem profissional, com versatilidade para marcas de educação, serviços, tecnologia, mobilidade e cotidiano.'
+                  : 'Authentic engagement with women and young professionals, highly versatile for education, services, tech, mobility, and lifestyle brands.'}
               </span>
             </div>
           </div>
@@ -252,8 +252,8 @@ export function MediaKit({ u, lang }: MediaKitProps) {
                 <h4>{isPt ? 'Comunidade Engajada & Versatilidade de Marca' : 'Engaged Community & Brand Versatility'}</h4>
                 <p>
                   {isPt
-                    ? 'Canal com forte representatividade feminina e alto índice de interação. Parcerias dinâmicas e flexíveis para marcas de diferentes segmentos — de educação, tecnologia e aplicativos a mobilidade, serviços e produtos do dia a dia.'
-                    : 'A channel with strong female presence and high organic interaction. Dynamic, flexible campaigns for diverse brand categories — from education and tech to mobility, services, and everyday consumer products.'}
+                    ? 'Canal com forte representatividade feminina e alto índice de interação. Parcerias dinâmicas e flexíveis para marcas de diferentes segmentos: de educação, tecnologia e aplicativos a mobilidade, serviços e produtos do dia a dia.'
+                    : 'A channel with strong female presence and high organic interaction. Dynamic, flexible campaigns for diverse brand categories: from education and tech to mobility, services, and everyday consumer products.'}
                 </p>
               </div>
             </div>

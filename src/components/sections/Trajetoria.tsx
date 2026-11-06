@@ -26,15 +26,15 @@ export function Trajetoria({ t, u, lang, openModalId, onSetOpenModalId }: Trajet
   const experiences = [
     {
       id: 'bbts',
-      date: isPt ? 'junho 2026 - o momento' : 'June 2026 - Present',
+      date: isPt ? 'junho 2026 até o momento' : 'June 2026 to Present',
       current: true,
-      company: 'Banco do Brasil Tecnologia e Serviços - BBTS (Via Digisystem)',
+      company: 'Banco do Brasil Tecnologia e Serviços BBTS (Via Digisystem)',
       role: t.exp_bbts_role,
       desc: t.exp_bbts_desc,
     },
     {
       id: 'senac',
-      date: isPt ? 'janeiro 2026 - junho 2026' : 'January 2026 - June 2026',
+      date: isPt ? 'janeiro 2026 a junho 2026' : 'January 2026 to June 2026',
       current: false,
       company: 'SENAC PERNAMBUCO (MédioTec Senac)',
       role: t.exp_senac_role,
@@ -42,35 +42,35 @@ export function Trajetoria({ t, u, lang, openModalId, onSetOpenModalId }: Trajet
     },
     {
       id: 'bb-ntt',
-      date: isPt ? 'janeiro 2026 - junho 2026' : 'January 2026 - June 2026',
+      date: isPt ? 'janeiro 2026 a junho 2026' : 'January 2026 to June 2026',
       company: 'Banco do Brasil (Via NTT DATA)',
       role: t.exp_bb_role,
       desc: t.exp_bb_desc,
     },
     {
       id: 'bb-qintess',
-      date: isPt ? 'julho 2025 - dezembro 2025' : 'July 2025 - December 2025',
+      date: isPt ? 'julho 2025 a dezembro 2025' : 'July 2025 to December 2025',
       company: 'Banco do Brasil (Via Qintess)',
-      role: isPt ? 'Desenvolvedora FULL STACK - Pleno' : 'Full Stack Developer - Mid-Level',
+      role: isPt ? 'Desenvolvedora FULL STACK (Pleno)' : 'Full Stack Developer (Mid Level)',
       desc: t.exp_bb_qintess_desc,
     },
     {
       id: 'fcx',
-      date: isPt ? 'dezembro 2024 - julho 2025' : 'December 2024 - July 2025',
+      date: isPt ? 'dezembro 2024 a julho 2025' : 'December 2024 to July 2025',
       company: 'FCx Labs (Ferreira Costa)',
-      role: isPt ? 'Desenvolvedora FULL STACK - Pleno' : 'Full Stack Developer - Mid-Level',
+      role: isPt ? 'Desenvolvedora FULL STACK (Pleno)' : 'Full Stack Developer (Mid Level)',
       desc: t.exp_fcx_desc,
     },
     {
       id: 'bsa',
-      date: isPt ? 'agosto 2023 - dezembro 2024' : 'August 2023 - December 2024',
+      date: isPt ? 'agosto 2023 a dezembro 2024' : 'August 2023 to December 2024',
       company: 'BSA Tech (Opa Games)',
-      role: isPt ? 'Desenvolvedora FULL STACK - Junior' : 'Full Stack Developer - Junior',
+      role: isPt ? 'Desenvolvedora FULL STACK (Junior)' : 'Full Stack Developer (Junior)',
       desc: t.exp_bsa_desc,
     },
     {
       id: 'cmtech',
-      date: isPt ? 'janeiro 2023 - julho 2023' : 'January 2023 - July 2023',
+      date: isPt ? 'janeiro 2023 a julho 2023' : 'January 2023 to July 2023',
       company: 'CMTech',
       role: t.exp_cmtech_role,
       desc: t.exp_cmtech_desc,
@@ -81,30 +81,30 @@ export function Trajetoria({ t, u, lang, openModalId, onSetOpenModalId }: Trajet
   const academicProjects = [
     {
       id: 'petribu',
-      date: 'ago 2024 – fev 2026',
+      date: 'ago 2024 a fev 2026',
       role: t.acad_proj_label_dev,
       title: t.acad_proj_petribu_title,
       desc: t.acad_proj_petribu_desc,
     },
     {
       id: 'gp2',
-      date: 'jan – dez 2025',
+      date: 'jan a dez 2025',
       role: t.acad_proj_label_manager,
       title: t.acad_proj_gp2_title,
       desc: t.acad_proj_gp2_desc,
     },
     {
       id: 'porto',
-      date: 'fev 2022 – jun 2024',
+      date: 'fev 2022 a jun 2024',
       role: 'Embarque Digital',
       title: 'Residência Tecnológica com Porto Digital',
       desc: 'Participação na Residência Onboard do Porto Digital, desenvolvendo projetos em parceria com empresas como Accenture, NTT Data e CMTech. Atuação em projetos práticos orientados por especialistas, aplicando conhecimentos adquiridos no programa Embarque Digital.',
     },
     {
       id: 'sidi',
-      date: 'nov 2022 – fev 2023',
+      date: 'nov 2022 a fev 2023',
       role: 'Bolsista Desenvolvedora Front-end',
-      title: 'SiDI (PET-Projeto de extensão tecnológica)',
+      title: 'SiDI (PET: Projeto de extensão tecnológica)',
       desc: 'Criação de um chatbot inteligente para o departamento de RH, utilizando Rasa como motor conversacional, Docker para containerização e AWS para hospedagem. Integração com Python (Lambdas e APIs) e Power BI para análise de candidatos.',
     },
   ];
@@ -324,7 +324,7 @@ export function Trajetoria({ t, u, lang, openModalId, onSetOpenModalId }: Trajet
                 <span className="chip mint">● {isPt ? 'Em andamento' : 'In progress'}</span>
               </div>
               <h3>{t.acad_mestrado_title}</h3>
-              <span className="mono" style={{ color: 'var(--faint)', fontSize: '.84rem' }}>Centro de Informática (CIn) — UFPE · 2024.2 – 2026.2</span>
+              <span className="mono" style={{ color: 'var(--faint)', fontSize: '.84rem' }}>Centro de Informática (CIn) UFPE · 2024.2 a 2026.2</span>
               <p style={{ fontSize: '.92rem', marginTop: 10 }}>{t.acad_mestrado_research}</p>
               <div className="tags" style={{ marginTop: 12 }}>
                 {['Engenharia de Software', 'Inteligência Artificial', 'Maturidade de Projetos', 'CIn-UFPE'].map((tag) => (
@@ -340,7 +340,7 @@ export function Trajetoria({ t, u, lang, openModalId, onSetOpenModalId }: Trajet
                 <span className="chip">{isPt ? 'Concluído' : 'Completed'}</span>
               </div>
               <h3>{t.acad_tecnologo_title}</h3>
-              <span className="mono" style={{ color: 'var(--faint)', fontSize: '.84rem' }}>Universidade Católica de Pernambuco — UNICAP · 2022.1 – 2024.1</span>
+              <span className="mono" style={{ color: 'var(--faint)', fontSize: '.84rem' }}>Universidade Católica de Pernambuco UNICAP · 2022.1 a 2024.1</span>
               <p style={{ fontSize: '.92rem', marginTop: 10 }}>{t.acad_tecnologo_embarque}</p>
               <div className="tags" style={{ marginTop: 12 }}>
                 {['Embarque Digital', 'Porto Digital', 'Sistemas para Internet', 'Full Stack'].map((tag) => (

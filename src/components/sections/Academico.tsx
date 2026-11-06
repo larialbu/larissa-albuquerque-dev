@@ -55,7 +55,7 @@ export function Academico({ t, u, lang }: AcademicoProps) {
               <span className="chip mint">● {isPt ? 'Em andamento' : 'In progress'}</span>
             </div>
             <h3>{t.acad_mestrado_title}</h3>
-            <span className="mono" style={{ color: 'var(--faint)' }}>Centro de Informática (CIn) — UFPE · 2024.2 – 2026.2</span>
+            <span className="mono" style={{ color: 'var(--faint)' }}>Centro de Informática (CIn) UFPE · 2024.2 a 2026.2</span>
             <p style={{ fontSize: '.92rem' }}>{t.acad_mestrado_research}</p>
             <div className="tags">
               {['Engenharia de Software', 'Inteligência Artificial', 'Maturidade de Projetos', 'CIn-UFPE'].map((tag) => (
@@ -73,7 +73,7 @@ export function Academico({ t, u, lang }: AcademicoProps) {
               <span className="chip">{isPt ? 'Concluído' : 'Completed'}</span>
             </div>
             <h3>{t.acad_tecnologo_title}</h3>
-            <span className="mono" style={{ color: 'var(--faint)' }}>Universidade Católica de Pernambuco — UNICAP · 2022.1 – 2024.1</span>
+            <span className="mono" style={{ color: 'var(--faint)' }}>Universidade Católica de Pernambuco UNICAP · 2022.1 a 2024.1</span>
             <p style={{ fontSize: '.92rem' }}>{t.acad_tecnologo_embarque}</p>
             <div className="tags">
               {['Embarque Digital', 'Porto Digital', 'Sistemas para Internet', 'Full Stack'].map((tag) => (

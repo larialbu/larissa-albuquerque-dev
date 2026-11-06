@@ -238,7 +238,7 @@ export function HardSkills({ t, u, lang = 'pt' }: HardSkillsProps) {
           onClick={() => setOpenCertModal(true)}
         >
           <div className="card-meta">
-            <span className="chip mint">Google — Coursera</span>
+            <span className="chip mint">Google · Coursera</span>
             <span className="hub-hint">{u.details}</span>
           </div>
           <h3 className="hub-card-title">{u.certificates_title}</h3>
@@ -339,7 +339,7 @@ export function HardSkills({ t, u, lang = 'pt' }: HardSkillsProps) {
       >
         <div className="modal-inner">
           <div className="cert-header">
-            <span className="chip mint">Google — Coursera · 27/07/2026</span>
+            <span className="chip mint">Google · Coursera · 27/07/2026</span>
             <a
               className="btn btn-primary btn-sm"
               href="https://coursera.org/verify/professional-cert/FLXB2QI17CGK"

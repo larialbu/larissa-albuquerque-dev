@@ -13,7 +13,7 @@ import { MediaKit } from './components/sections/MediaKit';
 
 import './index.css';
 
-const SECTION_IDS = ['sobre', 'trajetoria', 'produtos', 'mediakit', 'skills', 'contato'];
+const SECTION_IDS = ['sobre', 'trajetoria', 'skills', 'produtos', 'mediakit', 'contato'];
 
 function App() {
   const [lang, setLang] = useState<Lang>(() => {
@@ -112,9 +112,9 @@ function App() {
         <section id="skills" className="section">
           <HardSkills t={t} u={u} lang={lang} />
         </section>
-        <Produtos u={u} lang={lang} />
-        <MediaKit u={u} lang={lang} />
         <Parcerias t={t} u={u} lang={lang} />
+        <MediaKit u={u} lang={lang} />
+        <Produtos u={u} lang={lang} />
         <Contato t={t} u={u} />
       </main>
     </>
