@@ -98,7 +98,7 @@ export function Contato({ t, u }: ContatoProps) {
                 rel="noreferrer"
                 className="btn btn-primary"
                 id="btn-whatsapp-direct"
-                style={{ width: '100%', maxWidth: 360, padding: '12px 22px' }}
+                style={{ width: '100%', maxWidth: 380, padding: '12px 18px', whiteSpace: 'normal', textAlign: 'center', lineHeight: 1.35 }}
               >
                 {Icon.phone} {u.contact_whatsapp_cta || 'Chamar no WhatsApp (Mais rápido)'}
               </a>
