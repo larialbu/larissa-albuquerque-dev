@@ -55,4 +55,22 @@ export const Icon = {
   whatsapp: (
     <svg {...base}><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
   ),
+  play: (
+    <svg {...base}><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" fillOpacity="0.2" /></svg>
+  ),
+  video: (
+    <svg {...base}><polygon points="23 7 16 12 23 17 23 7" /><rect x="1" y="5" width="15" height="14" rx="2" ry="2" /></svg>
+  ),
+  check: (
+    <svg {...base}><polyline points="20 6 9 17 4 12" /></svg>
+  ),
+  sparkles: (
+    <svg {...base}><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" /></svg>
+  ),
+  chevronLeft: (
+    <svg {...base} width="18" height="18"><polyline points="15 18 9 12 15 6" /></svg>
+  ),
+  chevronRight: (
+    <svg {...base} width="18" height="18"><polyline points="9 18 15 12 9 6" /></svg>
+  ),
 } satisfies Record<string, ReactNode>;

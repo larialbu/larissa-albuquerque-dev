@@ -12,8 +12,9 @@ export function Nav({ u, active, lang, onToggleLang, onNavClick }: NavProps) {
   const links = [
     { id: 'sobre', label: u.nav_about },
     { id: 'trajetoria', label: u.nav_trajectory },
-    { id: 'produtos', label: u.nav_products },
     { id: 'skills', label: u.nav_skills },
+    { id: 'produtos', label: u.nav_products },
+    { id: 'mediakit', label: u.nav_mediakit },
     { id: 'contato', label: u.nav_contact },
   ];
 

@@ -8,12 +8,12 @@ import { Trajetoria } from './components/sections/Trajetoria';
 import { Parcerias } from './components/sections/Parcerias';
 import { Produtos } from './components/sections/Produtos';
 import { HardSkills } from './components/sections/HardSkills';
-import { Certificados } from './components/sections/Certificados';
 import { Contato } from './components/sections/Contato';
+import { MediaKit } from './components/sections/MediaKit';
 
 import './index.css';
 
-const SECTION_IDS = ['sobre', 'trajetoria', 'produtos', 'skills', 'contato'];
+const SECTION_IDS = ['sobre', 'trajetoria', 'produtos', 'mediakit', 'skills', 'contato'];
 
 function App() {
   const [lang, setLang] = useState<Lang>(() => {
@@ -78,6 +78,8 @@ function App() {
       document.getElementById('trajetoria')?.scrollIntoView({ behavior: 'smooth' });
     } else if (id === 'produtos') {
       document.getElementById('produtos')?.scrollIntoView({ behavior: 'smooth' });
+    } else if (id === 'mediakit') {
+      document.getElementById('mediakit')?.scrollIntoView({ behavior: 'smooth' });
     } else if (id === 'skills') {
       document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
     } else if (id === 'contato') {
@@ -107,11 +109,11 @@ function App() {
           openModalId={openTrajetoriaModal}
           onSetOpenModalId={setOpenTrajetoriaModal}
         />
-        <Produtos u={u} lang={lang} />
         <section id="skills" className="section">
-          <HardSkills t={t} u={u} />
-          <Certificados u={u} lang={lang} />
+          <HardSkills t={t} u={u} lang={lang} />
         </section>
+        <Produtos u={u} lang={lang} />
+        <MediaKit u={u} lang={lang} />
         <Parcerias t={t} u={u} lang={lang} />
         <Contato t={t} u={u} />
       </main>

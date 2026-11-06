@@ -10,11 +10,36 @@ interface ContatoProps {
 }
 
 const PROJECT_TYPES = [
-  { id: 'saas', label: 'Plataforma Web / SaaS', desc: 'Sistemas corporativos, disparo em massa, dashboards e APIs escaláveis (como Labs Email).' },
-  { id: 'landing', label: 'Landing Page Premium', desc: 'Design exclusivo de alta conversão, responsivo e integrado para profissionais e empresas (como Drª Paloma).' },
-  { id: 'ecommerce', label: 'E-commerce & Gateway', desc: 'Loja virtual com catálogo, cálculo de frete e múltiplos meios de pagamento (como Básico Urbano).' },
-  { id: 'ai', label: 'Solução com IA & Agentes', desc: 'Aplicações inteligentes com IA Generativa, RAG, MCPs e automação de processos operacionais.' },
-  { id: 'custom', label: 'Outro Projeto Sob Medida', desc: 'Arquitetura personalizada para o seu modelo de negócio.' },
+  {
+    id: 'saas',
+    label: 'Plataforma Web / SaaS',
+    desc: 'Sistemas corporativos, automação, dashboards e APIs escaláveis sob demanda (como Labs Email).',
+  },
+  {
+    id: 'landing',
+    label: 'Landing Page Premium',
+    desc: 'Design exclusivo de alta conversão, responsivo e integrado para profissionais e empresas.',
+  },
+  {
+    id: 'ecommerce',
+    label: 'E-commerce & Gateway',
+    desc: 'Loja virtual com catálogo, checkout transparente e múltiplos meios de pagamento.',
+  },
+  {
+    id: 'ai',
+    label: 'Solução com IA & Automação',
+    desc: 'Aplicações inteligentes com IA Generativa, RAG, MCPs e automação de processos.',
+  },
+  {
+    id: 'mediakit',
+    label: 'Publi & Parcerias de Marca',
+    desc: 'Reels, stories, embaixada e ações para marcas de diversos segmentos — educação, serviços, tecnologia, mobilidade e público feminino.',
+  },
+  {
+    id: 'duvidas',
+    label: 'Dúvidas, Bate-papo & Networking',
+    desc: 'Tirar dúvidas sobre programação/carreira, conselhos, mentorias ou bater um papo descontraído sobre tecnologia.',
+  },
 ];
 
 export function Contato({ t, u }: ContatoProps) {
@@ -29,13 +54,13 @@ export function Contato({ t, u }: ContatoProps) {
   const currentProject = PROJECT_TYPES.find((p) => p.id === selectedType) || PROJECT_TYPES[0];
 
   const copyEmail = () => {
-    navigator.clipboard.writeText('larissaamca1@gmail.com');
+    navigator.clipboard.writeText('contato.lari.devcode@gmail.com');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
   const whatsappUrl = `https://wa.me/5581999699386?text=${encodeURIComponent(
-    `Olá Larissa! Gostaria de conversar sobre um projeto de ${currentProject.label} para o meu negócio.`
+    `Olá Larissa! Gostaria de conversar com você sobre ${currentProject.label}.`
   )}`;
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -56,13 +81,13 @@ export function Contato({ t, u }: ContatoProps) {
       <div className="container">
         <div className="glass contact-wrap reveal">
           <div>
-            <span className="eyebrow">{u.contact_eyebrow || 'Projetos Sob Demanda'}</span>
+            <span className="eyebrow">{u.contact_eyebrow || 'Bate-papo & Projetos'}</span>
             <h2 className="contact-title">
-              <span className="grad-text">{u.contact_title || 'Vamos tirar seu projeto do papel?'}</span>
+              <span className="grad-text">{u.contact_title || 'Bora conversar ou tirar uma ideia do papel?'}</span>
             </h2>
-            <p style={{ marginTop: 14, maxWidth: 480, fontSize: '.96rem', lineHeight: 1.65 }}>
+            <p style={{ marginTop: 14, maxWidth: 490, fontSize: '.96rem', lineHeight: 1.65, color: 'var(--muted)' }}>
               {u.contact_sub ||
-                'Desenvolvo produtos e sistemas sob medida como os apresentados acima. Escolha o tipo de solução e entre em contato para receber uma proposta personalizada.'}
+                'Desenvolvo soluções completas sob demanda como as da seção acima (plataformas SaaS, e-commerces com gateway, landing pages e sistemas com IA). Mas meu contato é super aberto: seja para tirar dúvidas, mentorias, propor parcerias de publis ou só trocar uma ideia sobre tecnologia, sinta-se à vontade para me chamar!'}
             </p>
 
             {/* Quick WhatsApp Action */}
@@ -75,7 +100,7 @@ export function Contato({ t, u }: ContatoProps) {
                 id="btn-whatsapp-direct"
                 style={{ width: '100%', maxWidth: 360, padding: '12px 22px' }}
               >
-                {Icon.phone} {u.contact_whatsapp_cta || 'Conversar no WhatsApp'}
+                {Icon.phone} {u.contact_whatsapp_cta || 'Chamar no WhatsApp (Mais rápido)'}
               </a>
             </div>
 
@@ -91,7 +116,7 @@ export function Contato({ t, u }: ContatoProps) {
                 <span className="social">{Icon.mail}</span>
                 <span>
                   <span className="label">E-mail Direto</span>
-                  larissaamca1@gmail.com
+                  contato.lari.devcode@gmail.com
                   {copied && <span className="copy-toast">{u.copied}</span>}
                 </span>
               </button>
@@ -119,10 +144,11 @@ export function Contato({ t, u }: ContatoProps) {
               </div>
             </div>
 
-            <div className="socials" style={{ marginTop: 22 }}>
+            {/* Social Icons - Bolinhas uma do lado da outra */}
+            <div className="socials contact-social-row" style={{ marginTop: 24, display: 'flex', flexDirection: 'row', gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
               {socials.map((s) => (
                 <a
-                  key={s.id}
+                  key={s.label}
                   className="social"
                   href={s.href}
                   target="_blank"
@@ -139,10 +165,10 @@ export function Contato({ t, u }: ContatoProps) {
           <div>
             {isSubmitted ? (
               <div className="success">
-                <span className="chip mint">✓ Proposta Solicitada</span>
-                <h3 style={{ fontSize: '1.4rem', marginTop: 10 }}>Obrigada pelo contato, {name || 'parceiro'}!</h3>
+                <span className="chip mint">✓ Mensagem Enviada</span>
+                <h3 style={{ fontSize: '1.4rem', marginTop: 10 }}>Obrigada pelo contato, {name || 'amigo(a)'}!</h3>
                 <p style={{ color: 'var(--muted)', marginTop: 6, lineHeight: 1.6 }}>
-                  Recebi seus dados com sucesso. Analisarei as especificações do seu projeto e retornarei em até 24 horas úteis.
+                  Recebi sua mensagem com sucesso. Retornarei o mais rápido possível por e-mail ou WhatsApp!
                 </p>
                 <button
                   type="button"
@@ -155,11 +181,11 @@ export function Contato({ t, u }: ContatoProps) {
               </div>
             ) : (
               <form className="form" onSubmit={handleSubmit}>
-                <h3 style={{ fontSize: '1.2rem', marginBottom: 2 }}>
-                  {u.contact_type_label || 'Selecione o tipo de projeto:'}
+                <h3 style={{ fontSize: '1.2rem', marginBottom: 4 }}>
+                  {u.contact_type_label || 'Qual o assunto ou tipo de projeto?'}
                 </h3>
 
-                {/* Interactive Project Pills */}
+                {/* Interactive Project / Subject Pills */}
                 <div className="project-type-selector">
                   {PROJECT_TYPES.map((pt) => (
                     <button
@@ -174,7 +200,7 @@ export function Contato({ t, u }: ContatoProps) {
                 </div>
 
                 <div className="project-type-desc">
-                  <span className="mono" style={{ color: 'var(--primary)', fontWeight: 600 }}>Incluso: </span>
+                  <span className="mono" style={{ color: 'var(--primary)', fontWeight: 600 }}>Foco / Incluso: </span>
                   {currentProject.desc}
                 </div>
 
@@ -185,7 +211,7 @@ export function Contato({ t, u }: ContatoProps) {
                     className="input"
                     type="text"
                     required
-                    placeholder="Ex: João Silva ou Startup X"
+                    placeholder="Ex: Larissa ou Startup X"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
@@ -198,19 +224,19 @@ export function Contato({ t, u }: ContatoProps) {
                     className="input"
                     type="text"
                     required
-                    placeholder="exemplo@empresa.com ou (81) 99999-9999"
+                    placeholder="exemplo@email.com ou (81) 99999-9999"
                     value={contactInfo}
                     onChange={(e) => setContactInfo(e.target.value)}
                   />
                 </div>
 
                 <div className="field">
-                  <label htmlFor="client-message">Resumo da sua ideia ou funcionalidades necessárias</label>
+                  <label htmlFor="client-message">Mensagem, resumo da ideia ou dúvida</label>
                   <textarea
                     id="client-message"
                     className="input"
                     rows={3}
-                    placeholder="Conte um pouco sobre o que você deseja construir, prazos esperados ou dúvidas..."
+                    placeholder="Conte um pouco sobre sua ideia, projeto, dúvida técnica ou proposta..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                   />
@@ -223,7 +249,7 @@ export function Contato({ t, u }: ContatoProps) {
                   id="btn-submit-project"
                   style={{ width: '100%', marginTop: 6 }}
                 >
-                  {isSubmitting ? 'Enviando...' : (u.contact_submit_cta || 'Solicitar Proposta de Projeto')}
+                  {isSubmitting ? 'Enviando...' : (u.contact_submit_cta || 'Enviar Mensagem')}
                 </button>
               </form>
             )}
