@@ -64,14 +64,7 @@ export function MediaKit({ u, lang }: MediaKitProps) {
 
           {/* Quick Actions: Open Rate Card Modal & Instagram Link */}
           <div className="mediakit-head-actions">
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={() => setOpenPricesModal(true)}
-              id="btn-open-mediakit-prices"
-            >
-              {Icon.sparkles} {u.mediakit_open_prices}
-            </button>
+            
             <a
               href="https://www.instagram.com/lari.devcode"
               target="_blank"
