@@ -32,8 +32,9 @@ function calculateAge() {
 
 export function Sobre({ t, u }: SobreProps) {
   const [open, setOpen] = useState(false);
-  const summary = t.summary_content.replace('{age}', calculateAge().toString());
-  const firstParagraph = summary.split('<br><br>')[0];
+  const age = calculateAge().toString();
+  const summary = t.summary_content.replace('{age}', age);
+  const heroIntro = t.summary_short.replace('{age}', age);
 
   return (
     <header id="sobre" className="hero">
@@ -49,7 +50,7 @@ export function Sobre({ t, u }: SobreProps) {
             <span className="grad-text">Albuquerque</span>
           </h1>
           <p className="hero-role">{t.hero_title}</p>
-          <p className="hero-intro" dangerouslySetInnerHTML={{ __html: firstParagraph }} />
+          <p className="hero-intro" dangerouslySetInnerHTML={{ __html: heroIntro }} />
 
           <div className="hero-actions">
             <button className="btn btn-primary" onClick={() => setOpen(true)} id="btn-open-summary">

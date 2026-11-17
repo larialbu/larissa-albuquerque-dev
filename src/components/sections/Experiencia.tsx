@@ -1,70 +1,122 @@
-import { useState } from 'react';
 import type { TranslationSet } from '../../translations';
-import type { UI } from '../../ui';
-import { Icon } from '../atoms/Icons';
-import { Modal } from '../organisms/Modal';
+import type { UI, Lang } from '../../ui';
 
 interface ExperienciaProps {
   t: TranslationSet;
   u: UI;
+  lang?: Lang;
 }
 
-export function Experiencia({ t, u }: ExperienciaProps) {
-  const [openId, setOpenId] = useState<string | null>(null);
+export function Experiencia({ t, u, lang = 'pt' }: ExperienciaProps) {
+  const isPt = lang === 'pt';
 
   const items = [
-    { id: 'bbts', date: 'junho 2026 - o momento', current: true, company: 'Banco do Brasil Tecnologia e Serviços - BBTS (Via Digisystem)', role: t.exp_bbts_role, desc: t.exp_bbts_desc },
-    { id: 'senac', date: 'janeiro 2026 - junho 2026', current: false, company: 'SENAC PERNAMBUCO (MédioTec Senac)', role: t.exp_senac_role, desc: t.exp_senac_desc },
-    { id: 'bb-ntt', date: 'janeiro 2026 - junho 2026', company: 'Banco do Brasil (Via NTT DATA)', role: t.exp_bb_role, desc: t.exp_bb_desc },
-    { id: 'bb-qintess', date: 'julho 2025 - dezembro 2025', company: 'Banco do Brasil (Via Qintess)', role: 'Desenvolvedora FULL STACK - Pleno', desc: t.exp_bb_qintess_desc },
-    { id: 'fcx', date: 'dezembro 2024 - julho 2025', company: 'FCx Labs (Ferreira Costa)', role: 'Desenvolvedora FULL STACK - Pleno', desc: t.exp_fcx_desc },
-    { id: 'bsa', date: 'agosto 2023 - dezembro 2024', company: 'BSA Tech (Opa Games)', role: 'Desenvolvedora FULL STACK - Junior', desc: t.exp_bsa_desc },
-    { id: 'cmtech', date: 'janeiro 2023 - julho 2023', company: 'CMTech', role: t.exp_cmtech_role, desc: t.exp_cmtech_desc },
+    {
+      id: 'bbts',
+      date: isPt ? 'junho 2026 até o momento' : 'June 2026 to Present',
+      current: true,
+      company: 'Banco do Brasil Tecnologia e Serviços BBTS (Via Digisystem)',
+      role: t.exp_bbts_role,
+      desc: t.exp_bbts_desc,
+    },
+    {
+      id: 'senac',
+      date: isPt ? 'janeiro 2026 a junho 2026' : 'January 2026 to June 2026',
+      current: false,
+      company: 'SENAC PERNAMBUCO (MédioTec Senac)',
+      role: t.exp_senac_role,
+      desc: t.exp_senac_desc,
+    },
+    {
+      id: 'bb-ntt',
+      date: isPt ? 'janeiro 2026 a junho 2026' : 'January 2026 to June 2026',
+      current: false,
+      company: 'Banco do Brasil (Via NTT DATA)',
+      role: t.exp_bb_role,
+      desc: t.exp_bb_desc,
+    },
+    {
+      id: 'bb-qintess',
+      date: isPt ? 'julho 2025 a dezembro 2025' : 'July 2025 to December 2025',
+      current: false,
+      company: 'Banco do Brasil (Via Qintess)',
+      role: isPt ? 'Desenvolvedora FULL STACK (Pleno)' : 'Full Stack Developer (Mid Level)',
+      desc: t.exp_bb_qintess_desc,
+    },
+    {
+      id: 'fcx',
+      date: isPt ? 'dezembro 2024 a julho 2025' : 'December 2024 to July 2025',
+      current: false,
+      company: 'FCx Labs (Ferreira Costa)',
+      role: isPt ? 'Desenvolvedora FULL STACK (Pleno)' : 'Full Stack Developer (Mid Level)',
+      desc: t.exp_fcx_desc,
+    },
+    {
+      id: 'bsa',
+      date: isPt ? 'agosto 2023 a dezembro 2024' : 'August 2023 to December 2024',
+      current: false,
+      company: 'BSA Tech (Opa Games)',
+      role: isPt ? 'Desenvolvedora FULL STACK (Junior)' : 'Full Stack Developer (Junior)',
+      desc: t.exp_bsa_desc,
+    },
+    {
+      id: 'cmtech',
+      date: isPt ? 'janeiro 2023 a julho 2023' : 'January 2023 to July 2023',
+      current: false,
+      company: 'CMTech',
+      role: t.exp_cmtech_role,
+      desc: t.exp_cmtech_desc,
+    },
   ];
 
-  const selected = items.find((i) => i.id === openId);
-
   return (
-    <section id="experiencia" className="section">
+    <section id="experiencia" className="section" style={{ paddingTop: 20 }}>
       <div className="container">
-        <div className="section-head reveal">
+        <div className="section-head reveal in">
           <div>
             <span className="eyebrow">{u.experience_eyebrow}</span>
             <h2 className="section-title">{t.exp_h1}</h2>
+            <p style={{ marginTop: 8, maxWidth: 660 }}>
+              {isPt
+                ? 'Trajetória completa com 7 empresas de grande porte, liderança técnica, inteligência artificial e atuação Full Stack.'
+                : 'Complete career timeline across 7 prominent companies, technical leadership, artificial intelligence, and Full Stack engineering.'}
+            </p>
           </div>
         </div>
 
-        <div className="xp-list">
+        {/* Linha do Tempo Aberta e Elegante (Conforme solicitado) */}
+        <div className="career-timeline modal-timeline reveal in">
           {items.map((it) => (
-            <button
+            <div
               key={it.id}
-              id={`xp-${it.id}`}
-              className={`glass spot clickable xp-row reveal ${it.current ? 'current' : ''}`}
-              onClick={() => setOpenId(it.id)}
+              className={`career-timeline-item modal-timeline-item ${it.current ? 'current' : ''}`}
             >
-              <span className="xp-date mono">{it.current ? '● ' : ''}{it.date}</span>
-              <span>
-                <span className="xp-company">{it.company}</span>
-                <br />
-                <span className="xp-role">{it.role}</span>
-              </span>
-              <span className="plus">{Icon.plus}</span>
-            </button>
+              <div className="career-timeline-dot modal-timeline-dot" />
+              <div className="career-timeline-content modal-timeline-content">
+                <div className="career-timeline-header modal-timeline-header">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+                    <span className={`chip ${it.current ? 'mint' : ''}`}>
+                      {it.current ? '● ' : ''}
+                      {it.date}
+                    </span>
+                    {it.current && (
+                      <span className="timeline-badge-current">
+                        {isPt ? 'Posição Atual' : 'Current Role'}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="career-item-title modal-item-title">{it.company}</h3>
+                  <span className="career-item-role modal-item-role">{it.role}</span>
+                </div>
+                <div
+                  className="career-item-desc modal-item-desc"
+                  dangerouslySetInnerHTML={{ __html: it.desc }}
+                />
+              </div>
+            </div>
           ))}
         </div>
       </div>
-
-      <Modal open={!!selected} onClose={() => setOpenId(null)} label={selected?.company}>
-        {selected && (
-          <div className="modal-inner">
-            <span className={`chip ${selected.current ? 'mint' : ''}`}>{selected.date}</span>
-            <h2>{selected.company}</h2>
-            <span className="grad-text" style={{ fontWeight: 600 }}>{selected.role}</span>
-            <div className="divider" />
-            <p dangerouslySetInnerHTML={{ __html: selected.desc }} />
-          </div>
-        )}
-      </Modal>
     </section>
   );
 }

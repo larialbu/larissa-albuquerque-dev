@@ -73,4 +73,19 @@ export const Icon = {
   chevronRight: (
     <svg {...base} width="18" height="18"><polyline points="9 18 15 12 9 6" /></svg>
   ),
+  chevronDown: (
+    <svg {...base} width="16" height="16"><polyline points="6 9 12 15 18 9" /></svg>
+  ),
+  briefcase: (
+    <svg {...base}><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
+  ),
+  users: (
+    <svg {...base}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+  ),
+  star: (
+    <svg {...base}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+  ),
+  megaphone: (
+    <svg {...base}><path d="m3 11 18-5v12L3 14v-3z" /><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" /></svg>
+  ),
 } satisfies Record<string, ReactNode>;

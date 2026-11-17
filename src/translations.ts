@@ -11,6 +11,7 @@ export interface TranslationSet {
     menu_contact: string;
     hero_title: string;
     summary_label: string;
+    summary_short: string;
     summary_content: string;
     exp_h1: string;
     exp_bb_role: string;
@@ -158,6 +159,7 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         menu_contact: "Contato",
         hero_title: "Desenvolvedora de Software Sênior @BBTS | Mestranda CIn/UFPE",
         summary_label: "Resumo Profissional",
+        summary_short: `Sou pernambucana, tenho {age} anos e atuo como <span class="highlight">Desenvolvedora de Software Sênior na BBTS</span>. Com mais de <span class="highlight">4 anos de experiência</span>, uno Engenharia Full Stack e Inteligência Artificial no desenvolvimento de soluções escaláveis com <span class="highlight">IA Generativa, AI Agents, RAG e MCP</span>. Em paralelo à indústria, sou <span class="highlight">mestranda no CIn/UFPE</span> e fundadora da <span class="highlight">Recife Front-End Community (RFEC)</span>.`,
         summary_content: `Sou pernambucana, tenho {age} anos e atuo como <span class="highlight">Desenvolvedora de Software Sênior na BBTS</span>. Com mais de <span class="highlight">4 anos de experiência</span> na construção de soluções escaláveis, minha atuação atual une <span class="highlight">Engenharia Full Stack e Inteligência Artificial</span>. Tenho forte vivência no desenvolvimento de aplicações com <span class="highlight">IA Generativa</span>, <span class="highlight">AI Agents</span>, <span class="highlight">Retrieval-Augmented Generation (RAG)</span> e <span class="highlight">Model Context Protocol (MCP)</span>, além de arquiteturas com React, NestJS e Next.js. Em paralelo à indústria, sou <span class="highlight">mestranda em Ciência da Computação no CIn/UFPE</span>, <span class="highlight">Embaixadora Estudantil do Google Gemini</span> e fundadora da <span class="highlight">Recife Front-End Community (RFEC)</span>, sempre priorizando qualidade de código e impacto na comunidade de tecnologia.`,
         exp_h1: "Experiência Profissional",
         exp_bb_role: "Desenvolvedora FULL STACK (Pleno)",
@@ -303,6 +305,7 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         menu_contact: "Contact",
         hero_title: "Senior Software Developer @BBTS | MSc Student CIn/UFPE",
         summary_label: "Professional Summary",
+        summary_short: `Based in Pernambuco, I am {age} years old and work as a <span class="highlight">Senior Software Developer at BBTS</span>. With over <span class="highlight">4 years of experience</span>, I bridge Full Stack Engineering and Artificial Intelligence building scalable solutions with <span class="highlight">Generative AI, AI Agents, RAG, and MCP</span>. In parallel, I am a <span class="highlight">Master's student at CIn/UFPE</span> and founder of the <span class="highlight">Recife Front-End Community (RFEC)</span>.`,
         summary_content: `I am from Pernambuco, I am {age} years old, and I work as a <span class="highlight">Senior Software Developer at BBTS</span>. With over <span class="highlight">4 years of experience</span> building scalable solutions, my current work combines <span class="highlight">Full Stack Engineering and Artificial Intelligence</span>. I have solid expertise developing applications with <span class="highlight">Generative AI</span>, <span class="highlight">AI Agents</span>, <span class="highlight">Retrieval-Augmented Generation (RAG)</span>, and <span class="highlight">Model Context Protocol (MCP)</span>, alongside architectures with React, NestJS, and Next.js. Alongside industry, I am a <span class="highlight">Master's student in Computer Science at CIn/UFPE</span>, <span class="highlight">Google Gemini Student Ambassador</span>, and founder of the <span class="highlight">Recife Front-End Community (RFEC)</span>, always prioritizing code quality and community impact.`,
         exp_h1: "Professional Experience",
         exp_bb_role: "FULL STACK Developer (Mid level)",
