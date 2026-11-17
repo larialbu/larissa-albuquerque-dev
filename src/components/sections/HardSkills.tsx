@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import type { TranslationSet } from '../../translations';
 import type { UI, Lang } from '../../ui';
 import { Icon } from '../atoms/Icons';
-import { Modal } from '../organisms/Modal';
 
 interface HardSkillsProps {
   t: TranslationSet;
@@ -32,11 +31,37 @@ const COURSES = [
 ];
 
 export function HardSkills({ t, u, lang = 'pt' }: HardSkillsProps) {
-  const [openSkillsModal, setOpenSkillsModal] = useState(false);
-  const [openCertModal, setOpenCertModal] = useState(false);
   const isPt = lang === 'pt';
+  const [certOpen, setCertOpen] = useState(false);
 
   const groups = [
+    {
+      id: 'ia',
+      label: t.skills_ia,
+      desc: isPt
+        ? 'Engenharia de prompt avançada, criação de agentes autônomos, sistemas multi-agentes, MCP (Model Context Protocol), fluxos RAG e desenvolvimento assistido por IA (Copilot, Cursor, Windsurf, Claude, ChatGPT, Gemini).'
+        : 'Advanced prompt engineering, autonomous agents, multi-agent systems, MCP (Model Context Protocol), RAG workflows, and AI-assisted development (Copilot, Cursor, Windsurf, Claude, ChatGPT, Gemini).',
+      items: [
+        'ChatGPT',
+        'Claude',
+        'Gemini',
+        'GitHub Copilot',
+        'Cursor AI',
+        'Windsurf',
+        'Prompt Engineering',
+        'AI-Assisted Development',
+        'AI Pair Programming',
+        'AI Code Review',
+        'AI Software Architecture',
+        'Agentes de IA',
+        'Multi-Agent Systems',
+        'Skills',
+        'MCP',
+        'Function Calling',
+        'RAG',
+        'AI Workflows',
+      ],
+    },
     {
       id: 'frontend',
       label: t.skills_frontend,
@@ -52,14 +77,6 @@ export function HardSkills({ t, u, lang = 'pt' }: HardSkillsProps) {
         ? 'Construção de APIs escaláveis, microsserviços e regras de negócio robustas com Python (Django, FastAPI, Flask) e Node.js/TypeScript (NestJS), garantindo resiliência e alta disponibilidade.'
         : 'Building scalable APIs, microservices, and robust business logic with Python (Django, FastAPI, Flask) and Node.js/TypeScript (NestJS), ensuring resilience and high availability.',
       items: ['Django', 'Python', 'TypeScript', 'NestJS', 'Node.js'],
-    },
-    {
-      id: 'ia',
-      label: t.skills_ia,
-      desc: isPt
-        ? 'Engenharia de prompt avançada, criação de agentes autônomos, sistemas multi-agentes, MCP (Model Context Protocol), fluxos RAG e desenvolvimento assistido por IA (Copilot, Cursor, Windsurf, Claude, ChatGPT, Gemini).'
-        : 'Advanced prompt engineering, autonomous agents, multi-agent systems, MCP (Model Context Protocol), RAG workflows, and AI-assisted development (Copilot, Cursor, Windsurf, Claude, ChatGPT, Gemini).',
-      items: ['ChatGPT', 'Claude', 'Gemini', 'GitHub Copilot', 'Cursor AI', 'Windsurf', 'Prompt Engineering', 'AI-Assisted Development', 'AI Pair Programming', 'AI Code Review', 'AI Software Architecture', 'Agentes de IA', 'Multi-Agent Systems', 'Skills', 'MCP', 'Function Calling', 'RAG', 'AI Workflows'],
     },
     {
       id: 'db',
@@ -167,231 +184,219 @@ export function HardSkills({ t, u, lang = 'pt' }: HardSkillsProps) {
   };
 
   useEffect(() => {
-    if (openCertModal) {
+    if (certOpen) {
       const timer = setTimeout(() => {
         loadCredlyScript();
       }, 50);
       return () => clearTimeout(timer);
     }
-  }, [openCertModal]);
+  }, [certOpen]);
 
   return (
     <div className="container">
-      <div className="section-head reveal">
+      {/* Cabeçalho da Seção */}
+      <div className="section-head reveal in" style={{ marginBottom: 28 }}>
         <div>
           <span className="eyebrow">{u.skills_eyebrow}</span>
           <h2 className="section-title">
             {isPt ? 'Skills & Certificações' : 'Skills & Certifications'}
           </h2>
-          <p style={{ marginTop: 8, maxWidth: 640 }}>
+          <p style={{ marginTop: 8, maxWidth: 660 }}>
             {isPt
-              ? 'Conheça minhas competências técnicas em desenvolvimento de software e certificações internacionais em tecnologia e IA.'
-              : 'Explore my software engineering competencies and international certifications in tech and AI.'}
+              ? 'Competências técnicas consolidadas em engenharia de software, inteligência artificial e certificações internacionais oficiais.'
+              : 'Software engineering competencies, artificial intelligence stack, and official international certifications.'}
           </p>
         </div>
       </div>
 
-      {/* 2 CARDS LADO A LADO RECOLHIDOS */}
-      <div className="grid grid-2 hub-grid">
-        {/* Card 1: Hard Skills */}
-        <article
-          id="hub-card-skills"
-          className="glass spot clickable card hub-card reveal"
-          onClick={() => setOpenSkillsModal(true)}
-        >
-          <div className="card-meta">
-            <span className="chip mint">{isPt ? 'Competências' : 'Skills'}</span>
-            <span className="hub-hint">{u.details}</span>
+      {/* 1. BLOCO DE HARD SKILLS (Barra de abas com tudo do lado de fora) */}
+      <div className="glass card reveal in" style={{ padding: 'clamp(20px, 3vw, 32px)', marginBottom: 24 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, flexWrap: 'wrap', gap: 10 }}>
+          <div>
+            <span className="chip mint">{isPt ? 'Stack Técnica' : 'Technical Stack'}</span>
+            <h3 style={{ fontSize: '1.35rem', fontWeight: 800, marginTop: 8, marginBottom: 4, color: 'var(--text-pure)' }}>
+              {isPt ? 'Hard Skills & Ecossistema de Desenvolvimento' : 'Hard Skills & Development Ecosystem'}
+            </h3>
+            <p style={{ color: 'var(--muted)', fontSize: '.9rem', margin: 0 }}>
+              {isPt
+                ? 'Navegue pelas áreas abaixo para ver as tecnologias, ferramentas e conceitos aplicados:'
+                : 'Select any area below to explore technologies, tools, and applied concepts:'}
+            </p>
           </div>
-          <h3 className="hub-card-title">{t.menu_skills}</h3>
-          <p className="hub-card-preview">
-            {isPt
-              ? 'Front-end, Back-end, Inteligência Artificial & IA Assistida, Cloud AWS, Bancos de Dados, DevOps, Arquitetura e Engenharia de Software.'
-              : 'Front-end, Back-end, Generative & Assisted AI, Cloud AWS, Databases, DevOps, Architecture, and Software Engineering.'}
-          </p>
-          <div className="tags" style={{ marginTop: 'auto', paddingTop: 14, marginBottom: 14 }}>
-            <span className="tag">TypeScript</span>
-            <span className="tag">React / Next.js</span>
-            <span className="tag">Python / Django</span>
-            <span className="tag">IA & Agentes</span>
-            <span className="tag">AWS Cloud</span>
-            <span className="tag">Docker</span>
-          </div>
-          <div className="card-foot hub-card-foot">
+          <span className="hub-hint" style={{ fontSize: '.84rem' }}>
+            {groups.length} {isPt ? 'áreas mapeadas' : 'specialized areas'}
+          </span>
+        </div>
+
+        {/* Barra de Tabs com Scroll Horizontal Fluido */}
+        <div className="skill-tabs" role="tablist" style={{ marginBottom: 20 }}>
+          {groups.map((g) => (
             <button
+              key={g.id}
+              id={`skill-tab-${g.id}`}
               type="button"
-              className="btn btn-primary btn-sm hub-btn"
-              onClick={(e) => {
-                e.stopPropagation();
-                setOpenSkillsModal(true);
-              }}
+              role="tab"
+              aria-selected={active === g.id}
+              className={`skill-tab ${active === g.id ? 'active' : ''}`}
+              onClick={() => setActive(g.id)}
             >
-              {u.see_more} {Icon.arrow}
+              {g.label}
             </button>
-          </div>
-        </article>
+          ))}
+        </div>
 
-        {/* Card 2: Certificações */}
-        <article
-          id="hub-card-certificados"
-          className="glass spot clickable card hub-card reveal"
-          onClick={() => setOpenCertModal(true)}
-        >
-          <div className="card-meta">
-            <span className="chip mint">Google · Coursera</span>
-            <span className="hub-hint">{u.details}</span>
-          </div>
-          <h3 className="hub-card-title">{u.certificates_title}</h3>
-          <p className="hub-card-preview">
-            {isPt
-              ? 'Certificado Profissional Google AI composto por 7 cursos demonstrando fluência e aplicação prática de IA, engenharia de prompt e 8 badges oficiais via Credly.'
-              : 'Google AI Professional Certificate composed of 7 courses covering practical AI, prompt engineering, and 8 official Credly badges.'}
-          </p>
-          <div className="tags cert-tags" style={{ marginTop: 'auto', paddingTop: 14, marginBottom: 14 }}>
-            <span className="tag tag-course">Google AI Professional</span>
-            <span className="tag tag-course">Prompt Engineering</span>
-            <span className="tag tag-course">8 Badges Credly</span>
-          </div>
-          <div className="card-foot hub-card-foot">
-            <button
-              type="button"
-              className="btn btn-primary btn-sm hub-btn"
-              onClick={(e) => {
-                e.stopPropagation();
-                setOpenCertModal(true);
-              }}
-            >
-              {u.see_more} {Icon.arrow}
-            </button>
-          </div>
-        </article>
-      </div>
-
-      {/* MODAL 1: Hard Skills & Stacks Detalhadas */}
-      <Modal
-        open={openSkillsModal}
-        onClose={() => setOpenSkillsModal(false)}
-        label={isPt ? 'Hard Skills & Tecnologias' : 'Hard Skills & Tech Stack'}
-        wide
-      >
-        <div className="modal-inner">
-          <div className="cert-header" style={{ marginBottom: 12 }}>
-            <span className="chip mint">{isPt ? 'Competências Técnicas' : 'Technical Skills'}</span>
-            <span className="hub-hint">{groups.length} {isPt ? 'áreas mapeadas' : 'specialized areas'}</span>
+        {/* Painel da Área Selecionada */}
+        <div className="skill-panel" key={current.id} role="tabpanel">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10, flexWrap: 'wrap', gap: 8 }}>
+            <h4 style={{ fontSize: '1.15rem', fontWeight: 700, margin: 0, color: 'var(--text-pure)' }}>
+              {current.label}
+            </h4>
+            <span className="chip" style={{ fontSize: '0.78rem' }}>
+              {current.items.length} {isPt ? 'competências' : 'skills'}
+            </span>
           </div>
 
-          <h2>{isPt ? 'Hard Skills & Ecossistema de Desenvolvimento' : 'Hard Skills & Development Ecosystem'}</h2>
-          <p style={{ color: 'var(--muted)', marginBottom: 20 }}>
-            {isPt
-              ? 'Selecione uma área abaixo para visualizar a atuação, descrição e stacks de tecnologias correspondentes:'
-              : 'Select an area below to view the scope, description, and corresponding tech stacks:'}
+          <p style={{ fontSize: '0.94rem', color: 'var(--muted)', lineHeight: 1.65, marginBottom: 18 }}>
+            {current.desc}
           </p>
 
-          <div className="skill-tabs" role="tablist">
-            {groups.map((g) => (
-              <button
-                key={g.id}
-                id={`modal-skill-tab-${g.id}`}
-                role="tab"
-                aria-selected={active === g.id}
-                className={`skill-tab ${active === g.id ? 'active' : ''}`}
-                onClick={() => setActive(g.id)}
-              >
-                {g.label}
-              </button>
+          <div className="modal-label" style={{ marginBottom: 10 }}>
+            {isPt ? 'Tecnologias, Ferramentas & Conceitos:' : 'Technologies, Tools & Concepts:'}
+          </div>
+          <div className="tags">
+            {current.items.map((s) => (
+              <span key={s} className="tag">
+                {s}
+              </span>
             ))}
           </div>
+        </div>
+      </div>
 
-          <div className="skill-panel" key={current.id} role="tabpanel" style={{ marginTop: 16 }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8, flexWrap: 'wrap', gap: 8 }}>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: 700, margin: 0, color: 'var(--text)' }}>
-                {current.label}
-              </h3>
-              <span className="chip" style={{ fontSize: '0.78rem' }}>
-                {current.items.length} {isPt ? 'competências' : 'skills'}
+      {/* 2. MENU RECOLHÍVEL (ACCORDION): Certificado Profissional Google AI */}
+      <div
+        className="glass card reveal in"
+        style={{
+          padding: 'clamp(18px, 2.5vw, 26px)',
+          transition: 'all 0.25s var(--ease)',
+        }}
+      >
+        {/* Cabeçalho Clicável do Acordeão */}
+        <button
+          type="button"
+          id="btn-toggle-cert"
+          className="cert-accordion-header"
+          onClick={() => setCertOpen(!certOpen)}
+          aria-expanded={certOpen}
+          style={{
+            width: '100%',
+            background: 'transparent',
+            border: 'none',
+            padding: 0,
+            textAlign: 'left',
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: 16,
+            fontFamily: 'inherit',
+          }}
+        >
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 6 }}>
+              <span className="chip mint">Google · Coursera</span>
+              <span className="chip">{isPt ? '7 Cursos · 8 Badges Credly' : '7 Courses · 8 Credly Badges'}</span>
+            </div>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, margin: 0, color: 'var(--text-pure)' }}>
+              {isPt ? 'Certificado Profissional Google AI' : 'Google AI Professional Certificate'}
+            </h3>
+            <span style={{ fontSize: '0.84rem', color: 'var(--muted)', marginTop: 4, display: 'inline-block' }}>
+              {certOpen
+                ? (isPt ? 'Clique para recolher os detalhes' : 'Click to collapse details')
+                : (isPt ? 'Clique para ver os cursos e badges oficiais' : 'Click to view courses and official badges')}
+            </span>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <span className="btn btn-ghost btn-sm" style={{ pointerEvents: 'none' }}>
+              {certOpen ? (isPt ? 'Recolher' : 'Collapse') : (isPt ? 'Ver certificado' : 'View certificate')}
+            </span>
+            <span
+              className={`cert-accordion-chevron ${certOpen ? 'is-open' : ''}`}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: 28,
+                height: 28,
+                borderRadius: '50%',
+                background: 'var(--surface-muted)',
+                color: 'var(--text-pure)',
+                transition: 'transform 0.25s var(--ease)',
+                transform: certOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+              }}
+            >
+              {Icon.chevronDown}
+            </span>
+          </div>
+        </button>
+
+        {/* Conteúdo Recolhível / Expansível */}
+        {certOpen && (
+          <div className="cert-accordion-content fade-in" style={{ marginTop: 20, paddingTop: 18, borderTop: '1px solid var(--border)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12, marginBottom: 16 }}>
+              <span className="mono" style={{ fontSize: '.84rem', color: 'var(--faint)' }}>
+                {isPt ? 'Conclusão: 27/07/2026' : 'Completed: 27/07/2026'}
               </span>
+
+              <a
+                className="btn btn-primary btn-sm"
+                href="https://coursera.org/verify/professional-cert/FLXB2QI17CGK"
+                target="_blank"
+                rel="noreferrer"
+                id="btn-verify-cert"
+              >
+                {Icon.external} {isPt ? 'Verificar no Coursera' : 'Verify on Coursera'}
+              </a>
             </div>
 
-            <p style={{ fontSize: '0.94rem', color: 'var(--muted)', lineHeight: 1.6, marginBottom: 18 }}>
-              {current.desc}
+            <p style={{ color: 'var(--muted)', fontSize: '.94rem', lineHeight: 1.65, marginBottom: 20 }}>
+              {isPt
+                ? 'Certificado Profissional composto por 7 cursos demonstrando fluência e aplicação prática de IA em brainstorming, pesquisa, escrita, comunicação, criação de conteúdo, análise de dados e desenvolvimento de aplicações com IA.'
+                : 'Professional Certificate consisting of 7 courses demonstrating fluency and practical application of AI in brainstorming, research, writing, communication, content creation, data analysis, and building AI apps.'}
             </p>
 
             <div className="modal-label" style={{ marginBottom: 10 }}>
-              {isPt ? 'Tecnologias, Ferramentas & Conceitos:' : 'Technologies, Tools & Concepts:'}
+              {isPt ? 'Cursos que compõem o programa oficial:' : 'Courses included in the official program:'}
             </div>
-            <div className="tags">
-              {current.items.map((s) => (
-                <span key={s} className="tag">
-                  {s}
+            <div className="tags cert-tags" style={{ marginBottom: 24 }}>
+              {COURSES.map((c) => (
+                <span key={c} className="tag tag-course">
+                  {c}
                 </span>
               ))}
             </div>
-          </div>
-        </div>
-      </Modal>
 
-      {/* MODAL 2: Certificações & Badges Oficiais */}
-      <Modal
-        open={openCertModal}
-        onClose={() => setOpenCertModal(false)}
-        label={isPt ? 'Certificações & Badges' : 'Certifications & Badges'}
-        wide
-      >
-        <div className="modal-inner">
-          <div className="cert-header">
-            <span className="chip mint">Google · Coursera · 27/07/2026</span>
-            <a
-              className="btn btn-primary btn-sm"
-              href="https://coursera.org/verify/professional-cert/FLXB2QI17CGK"
-              target="_blank"
-              rel="noreferrer"
-              id="btn-verify-cert"
-            >
-              {Icon.external} {isPt ? 'Verificar no Coursera' : 'Verify on Coursera'}
-            </a>
-          </div>
-
-          <h2>{isPt ? 'Certificado Profissional Google AI' : 'Google AI Professional Certificate'}</h2>
-
-          <p>
-            {isPt
-              ? 'Certificado Profissional composto por 7 cursos demonstrando fluência e aplicação prática de IA em brainstorming, pesquisa, escrita, comunicação, criação de conteúdo, análise de dados e desenvolvimento de aplicações com IA.'
-              : 'Professional Certificate consisting of 7 courses demonstrating fluency and practical application of AI in brainstorming, research, writing, communication, content creation, data analysis, and building AI apps.'}
-          </p>
-
-          <div className="divider" />
-
-          <div className="modal-label">
-            {isPt ? 'Cursos que compõem o programa:' : 'Courses included in the program:'}
-          </div>
-          <div className="tags cert-tags">
-            {COURSES.map((c) => (
-              <span key={c} className="tag tag-course">
-                {c}
+            {/* Badges oficiais emitidas via Credly */}
+            <div className="cert-badges-wrapper">
+              <span className="cert-badges-label">
+                {isPt ? '8 Badges oficiais emitidas via Credly:' : '8 Official badges issued via Credly:'}
               </span>
-            ))}
-          </div>
-
-          <div className="divider" style={{ marginTop: 8 }} />
-
-          <div className="cert-badges-wrapper">
-            <span className="cert-badges-label">
-              {isPt ? 'Badges oficiais emitidas via Credly:' : 'Official badges issued via Credly:'}
-            </span>
-            <div className="badges cert-badges-inner">
-              {BADGES.map((id) => (
-                <div
-                  key={id}
-                  data-iframe-width="150"
-                  data-iframe-height="270"
-                  data-share-badge-id={id}
-                  data-share-badge-host="https://www.credly.com"
-                />
-              ))}
+              <div className="badges cert-badges-inner">
+                {BADGES.map((id) => (
+                  <div
+                    key={id}
+                    data-iframe-width="150"
+                    data-iframe-height="270"
+                    data-share-badge-id={id}
+                    data-share-badge-host="https://www.credly.com"
+                  />
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </Modal>
+        )}
+      </div>
     </div>
   );
 }

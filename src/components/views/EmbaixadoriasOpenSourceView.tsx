@@ -89,20 +89,20 @@ export function EmbaixadoriasOpenSourceView({ t, u, lang }: EmbaixadoriasOpenSou
     },
     {
       id: 'laridev-opensource',
-      badge: 'Open Source',
+      badge: isPt ? 'Ecossistema' : 'Ecosystem',
       brand: '@laridev/br',
-      role: isPt ? 'Criadora & Mantenedora Open Source' : 'Creator & Open Source Maintainer',
-      title: isPt ? 'Ecossistema @laridev/br & Open Source' : '@laridev/br Ecosystem & Open Source',
+      role: isPt ? 'Criadora de Conteúdo & Comunidade' : 'Content Creator & Community',
+      title: isPt ? 'Ecossistema @laridev/br & Projetos' : '@laridev/br Ecosystem & Projects',
       desc: isPt
-        ? 'Iniciativa focada em democratizar o código aberto, criar repositórios de referência para desenvolvedores, fornecer templates arquiteturais de alto padrão (React, Next.js, APIs em Node e automações com IA) e compartilhar boas práticas no GitHub.'
-        : 'Dedicated initiative focused on open-source democratization, high-grade starter templates (React, Next.js, Node.js APIs, and AI automations), developer resources, and hands-on code shared on GitHub.',
-      impactTitle: isPt ? 'Contribuições Open Source & Destaques' : 'Open Source Highlights',
+        ? 'Iniciativa focada em disseminar conhecimento prático, criar repositórios de referência para desenvolvedores, fornecer templates arquiteturais de alto padrão (React, Next.js, APIs em Node e automações com IA) e compartilhar boas práticas com a comunidade.'
+        : 'Dedicated initiative focused on tech education, high-grade starter templates (React, Next.js, Node.js APIs, and AI automations), developer resources, and practical projects shared with the community.',
+      impactTitle: isPt ? 'Destaques e Iniciativas' : 'Highlights & Initiatives',
       impacts: [
         isPt ? 'Repositórios públicos no GitHub com foco em boas práticas e acessibilidade' : 'Public GitHub repositories featuring clean code and accessibility',
         isPt ? 'Templates prontos com TypeScript, micro frontends e integração com APIs de IA' : 'Ready-to-use templates with TypeScript, micro frontends, and AI integrations',
         isPt ? 'Comunidade engajada com mais de 500k de alcance aprendendo desenvolvimento' : 'Engaged community with 500k+ reach learning software engineering',
       ],
-      tags: ['Open Source', 'GitHub', '@laridev/br', 'TypeScript', 'Comunidade'],
+      tags: ['Comunidade', 'GitHub', '@laridev/br', 'TypeScript', 'Tech'],
       link: { label: 'GitHub @larialbu', href: 'https://github.com/larialbu' },
     },
   ];
@@ -115,12 +115,12 @@ export function EmbaixadoriasOpenSourceView({ t, u, lang }: EmbaixadoriasOpenSou
             <div>
               <span className="eyebrow">{u.tab_ambassador}</span>
               <h2 className="section-title">
-                {isPt ? 'Embaixadorias Globais & Ecossistema Open Source' : 'Global Ambassadorships & Open Source'}
+                {isPt ? 'Embaixadorias Globais & Atuação Oficial' : 'Global Ambassadorships & Official Roles'}
               </h2>
               <p style={{ marginTop: 8, maxWidth: 680 }}>
                 {isPt
-                  ? 'Representação oficial de grandes empresas de tecnologia (Google, Alura, HostGator) combinada com a criação e manutenção de iniciativas de código aberto sob o ecossistema @laridev/br.'
-                  : 'Official representation of leading tech brands (Google, Alura, HostGator) combined with maintaining open-source software under the @laridev/br developer ecosystem.'}
+                  ? 'Representação oficial de grandes empresas de tecnologia (Google, Alura, HostGator) combinada com iniciativas de capacitação e produção técnica sob o ecossistema @laridev/br.'
+                  : 'Official representation of leading tech brands (Google, Alura, HostGator) combined with developer education under the @laridev/br ecosystem.'}
               </p>
             </div>
           </div>

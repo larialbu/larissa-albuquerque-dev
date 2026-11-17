@@ -1,7 +1,7 @@
 import type { UI } from '../../ui';
 import { Icon } from '../atoms/Icons';
 
-export type PortfolioTab = 'core' | 'comunidades' | 'embaixadorias' | 'mediakit';
+export type PortfolioTab = 'core' | 'produtos' | 'comunidades' | 'embaixadorias' | 'mediakit';
 
 interface ViewSelectorProps {
   u: UI;

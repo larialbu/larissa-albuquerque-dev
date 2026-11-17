@@ -7,12 +7,16 @@ import { CoreProfissionalView } from './components/views/CoreProfissionalView';
 import { ComunidadesLiderancaView } from './components/views/ComunidadesLiderancaView';
 import { EmbaixadoriasOpenSourceView } from './components/views/EmbaixadoriasOpenSourceView';
 import { ParceriasMediaKitView } from './components/views/ParceriasMediaKitView';
+import { Produtos } from './components/sections/Produtos';
 import { Contato } from './components/sections/Contato';
 
 import './index.css';
 
 function getInitialTab(): PortfolioTab {
   const hash = window.location.hash.replace('#', '').toLowerCase();
+  if (hash === 'produtos' || hash === 'servicos' || hash === 'saas') {
+    return 'produtos';
+  }
   if (hash === 'comunidades' || hash === 'lideranca' || hash === 'participacao') {
     return 'comunidades';
   }
@@ -97,7 +101,14 @@ function App() {
           <CoreProfissionalView t={t} u={u} lang={lang} />
         )}
 
-        {/* Visão 2: Comunidades & Liderança */}
+        {/* Visão 2: Produtos & Serviços (SaaS sob demanda) */}
+        {activeTab === 'produtos' && (
+          <div id="view-panel-produtos" className="view-panel fade-in">
+            <Produtos u={u} lang={lang} />
+          </div>
+        )}
+
+        {/* Visão 3: Comunidades & Liderança */}
         {activeTab === 'comunidades' && (
           <ComunidadesLiderancaView t={t} u={u} lang={lang} />
         )}

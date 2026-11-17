@@ -20,12 +20,15 @@ export function Nav({
   onContactClick,
 }: NavProps) {
   const secondaryOptions: { id: PortfolioTab; label: string }[] = [
+    { id: 'produtos', label: u.nav_products },
     { id: 'comunidades', label: u.tab_community },
     { id: 'embaixadorias', label: u.tab_ambassador },
     { id: 'mediakit', label: u.tab_mediakit },
   ];
 
   const isSecondaryActive = activeTab !== 'core';
+  const currentOption = secondaryOptions.find((opt) => opt.id === activeTab);
+  const currentLabel = isSecondaryActive && currentOption ? currentOption.label : u.select_more_views;
 
   return (
     <nav className="nav" aria-label="Principal">
@@ -55,11 +58,17 @@ export function Nav({
         {u.nav_about_me}
       </button>
 
-      {/* 2. Select com as 3 opções secundárias */}
+      {/* 2. Select adaptável ao tamanho do texto clicado/selecionado */}
       <div className={`nav-select-wrapper ${isSecondaryActive ? 'is-active' : ''}`}>
+        <span className="nav-select-display">
+          <span className="nav-select-text">{currentLabel}</span>
+          <span className="nav-select-chevron" aria-hidden="true">
+            {Icon.chevronDown}
+          </span>
+        </span>
         <select
           id="nav-secondary-select"
-          className={`nav-view-select ${isSecondaryActive ? 'active' : ''}`}
+          className="nav-view-select-invisible"
           value={isSecondaryActive ? activeTab : ''}
           aria-label={u.select_more_views}
           onChange={(e) => {
@@ -78,9 +87,6 @@ export function Nav({
             </option>
           ))}
         </select>
-        <span className="nav-select-chevron" aria-hidden="true">
-          {Icon.chevronDown}
-        </span>
       </div>
 
       {/* 3. Link Contato no final */}

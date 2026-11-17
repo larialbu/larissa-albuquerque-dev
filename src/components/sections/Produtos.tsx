@@ -25,7 +25,7 @@ export function Produtos({ u, lang }: ProdutosProps) {
   const selected = products.find((p) => p.id === openId);
 
   return (
-    <section id="produtos" className="section">
+    <section id="produtos" className="section view-panel-section">
       <div className="container">
         <div className="section-head reveal">
           <div>

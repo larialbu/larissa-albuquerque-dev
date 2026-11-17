@@ -478,72 +478,88 @@ p {
 }
 
 /* ==========================================================================
-   Navigation Select (Seletor minimalista no topo)
+   Navigation Select (Seletor minimalista auto-adaptável no topo)
    ========================================================================== */
 .nav-select-wrapper {
     position: relative;
     display: inline-flex;
     align-items: center;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
 }
 
-.nav-view-select {
-    appearance: none;
-    -webkit-appearance: none;
+.nav-select-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    border-radius: var(--radius-pill);
     background: #FFFFFF;
     border: 1px solid rgba(18, 18, 18, 0.14);
-    border-radius: var(--radius-pill);
-    padding: 7px 32px 7px 14px;
+    box-shadow: 0 1px 3px rgba(18, 18, 18, 0.04);
+    color: var(--text-pure);
     font-size: 0.84rem;
     font-weight: 600;
-    font-family: inherit;
-    color: var(--text-pure);
-    cursor: pointer;
+    white-space: nowrap;
     transition: all 0.2s var(--ease);
-    box-shadow: 0 1px 3px rgba(18, 18, 18, 0.04);
+    pointer-events: none;
 }
 
-.nav-view-select:hover {
+.nav-select-text {
+    white-space: nowrap;
+}
+
+.nav-select-wrapper:hover .nav-select-display {
     background: var(--surface-muted);
     border-color: rgba(18, 18, 18, 0.25);
 }
 
-.nav-view-select:focus {
-    outline: none;
-    border-color: #18181B;
-    box-shadow: 0 0 0 3px rgba(24, 24, 27, 0.08);
-}
-
-.nav-view-select.active {
+.nav-select-wrapper.is-active .nav-select-display {
     background: #18181B;
     color: #FFFFFF;
     border-color: #18181B;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
-.nav-select-wrapper.is-active .nav-select-chevron {
-    color: #FFFFFF;
-}
-
-.nav-view-select option {
-    background: #FFFFFF;
-    color: #121214;
-}
-
 .nav-select-chevron {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
     color: var(--muted);
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    transition: color 0.2s;
+}
+
+.nav-select-wrapper.is-active .nav-select-chevron {
+    color: #FFFFFF;
 }
 
 .nav-select-chevron svg {
     width: 13px;
     height: 13px;
+}
+
+/* O select nativo ocupa 100% da largura/altura exata do display */
+.nav-view-select-invisible {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    font-size: 0.84rem;
+    z-index: 2;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.nav-view-select-invisible option {
+    background: #FFFFFF;
+    color: #121214;
+}
+
+.nav-select-wrapper:focus-within .nav-select-display {
+    border-color: #18181B;
+    box-shadow: 0 0 0 3px rgba(24, 24, 27, 0.08);
 }
 
 .lang-toggle {
@@ -1833,10 +1849,10 @@ textarea.input {
         display: none;
     }
 
-    .nav-view-select {
-        padding: 6px 26px 6px 10px;
+    .nav-select-display {
+        padding: 6px 10px;
         font-size: 0.78rem;
-        max-width: 190px;
+        gap: 5px;
     }
 
     .nav-links {
