@@ -40,10 +40,13 @@ function App() {
   const t = translations[lang];
   const u = ui[lang];
 
-  // Sincroniza idioma
+  // Sincroniza idioma e remove resquícios de tema escuro
   useEffect(() => {
     localStorage.setItem('lang', lang);
     document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+    localStorage.removeItem('theme');
+    document.documentElement.removeAttribute('data-theme');
+    document.documentElement.classList.remove('dark');
   }, [lang]);
 
   // Atualiza hash da URL e rola suavemente para o topo ao trocar de aba

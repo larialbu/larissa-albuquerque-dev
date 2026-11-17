@@ -18,6 +18,7 @@ export function Experiencia({ t, u, lang = 'pt' }: ExperienciaProps) {
       company: 'Banco do Brasil Tecnologia e Serviços BBTS (Via Digisystem)',
       role: t.exp_bbts_role,
       desc: t.exp_bbts_desc,
+      tags: ['AI Agents', 'RAG', 'MCP', 'Skills', 'NestJS', 'React', 'TypeScript'],
     },
     {
       id: 'senac',
@@ -26,6 +27,7 @@ export function Experiencia({ t, u, lang = 'pt' }: ExperienciaProps) {
       company: 'SENAC PERNAMBUCO (MédioTec Senac)',
       role: t.exp_senac_role,
       desc: t.exp_senac_desc,
+      tags: ['Docência Tech', 'Node.js', 'React', 'SQL', 'Git', 'Didática'],
     },
     {
       id: 'bb-ntt',
@@ -34,6 +36,7 @@ export function Experiencia({ t, u, lang = 'pt' }: ExperienciaProps) {
       company: 'Banco do Brasil (Via NTT DATA)',
       role: t.exp_bb_role,
       desc: t.exp_bb_desc,
+      tags: ['Angular', 'Micro Frontends', 'NestJS', 'Jenkins', 'Argo', 'CI/CD', 'DevRel'],
     },
     {
       id: 'bb-qintess',
@@ -42,6 +45,7 @@ export function Experiencia({ t, u, lang = 'pt' }: ExperienciaProps) {
       company: 'Banco do Brasil (Via Qintess)',
       role: isPt ? 'Desenvolvedora FULL STACK (Pleno)' : 'Full Stack Developer (Mid Level)',
       desc: t.exp_bb_qintess_desc,
+      tags: ['Angular', 'TypeScript', 'APIs REST', 'SQL', 'Fintech'],
     },
     {
       id: 'fcx',
@@ -50,6 +54,7 @@ export function Experiencia({ t, u, lang = 'pt' }: ExperienciaProps) {
       company: 'FCx Labs (Ferreira Costa)',
       role: isPt ? 'Desenvolvedora FULL STACK (Pleno)' : 'Full Stack Developer (Mid Level)',
       desc: t.exp_fcx_desc,
+      tags: ['React', 'Next.js', 'NestJS', 'Micro Frontends', 'E-commerce'],
     },
     {
       id: 'bsa',
@@ -58,6 +63,7 @@ export function Experiencia({ t, u, lang = 'pt' }: ExperienciaProps) {
       company: 'BSA Tech (Opa Games)',
       role: isPt ? 'Desenvolvedora FULL STACK (Junior)' : 'Full Stack Developer (Junior)',
       desc: t.exp_bsa_desc,
+      tags: ['Next.js', 'Django', 'Python', 'WebSockets', 'Dashboards'],
     },
     {
       id: 'cmtech',
@@ -66,6 +72,7 @@ export function Experiencia({ t, u, lang = 'pt' }: ExperienciaProps) {
       company: 'CMTech',
       role: t.exp_cmtech_role,
       desc: t.exp_cmtech_desc,
+      tags: ['ReactJS', 'SignalR', '.NET Core', 'PostgreSQL', 'MUI'],
     },
   ];
 
@@ -112,6 +119,15 @@ export function Experiencia({ t, u, lang = 'pt' }: ExperienciaProps) {
                   className="career-item-desc modal-item-desc"
                   dangerouslySetInnerHTML={{ __html: it.desc }}
                 />
+                {it.tags && it.tags.length > 0 && (
+                  <div className="tags career-tags" style={{ marginTop: 14 }}>
+                    {it.tags.map((tg) => (
+                      <span key={tg} className="tag tag-sm">
+                        {tg}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           ))}

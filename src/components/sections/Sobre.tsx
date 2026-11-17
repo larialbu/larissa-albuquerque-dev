@@ -4,6 +4,7 @@ import type { UI } from '../../ui';
 import profileImg from '../../assets/larissa.jpeg';
 import { Icon } from '../atoms/Icons';
 import { Modal } from '../organisms/Modal';
+import { socials } from '../../data/socials';
 
 interface SobreProps {
   t: TranslationSet;
@@ -12,13 +13,6 @@ interface SobreProps {
 
 const CV_PT =
   'https://www.canva.com/design/DAGtzKKKOHA/DyqCD413aeZ1-S3ExEe-7w/view?utm_content=DAGtzKKKOHA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hfc2496ac09';
-
-export const socials = [
-  { id: 'linkedin', href: 'https://www.linkedin.com/in/larissa-azevedo-albuquerque/', label: 'LinkedIn', icon: Icon.linkedin },
-  { id: 'github', href: 'https://github.com/larialbu', label: 'GitHub', icon: Icon.github },
-  { id: 'instagram', href: 'https://www.instagram.com/lari.devcode', label: 'Instagram', icon: Icon.instagram },
-  { id: 'lattes', href: 'http://lattes.cnpq.br/7448823611009423', label: 'Lattes', icon: Icon.lattes },
-];
 
 // Idade dinâmica (nascida em 11/01/2005)
 function calculateAge() {
@@ -45,11 +39,10 @@ export function Sobre({ t, u }: SobreProps) {
             {u.hello}
           </span>
           <h1 className="hero-name">
-            Larissa
-            <br />
-            <span className="grad-text">Albuquerque</span>
+            Larissa Albuquerque
+            <span className="hero-role">{t.hero_title}</span>
           </h1>
-          <p className="hero-role">{t.hero_title}</p>
+          <p className="hero-tagline mono">IA Generativa · AI Agents · RAG · MCP · Full Stack</p>
           <p className="hero-intro" dangerouslySetInnerHTML={{ __html: heroIntro }} />
 
           <div className="hero-actions">

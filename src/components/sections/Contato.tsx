@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import type { TranslationSet } from '../../translations';
 import type { UI } from '../../ui';
 import { Icon } from '../atoms/Icons';
-import { socials } from './Sobre';
+import { socials } from '../../data/socials';
 
 interface ContatoProps {
   t: TranslationSet;

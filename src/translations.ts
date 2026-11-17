@@ -163,16 +163,39 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         summary_content: `Sou pernambucana, tenho {age} anos e atuo como <span class="highlight">Desenvolvedora de Software Sênior na BBTS</span>. Com mais de <span class="highlight">4 anos de experiência</span> na construção de soluções escaláveis, minha atuação atual une <span class="highlight">Engenharia Full Stack e Inteligência Artificial</span>. Tenho forte vivência no desenvolvimento de aplicações com <span class="highlight">IA Generativa</span>, <span class="highlight">AI Agents</span>, <span class="highlight">Retrieval-Augmented Generation (RAG)</span> e <span class="highlight">Model Context Protocol (MCP)</span>, além de arquiteturas com React, NestJS e Next.js. Em paralelo à indústria, sou <span class="highlight">mestranda em Ciência da Computação no CIn/UFPE</span>, <span class="highlight">Embaixadora Estudantil do Google Gemini</span> e fundadora da <span class="highlight">Recife Front-End Community (RFEC)</span>, sempre priorizando qualidade de código e impacto na comunidade de tecnologia.`,
         exp_h1: "Experiência Profissional",
         exp_bb_role: "Desenvolvedora FULL STACK (Pleno)",
-        exp_bb_desc: `Desenvolvo soluções front-end com Angular e arquitetura de micro frontends, aumentando a modularidade e escalabilidade das aplicações bancárias. Também atuo no desenvolvimento backend com NestJS, contribuindo para a construção de serviços robustos e integrados. Trabalho com esteiras de CI/CD, utilizando Jenkins, Argo e gestão de binários, promovendo automação, padronização e maior eficiência nos processos de entrega. Contribuí para a agilidade dos times e integração dos sistemas, acelerando a disponibilização de funcionalidades. Além disso, atuo com iniciativas de DevRel, compartilhando conhecimento, apoiando boas práticas, fortalecendo a comunicação entre equipes e incentivando a cultura de colaboração e aprendizado contínuo.`,
+        exp_bb_desc: `<ul class="timeline-bullets">
+<li>Desenvolvimento front-end modular com <strong>Angular</strong> e arquitetura de <strong>Micro Frontends</strong> para aplicações bancárias de alta escala.</li>
+<li>Construção de microsserviços em <strong>NestJS</strong> e esteiras automatizadas de CI/CD com <strong>Jenkins</strong> e <strong>Argo</strong>.</li>
+<li>Atuação técnica em <strong>DevRel</strong>, mentoria e difusão de boas práticas de engenharia de software entre equipes.</li>
+</ul>`,
         exp_bbts_role: "Desenvolvedora FULL STACK (Sênior)",
-        exp_bbts_desc: `Trabalho na criação de projetos utilizando agentes de IA, RAG, MCPs (Model Context Protocols), Skills e integrações inteligentes, aplicando essas tecnologias para automatizar processos, otimizar fluxos de trabalho e aumentar a eficiência operacional. Além disso, participo do desenvolvimento de aplicações, definição de soluções técnicas, integração de sistemas e implementação de recursos que apoiam as necessidades estratégicas da organização, sempre buscando gerar valor por meio da inovação e da tecnologia.`,
+        exp_bbts_desc: `<ul class="timeline-bullets">
+<li>Arquitetura e desenvolvimento de soluções baseadas em <strong>AI Agents</strong>, <strong>RAG</strong> e <strong>MCP (Model Context Protocol)</strong>.</li>
+<li>Automação de fluxos complexos, Skills e integrações inteligentes para eficiência operacional corporativa.</li>
+<li>Liderança técnica na modernização de sistemas corporativos e esteiras com IA.</li>
+</ul>`,
         exp_senac_role: "Professora de Desenvolvimento de Sistemas",
-        exp_senac_desc: `Atuação como Professora de Desenvolvimento de Sistemas no MédioTec Senac Pernambuco (até junho de 2026). Ensino de front-end, back-end, bancos de dados, testes, versionamento e boas práticas para formação de novos talentos tech.`,
-        exp_bb_qintess_desc: "Atuei no desenvolvimento de soluções completas para o Banco do Brasil, focando em robustez e escalabilidade.",
-        exp_fcx_desc: `Desenvolvi soluções em React, Next.js, micro frontends e NestJS, integrando testes e atualizações de ambiente para garantir entregas contínuas e de qualidade. Fui uma das responsáveis pela criação do Marketplace da FC e do Seller Center, ampliando o portfólio de produtos e a experiência dos usuários no ecossistema da empresa.`,
-        exp_bsa_desc: `Desenvolvimento de integração de jogos e dashboards utilizando Next.js no front-end e Django no back-end, garantindo APIs seguras e interfaces modernas e performáticas. Implementação de soluções para gestão de dados, autenticação de usuários e integração de novos provedores, com foco em manutenção fácil e escalabilidade do sistema.`,
+        exp_senac_desc: `<ul class="timeline-bullets">
+<li>Docência em Desenvolvimento de Sistemas no MédioTec Senac Pernambuco.</li>
+<li>Formação prática de novos desenvolvedores em Front-End, Back-End (Node.js/APIs), bancos relacionais/NoSQL e versionamento com Git.</li>
+</ul>`,
+        exp_bb_qintess_desc: `<ul class="timeline-bullets">
+<li>Desenvolvimento de módulos corporativos de missão crítica para o Banco do Brasil com Angular e TypeScript.</li>
+<li>Otimização de performance, estabilidade e garantia de cobertura de testes unitários.</li>
+</ul>`,
+        exp_fcx_desc: `<ul class="timeline-bullets">
+<li>Desenvolvimento de arquitetura front-end e micro frontends para o Marketplace e Seller Center da Ferreira Costa.</li>
+<li>Integração de serviços com React, Next.js e NestJS, assegurando alta disponibilidade e escalabilidade.</li>
+</ul>`,
+        exp_bsa_desc: `<ul class="timeline-bullets">
+<li>Construção de dashboards analíticos e interfaces interativas de alta performance com Next.js e Django.</li>
+<li>Comunicação em tempo real via WebSockets, autenticação segura e integração de novos provedores.</li>
+</ul>`,
         exp_cmtech_role: "Desenvolvedora Full Stack (Estágio)",
-        exp_cmtech_desc: `Desenvolvimento de sistema de atendimento via chat em tempo real com ReactJS + MUI, integrando SignalR para mensageria e APIs REST em .NET Core para persistência em PostgreSQL. Implementação de uma solução completa para comunicação instantânea, garantindo alta performance, confiabilidade e escalabilidade no serviço de atendimento.`,
+        exp_cmtech_desc: `<ul class="timeline-bullets">
+<li>Desenvolvimento de sistema de atendimento em tempo real via chat com ReactJS, MUI e mensageria instantânea via SignalR.</li>
+<li>Persistência e APIs REST em .NET Core com banco de dados PostgreSQL.</li>
+</ul>`,
         acad_h1: "Histórico Acadêmico",
         acad_mestrado_title: "Mestrado em Ciências da Computação",
         acad_mestrado_status: "Status: Dissertação em andamento (2024.2 a 2026.2)",
@@ -309,16 +332,39 @@ export const translations: Record<'pt' | 'en', TranslationSet> = {
         summary_content: `I am from Pernambuco, I am {age} years old, and I work as a <span class="highlight">Senior Software Developer at BBTS</span>. With over <span class="highlight">4 years of experience</span> building scalable solutions, my current work combines <span class="highlight">Full Stack Engineering and Artificial Intelligence</span>. I have solid expertise developing applications with <span class="highlight">Generative AI</span>, <span class="highlight">AI Agents</span>, <span class="highlight">Retrieval-Augmented Generation (RAG)</span>, and <span class="highlight">Model Context Protocol (MCP)</span>, alongside architectures with React, NestJS, and Next.js. Alongside industry, I am a <span class="highlight">Master's student in Computer Science at CIn/UFPE</span>, <span class="highlight">Google Gemini Student Ambassador</span>, and founder of the <span class="highlight">Recife Front-End Community (RFEC)</span>, always prioritizing code quality and community impact.`,
         exp_h1: "Professional Experience",
         exp_bb_role: "FULL STACK Developer (Mid level)",
-        exp_bb_desc: `I develop front-end solutions with Angular and micro frontend architecture, increasing the modularity and scalability of banking applications. I also work on backend development with NestJS, contributing to the construction of robust and integrated services. I work with CI/CD pipelines, using Jenkins, Argo, and binary management, promoting automation, standardization, and greater efficiency in delivery processes. I contributed to team agility and system integration, accelerating the availability of features. Additionally, I work with DevRel initiatives, sharing knowledge, supporting best practices, strengthening communication between teams, and encouraging a culture of collaboration and continuous learning.`,
+        exp_bb_desc: `<ul class="timeline-bullets">
+<li>Front-end engineering with <strong>Angular</strong> and <strong>Micro Frontends</strong> architecture for high-scale banking applications.</li>
+<li>Backend microservices in <strong>NestJS</strong> and automated CI/CD pipelines with <strong>Jenkins</strong> and <strong>Argo</strong>.</li>
+<li>Technical <strong>DevRel</strong> leadership, engineering mentorship, and promoting best coding standards across teams.</li>
+</ul>`,
         exp_bbts_role: "FULL STACK Developer (Senior)",
-        exp_bbts_desc: `I work on creating projects using AI agents, RAG, MCPs (Model Context Protocols), Skills, and intelligent integrations, applying these technologies to automate processes, optimize workflows, and increase operational efficiency. Additionally, I participate in application development, definition of technical solutions, systems integration, and implementation of features that support the organization's strategic needs, always seeking to generate value through innovation and technology.`,
+        exp_bbts_desc: `<ul class="timeline-bullets">
+<li>Architecture and engineering of solutions powered by <strong>AI Agents</strong>, <strong>RAG</strong>, and <strong>MCP (Model Context Protocol)</strong>.</li>
+<li>Automation of complex workflows, custom Skills, and intelligent integrations for operational efficiency.</li>
+<li>Technical leadership on application modernization and LLM-integrated enterprise services.</li>
+</ul>`,
         exp_senac_role: "Systems Development Teacher",
-        exp_senac_desc: `Former Systems Development Teacher at MédioTec Senac Pernambuco (until June 2026). Teaching front-end, back-end, databases, testing, versioning, and best practices. Planning and leading hands-on projects preparing students for the technology market.`,
-        exp_bb_qintess_desc: "I worked on developing complete solutions for Banco do Brasil, focusing on robustness and scalability.",
-        exp_fcx_desc: `I developed solutions in React, Next.js, micro frontends, and NestJS, integrating tests and environment updates to ensure continuous and quality deliveries. I was one of those responsible for creating FC's Marketplace and the Seller Center, expanding the product portfolio and user experience in the company's ecosystem.`,
-        exp_bsa_desc: `Development of game integration and dashboards using Next.js on the front-end and Django on the back-end, ensuring secure APIs and modern, high-performance interfaces. Implementation of solutions for data management, user authentication, and integration of new providers, focusing on easy maintenance and system scalability.`,
+        exp_senac_desc: `<ul class="timeline-bullets">
+<li>Teaching Systems Development at MédioTec Senac Pernambuco.</li>
+<li>Hands-on training in Front-End, Back-End (Node.js/APIs), relational/NoSQL databases, and Git versioning.</li>
+</ul>`,
+        exp_bb_qintess_desc: `<ul class="timeline-bullets">
+<li>Development of mission-critical corporate modules for Banco do Brasil using Angular and TypeScript.</li>
+<li>Performance tuning, stability enhancements, and unit test coverage.</li>
+</ul>`,
+        exp_fcx_desc: `<ul class="timeline-bullets">
+<li>Front-end architecture and micro frontends for Ferreira Costa's Marketplace and Seller Center.</li>
+<li>Service integration with React, Next.js, and NestJS, ensuring agile deliveries and high availability.</li>
+</ul>`,
+        exp_bsa_desc: `<ul class="timeline-bullets">
+<li>Development of high-performance interactive dashboards and interfaces using Next.js and Django.</li>
+<li>Real-time WebSocket communication, secure authentication, and third-party provider integration.</li>
+</ul>`,
         exp_cmtech_role: "Full Stack Developer (Internship)",
-        exp_cmtech_desc: `Development of a real-time chat system with ReactJS + MUI, integrating SignalR for messaging and REST APIs in .NET Core for persistence in PostgreSQL. Implementation of a complete solution for instant communication, ensuring high performance, reliability, and scalability in the service.`,
+        exp_cmtech_desc: `<ul class="timeline-bullets">
+<li>Real-time chat support system using ReactJS, MUI, and instant messaging via SignalR.</li>
+<li>Persistence and REST APIs in .NET Core with PostgreSQL database.</li>
+</ul>`,
         acad_h1: "Academic History",
         acad_mestrado_title: "Master's in Computer Science",
         acad_mestrado_status: "Status: Dissertation in progress (2024.2 to 2026.2)",

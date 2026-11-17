@@ -581,6 +581,33 @@ p {
     background: var(--bg-soft);
 }
 
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(18, 18, 18, 0.1);
+    background: #FFFFFF;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color .2s, border-color .2s, background .2s, transform .2s var(--ease);
+    flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+    color: var(--text);
+    border-color: rgba(18, 18, 18, 0.25);
+    background: var(--bg-soft);
+    transform: scale(1.05);
+}
+
+.theme-toggle svg {
+    width: 15px;
+    height: 15px;
+}
+
 /* ==========================================================================
    Hero Section (Editorial Studio - Inspired by Image 1 & 2)
    ========================================================================== */
@@ -620,20 +647,30 @@ p {
 }
 
 .hero-name {
-    font-size: clamp(2.8rem, 6.4vw, 5.2rem);
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
     font-weight: 800;
     letter-spacing: -0.04em;
-    line-height: 1.02;
+    line-height: 1.1;
     color: var(--text);
 }
 
 .hero-role {
-    margin-top: 18px;
-    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
-    color: #27272A;
+    display: block;
+    margin-top: 10px;
+    font-size: clamp(1.2rem, 2.6vw, 1.8rem);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: var(--accent-lava);
+}
+
+.hero-tagline {
+    margin-top: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
     font-weight: 600;
-    max-width: 580px;
-    line-height: 1.45;
+    letter-spacing: 0.04em;
+    color: var(--accent-coral);
 }
 
 .hero-intro {
@@ -3229,5 +3266,447 @@ textarea.input {
         padding-bottom: 36px;
     }
 }
+
+/* ==========================================================================
+   Objective Timeline Bullets & Compact Tech Tags (Arthur Reis style)
+   ========================================================================== */
+.timeline-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.timeline-bullets li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 0.92rem;
+    line-height: 1.62;
+    color: var(--muted);
+}
+
+.timeline-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-olive);
+}
+
+.timeline-bullets strong {
+    color: var(--text-pure);
+    font-weight: 600;
+}
+
+.tag-sm {
+    padding: 3px 9px !important;
+    font-size: 0.74rem !important;
+    font-family: var(--font-mono);
+}
+
+/* ==========================================================================
+   Dark Mode Overrides (Arthur Ferreira Reis Tech Aesthetic)
+   ========================================================================== */
+[data-theme="dark"] ::selection,
+.dark ::selection {
+    background: #E8613A;
+    color: #FFFFFF;
+}
+
+[data-theme="dark"] .nav,
+.dark .nav {
+    background: rgba(11, 21, 25, 0.88);
+    border-color: rgba(238, 237, 233, 0.12);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
+}
+
+[data-theme="dark"] .nav-logo,
+.dark .nav-logo {
+    background: linear-gradient(135deg, #E8613A 0%, #F0855A 60%, #F2B47E 120%);
+    color: #0B1519;
+    font-weight: 800;
+    border-radius: 10px;
+}
+
+[data-theme="dark"] .nav-select-display,
+.dark .nav-select-display {
+    background: #12222A;
+    border-color: rgba(238, 237, 233, 0.12);
+    color: #F9F7F4;
+}
+
+[data-theme="dark"] .nav-select-wrapper:hover .nav-select-display,
+.dark .nav-select-wrapper:hover .nav-select-display {
+    background: #172B35;
+    border-color: rgba(238, 237, 233, 0.25);
+}
+
+[data-theme="dark"] .nav-select-wrapper.is-active .nav-select-display,
+.dark .nav-select-wrapper.is-active .nav-select-display {
+    background: linear-gradient(135deg, #E8613A 0%, #F0855A 60%, #F2B47E 120%);
+    color: #0B1519;
+    border-color: transparent;
+    font-weight: 700;
+}
+
+[data-theme="dark"] .nav-select-wrapper.is-active .nav-select-chevron,
+.dark .nav-select-wrapper.is-active .nav-select-chevron {
+    color: #0B1519;
+}
+
+[data-theme="dark"] .nav-view-select-invisible option,
+.dark .nav-view-select-invisible option {
+    background: #12222A;
+    color: #F9F7F4;
+}
+
+[data-theme="dark"] .lang-toggle,
+.dark .lang-toggle,
+[data-theme="dark"] .theme-toggle,
+.dark .theme-toggle {
+    background: #12222A;
+    border-color: rgba(238, 237, 233, 0.12);
+    color: var(--muted);
+}
+
+[data-theme="dark"] .lang-toggle:hover,
+.dark .lang-toggle:hover,
+[data-theme="dark"] .theme-toggle:hover,
+.dark .theme-toggle:hover {
+    background: #172B35;
+    border-color: #D9A28C;
+    color: #FFFFFF;
+}
+
+[data-theme="dark"] .nav-link,
+.dark .nav-link {
+    color: var(--muted);
+}
+
+[data-theme="dark"] .nav-link:hover,
+.dark .nav-link:hover {
+    color: #F9F7F4;
+}
+
+/* Hero Section no modo dark */
+[data-theme="dark"] .hero-name,
+.dark .hero-name {
+    color: #F9F7F4;
+}
+
+[data-theme="dark"] .hero-role,
+.dark .hero-role {
+    display: block;
+    margin-top: 10px;
+    font-size: clamp(1.25rem, 2.8vw, 1.85rem) !important;
+    font-weight: 700 !important;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: #F9F7F4 !important;
+    background: linear-gradient(135deg, #E8613A 0%, #F0855A 50%, #F2B47E 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+[data-theme="dark"] .hero-tagline,
+.dark .hero-tagline {
+    color: #D9A28C;
+}
+
+[data-theme="dark"] .hero-intro,
+.dark .hero-intro {
+    color: #9FADB2;
+}
+
+[data-theme="dark"] .hero-intro .highlight,
+.dark .hero-intro .highlight {
+    color: #F9F7F4;
+    font-weight: 600;
+}
+
+[data-theme="dark"] .hero-hello,
+.dark .hero-hello {
+    color: #3FB68B;
+    background: rgba(63, 182, 139, 0.14);
+    border: 1px solid rgba(63, 182, 139, 0.3);
+}
+
+[data-theme="dark"] .pulse,
+.dark .pulse {
+    background: #3FB68B;
+}
+
+[data-theme="dark"] .photo-frame,
+.dark .photo-frame {
+    background: linear-gradient(135deg, #E8613A 0%, #F0855A 60%, #F2B47E 120%);
+    padding: 4px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(232, 97, 58, 0.22);
+}
+
+[data-theme="dark"] .photo-frame img,
+.dark .photo-frame img {
+    border-radius: calc(var(--radius-lg) - 4px);
+    background: #12222A;
+}
+
+[data-theme="dark"] .stat-chip,
+.dark .stat-chip {
+    background: rgba(18, 34, 42, 0.88);
+    border: 1px solid rgba(238, 237, 233, 0.12);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .stat-chip strong,
+.dark .stat-chip strong {
+    color: #F9F7F4;
+}
+
+[data-theme="dark"] .stat-chip span,
+.dark .stat-chip span {
+    color: #9FADB2;
+}
+
+[data-theme="dark"] .social,
+.dark .social {
+    background: #12222A;
+    border-color: rgba(238, 237, 233, 0.12);
+    color: #9FADB2;
+}
+
+[data-theme="dark"] .social:hover,
+.dark .social:hover {
+    background: #172B35;
+    border-color: #D9A28C;
+    color: #FFFFFF;
+}
+
+[data-theme="dark"] .career-timeline::before,
+.dark .career-timeline::before {
+    background: linear-gradient(180deg, #E8613A 0%, rgba(232, 97, 58, 0.35) 60%, rgba(238, 237, 233, 0.05) 100%);
+}
+
+[data-theme="dark"] .career-timeline-dot,
+.dark .career-timeline-dot {
+    background: #0B1519;
+    border-color: rgba(238, 237, 233, 0.25);
+    box-shadow: 0 0 0 2px #0B1519;
+}
+
+[data-theme="dark"] .career-timeline-item.current .career-timeline-dot,
+.dark .career-timeline-item.current .career-timeline-dot {
+    border-color: #E8613A;
+    background: #0B1519;
+    box-shadow: 0 0 16px rgba(232, 97, 58, 0.65), 0 0 0 3px #0B1519;
+}
+
+[data-theme="dark"] .career-timeline-content,
+.dark .career-timeline-content {
+    background: #12222A;
+    border-color: rgba(238, 237, 233, 0.1);
+}
+
+[data-theme="dark"] .career-timeline-item:hover .career-timeline-content,
+.dark .career-timeline-item:hover .career-timeline-content {
+    border-color: rgba(232, 97, 58, 0.4);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .career-timeline-item.current .career-timeline-content,
+.dark .career-timeline-item.current .career-timeline-content {
+    background: linear-gradient(180deg, #152731 0%, #12222A 100%);
+    border-color: rgba(232, 97, 58, 0.45);
+}
+
+[data-theme="dark"] .career-item-role,
+.dark .career-item-role {
+    color: #E8613A;
+    font-weight: 600;
+}
+
+[data-theme="dark"] .timeline-badge-current,
+.dark .timeline-badge-current {
+    background: rgba(232, 97, 58, 0.15);
+    color: #F0855A;
+    border: 1px solid rgba(232, 97, 58, 0.3);
+}
+
+[data-theme="dark"] .timeline-bullets li::before,
+.dark .timeline-bullets li::before {
+    background: #E8613A;
+}
+
+[data-theme="dark"] .glass,
+.dark .glass {
+    background: #12222A;
+    border-color: rgba(238, 237, 233, 0.1);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .glass:hover,
+.dark .glass:hover,
+[data-theme="dark"] .clickable:hover,
+.dark .clickable:hover {
+    border-color: rgba(232, 97, 58, 0.4);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65);
+}
+
+[data-theme="dark"] .btn-primary,
+.dark .btn-primary {
+    background: linear-gradient(135deg, #E8613A 0%, #F0855A 60%, #F2B47E 120%);
+    color: #0B1519;
+    border: none;
+    font-weight: 700;
+    box-shadow: 0 0 24px rgba(232, 97, 58, 0.25);
+}
+
+[data-theme="dark"] .btn-primary:hover,
+.dark .btn-primary:hover {
+    box-shadow: 0 0 36px rgba(232, 97, 58, 0.45);
+    transform: translateY(-2px);
+}
+
+[data-theme="dark"] .btn-ghost,
+.dark .btn-ghost {
+    background: transparent;
+    border-color: rgba(238, 237, 233, 0.14);
+    color: #F9F7F4;
+}
+
+[data-theme="dark"] .btn-ghost:hover,
+.dark .btn-ghost:hover {
+    background: #12222A;
+    border-color: #D9A28C;
+    color: #FFFFFF;
+}
+
+[data-theme="dark"] .chip,
+.dark .chip {
+    background: #0E1A1F;
+    border-color: rgba(238, 237, 233, 0.1);
+    color: #9FADB2;
+}
+
+[data-theme="dark"] .chip.mint,
+.dark .chip.mint {
+    background: rgba(63, 182, 139, 0.14);
+    border-color: rgba(63, 182, 139, 0.32);
+    color: #3FB68B;
+}
+
+[data-theme="dark"] .chip.peach,
+.dark .chip.peach {
+    background: rgba(232, 97, 58, 0.14);
+    border-color: rgba(232, 97, 58, 0.32);
+    color: #F0855A;
+}
+
+[data-theme="dark"] .tag,
+.dark .tag {
+    background: #0E1A1F;
+    border-color: rgba(238, 237, 233, 0.1);
+    color: #9FADB2;
+}
+
+[data-theme="dark"] .tag:hover,
+.dark .tag:hover {
+    background: #172B35;
+    border-color: #D9A28C;
+    color: #F9F7F4;
+}
+
+[data-theme="dark"] .input,
+.dark .input {
+    background: #12222A;
+    border-color: rgba(238, 237, 233, 0.12);
+    color: #F9F7F4;
+}
+
+[data-theme="dark"] .input:focus,
+.dark .input:focus {
+    background: #152731;
+    border-color: #E8613A;
+    box-shadow: 0 0 0 3px rgba(232, 97, 58, 0.2);
+}
+
+[data-theme="dark"] .contact-line,
+.dark .contact-line {
+    background: #12222A;
+    border-color: rgba(238, 237, 233, 0.1);
+}
+
+[data-theme="dark"] .contact-line:hover,
+.dark .contact-line:hover {
+    background: #172B35;
+    border-color: rgba(232, 97, 58, 0.35);
+}
+
+[data-theme="dark"] .modal,
+.dark .modal {
+    background: #0E1A1F;
+    border-color: rgba(238, 237, 233, 0.15);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] .modal-backdrop,
+.dark .modal-backdrop {
+    background: rgba(11, 21, 25, 0.82);
+}
+
+[data-theme="dark"] .modal-close,
+.dark .modal-close {
+    background: #172B35;
+    color: #E8E6E1;
+    border: 1px solid rgba(238, 237, 233, 0.12);
+}
+
+[data-theme="dark"] .modal-close:hover,
+.dark .modal-close:hover {
+    background: #1F3845;
+    color: #FFFFFF;
+}
+
+[data-theme="dark"] .google-cert-accordion,
+.dark .google-cert-accordion {
+    background: #12222A;
+    border-color: rgba(238, 237, 233, 0.1);
+}
+
+[data-theme="dark"] .cert-accordion-btn:hover,
+.dark .cert-accordion-btn:hover {
+    background: #172B35;
+}
+
+[data-theme="dark"] .skills-tabs-bar,
+.dark .skills-tabs-bar {
+    background: #12222A;
+    border-color: rgba(238, 237, 233, 0.1);
+}
+
+[data-theme="dark"] .skills-tab-btn,
+.dark .skills-tab-btn {
+    color: #9FADB2;
+}
+
+[data-theme="dark"] .skills-tab-btn.is-active,
+.dark .skills-tab-btn.is-active {
+    background: linear-gradient(135deg, #E8613A 0%, #F0855A 60%, #F2B47E 120%);
+    color: #0B1519;
+    font-weight: 700;
+}
+
+[data-theme="dark"] .skills-panel-box,
+.dark .skills-panel-box {
+    background: #12222A;
+    border-color: rgba(238, 237, 233, 0.1);
+}
+
 
 
