@@ -19,16 +19,16 @@ export function Nav({
   onSelectTab,
   onContactClick,
 }: NavProps) {
-  const secondaryOptions: { id: PortfolioTab; label: string }[] = [
+  const options: { id: PortfolioTab; label: string }[] = [
+    { id: 'core', label: u.nav_about_me },
     { id: 'produtos', label: u.nav_products },
     { id: 'comunidades', label: u.tab_community },
     { id: 'embaixadorias', label: u.tab_ambassador },
     { id: 'mediakit', label: u.tab_mediakit },
   ];
 
-  const isSecondaryActive = activeTab !== 'core';
-  const currentOption = secondaryOptions.find((opt) => opt.id === activeTab);
-  const currentLabel = isSecondaryActive && currentOption ? currentOption.label : u.select_more_views;
+  const currentOption = options.find((opt) => opt.id === activeTab) || options[0];
+  const currentLabel = currentOption.label;
 
   return (
     <nav className="nav" aria-label="Principal">
@@ -45,21 +45,8 @@ export function Nav({
         LA
       </a>
 
-      {/* 1. Botão separado: Sobre mim */}
-      <button
-        id="nav-sobre-mim"
-        type="button"
-        className={`nav-link ${activeTab === 'core' ? 'active' : ''}`}
-        onClick={() => {
-          onSelectTab('core');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-      >
-        {u.nav_about_me}
-      </button>
-
-      {/* 2. Select adaptável ao tamanho do texto clicado/selecionado */}
-      <div className={`nav-select-wrapper ${isSecondaryActive ? 'is-active' : ''}`}>
+      {/* Select central adaptável: "Sobre mim" já vem como padrão e as outras opções ficam aqui dentro */}
+      <div className="nav-select-wrapper is-active">
         <span className="nav-select-display">
           <span className="nav-select-text">{currentLabel}</span>
           <span className="nav-select-chevron" aria-hidden="true">
@@ -67,10 +54,10 @@ export function Nav({
           </span>
         </span>
         <select
-          id="nav-secondary-select"
+          id="nav-view-select"
           className="nav-view-select-invisible"
-          value={isSecondaryActive ? activeTab : ''}
-          aria-label={u.select_more_views}
+          value={activeTab}
+          aria-label={u.view_label}
           onChange={(e) => {
             if (e.target.value) {
               onSelectTab(e.target.value as PortfolioTab);
@@ -78,10 +65,7 @@ export function Nav({
             }
           }}
         >
-          <option value="" disabled hidden>
-            {u.select_more_views}
-          </option>
-          {secondaryOptions.map((opt) => (
+          {options.map((opt) => (
             <option key={opt.id} value={opt.id}>
               {opt.label}
             </option>
@@ -89,7 +73,7 @@ export function Nav({
         </select>
       </div>
 
-      {/* 3. Link Contato no final */}
+      {/* O Contato é o ÚNICO que fica fora */}
       <a
         id="nav-contato"
         href="#contato"
@@ -104,7 +88,6 @@ export function Nav({
         {u.nav_contact}
       </a>
 
-      {/* 4. Idioma PT / EN */}
       <button
         className="lang-toggle"
         onClick={onToggleLang}
