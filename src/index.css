@@ -581,33 +581,6 @@ p {
     background: var(--bg-soft);
 }
 
-.theme-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: var(--radius-pill);
-    border: 1px solid rgba(18, 18, 18, 0.1);
-    background: #FFFFFF;
-    color: var(--muted);
-    cursor: pointer;
-    transition: color .2s, border-color .2s, background .2s, transform .2s var(--ease);
-    flex-shrink: 0;
-}
-
-.theme-toggle:hover {
-    color: var(--text);
-    border-color: rgba(18, 18, 18, 0.25);
-    background: var(--bg-soft);
-    transform: scale(1.05);
-}
-
-.theme-toggle svg {
-    width: 15px;
-    height: 15px;
-}
-
 /* ==========================================================================
    Hero Section (Editorial Studio - Inspired by Image 1 & 2)
    ========================================================================== */
