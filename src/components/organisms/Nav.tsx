@@ -13,8 +13,8 @@ export function Nav({ u, active, lang, onToggleLang, onNavClick }: NavProps) {
     { id: 'sobre', label: u.nav_about },
     { id: 'trajetoria', label: u.nav_trajectory },
     { id: 'skills', label: u.nav_skills },
-    { id: 'produtos', label: u.nav_products },
     { id: 'mediakit', label: u.nav_mediakit },
+    { id: 'produtoß', label: u.nav_products },
     { id: 'contato', label: u.nav_contact },
   ];
 
