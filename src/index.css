@@ -620,20 +620,21 @@ p {
 }
 
 .hero-name {
-    font-size: clamp(2.8rem, 6.4vw, 5.2rem);
+    font-size: clamp(2rem, 3.8vw, 3rem);
     font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1.02;
+    letter-spacing: -0.035em;
+    line-height: 1.08;
     color: var(--text);
 }
 
 .hero-role {
-    margin-top: 18px;
-    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+    margin-top: 14px;
+    font-size: clamp(1rem, 1.25vw, 1.15rem);
     color: var(--text-pure);
     font-weight: 600;
     max-width: 580px;
-    line-height: 1.45;
+    line-height: 1.5;
+    letter-spacing: normal;
 }
 
 .hero-intro {

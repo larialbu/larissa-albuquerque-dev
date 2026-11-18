@@ -39,10 +39,11 @@ export function Sobre({ t, u }: SobreProps) {
             {u.hello}
           </span>
           <h1 className="hero-name">
-            Larissa Albuquerque
-            <span className="hero-role">{t.hero_title}</span>
+            Larissa
+            <br />
+            Albuquerque
           </h1>
-          <p className="hero-tagline mono">IA Generativa · AI Agents · RAG · MCP · Full Stack</p>
+          <p className="hero-role">{t.hero_title}</p>
           <p className="hero-intro" dangerouslySetInnerHTML={{ __html: heroIntro }} />
 
           <div className="hero-actions">
